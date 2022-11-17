@@ -135,38 +135,17 @@ regex to extract patch name from WAV files :
 
 ---
 
-## Publishing release on GitHub
+## Publishing new releases
 
-<https://github.com/iffy/electron-updater-example>
-
-1. Turn off devTools to false in dist/config.json for security
-
-2. Generate a GitHub access token by going to <https://github.com/settings/tokens/new>. The access token should have the repo scope/permission. Once you have the token, assign it to an environment variable
-   On macOS/linux:
-
-```
-export GH_TOKEN="<YOUR_TOKEN_HERE>"
-```
-
-On Windows, run in powershell:
-
-```
-[Environment]::SetEnvironmentVariable("GH_TOKEN","<YOUR_TOKEN_HERE>","User")
-```
-
-or
-
-```
-setx GH_TOKEN "<YOUR_TOKEN_HERE>"
-```
-
-Make sure to restart your IDE/Terminal to inherit latest env variable.
-
-3. Publish to GitHub with:
-
-```
-npm run publish
-```
+1. Turn off devTools to false in electron/config.json for security
+2. Update package.json version
+3. Commit & Push to GitHub on master branch
+4. GitHub Actions pipeline is launched "on push" and handles all the steps :
+   1. build
+   2. sign & notarize
+   3. create packages : MacOS (DMG, PKG, ZIP), Windows (NSIS/EXE), Linux (AppImage, Snap)
+   4. publishing on SnapCraft (Linux) <https://snapcraft.io/sfz-builder/releases>
+5. Upload to Apple App Store must be done manually via App Store Connect <https://appstoreconnect.apple.com/apps>
 
 ---
 
