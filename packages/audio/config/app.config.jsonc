@@ -1,0 +1,148 @@
+{
+  "folders": {
+    "temp": "./.temp",
+    "src": "./src",
+    "test": "./test"
+  },
+
+  // SFZ
+  "sfz": {
+    "default": {
+      "patch": {
+        "type": "drumkit", // see global_templates below, (drumkit | instrument | piano | key | bass | guitar | pad | string | brass ...)
+        "multi_velocity_layer": false, // false|true : single|multi velocity layer
+        "single_velocity_layer__amp_veltrack": 90, // default amp_veltrack for single velocity layer patch, 0-100
+        "multi_velocity_layer__amp_veltrack": 20, // default amp_veltrack for multi velocity layer patch, 0-100
+        "control": { "default_path": "./samples/" }, // recommended : "./" | "./samples/"
+        "global": {
+          // global default values can be used by global_templates below
+          "volume": 0, // patch default volume en dB, SFZ v1 range -144/+ 6dB
+          "polyphony": 32, // max number of voices (notes) to be played at the same time
+          "loop_mode": "no_loop", // no_loop (default) | one_shot | loop_continuous | loop_sustain
+          "trigger": "attack", // sfz default value
+          "bend_up": 200, // pitchbend up value 100 = 1 semitone
+          "bend_down": -200, // pitchbend down value 100 = 1 semitone
+          "ampeg_attack": 0, // time in seconds
+          "ampeg_decay": 0, // time in seconds
+          "ampeg_sustain": 100, // level 0-100
+          "ampeg_release": 0.5 // time in seconds
+        }
+      }
+    },
+    "global_templates": {
+      // global.default: to use value defined in global default values
+      "drumkit": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "one_shot",
+        "ampeg_release": 0.5,
+        "volume": "global.default" // use global default value
+      },
+      "loop": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "loop_sustain",
+        "bend_up": 1200,
+        "bend_down": -1200,
+        "ampeg_release": 0.5,
+        "volume": -1.5
+      },
+      "instrument": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "no_loop",
+        "volume": -1.5
+      },
+      "bass": {
+        "polyphony": 1, // monophonic
+        "loop_mode": "no_loop",
+        "ampeg_release": 0.5,
+        "volume": -1.5
+      },
+      "lead": {
+        "polyphony": 1, // monophonic
+        "loop_mode": "no_loop",
+        "ampeg_release": 0.5,
+        "volume": -1.5
+      },
+      "pluck": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "no_loop",
+        "ampeg_release": 0.5
+      },
+      "guitar": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "no_loop",
+        "ampeg_release": 1.0, // 1.0 (acoustic) | 0.75 (electric)
+        "volume": -1.5
+      },
+      "piano": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "no_loop",
+        "ampeg_release": 1.0,
+        "volume": -3
+      },
+      "key": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "no_loop",
+        "ampeg_release": 0.5,
+        "volume": -3
+      },
+      "pad": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "loop_sustain",
+        "ampeg_release": 1.5,
+        "volume": -3
+      },
+      "string": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "loop_sustain",
+        "ampeg_release": 2.0,
+        "volume": -3
+      },
+      "brass": {
+        "polyphony": "global.default", // use global default value
+        "loop_mode": "no_loop",
+        "ampeg_release": 1.0,
+        "volume": -1.5
+      },
+      "fx": {
+        "polyphony": "global.default", // use global default value
+        "ampeg_release": 1.0,
+        "volume": -3
+      }
+    },
+    "processing": "sequential", // sequential (default) | parallel, select processing method for SFZ files (sequential = process patches sequentially, parallel = process patch in parallel)
+    "wav_regexp": {
+      "samplerobot": "(.*)-[0-9]{3}-[0-9]{3}-[a-h]#?\\d.wav",
+      "flstudio": "(.*)_([A-G]#?\\d)_([0-9]{1,3}).wav",
+      "audiolayer": "(.*)_([A-G]#?-?\\d)_([0-9]{1,3}).wav"
+    },
+    "header": [
+      "/*---------------------------------------------------------------------------------------------",
+      " *  SFZ definition file",
+      " *  Copyright (c) All rights reserved.",
+      " *--------------------------------------------------------------------------------------------*/"
+    ]
+  },
+
+  // Encoder settings
+  "encoder": {
+    "timeout": 30000, // ms, timout of 30s for encoding a file
+    "maxsamplerate": 48000, // maximum allowed samplerate, resample to 48000 if above, allowed values: 22050|44100|48000|96000|192000
+    "maxbitdepth": 24, // maximum allowed bit depth, converter to 24 bits if above, allowed values: 8|16|24|32
+    "fadeoutratio": 0.1, // ratio for fadeout duration
+    "headroom": 1.0, // samples headroom in dB to limit clipping
+    "lowvolumethreshold": -80, // low volume threshold in dB, waring message will be generated with volume below this threshold
+    "ffmpeg": {
+      "flac": "-v panic -y -i <inputfile> -af aformat=s32:<samplerate> <outputfile>", // ffmpeg: FLAC encoding 24bits/48kHz
+      "ogg": "-v panic -y -i <inputfile> -acodec libvorbis -b:a 320k <outputfile>", // ffmpeg: OGG encoding 320k bitrate
+      "wav_getvolume": "-hide_banner -nostats -i <inputfile> -af volumedetect -f null -", // extract max_volume and mean_volume from file
+      "wav_maxsamplerate": "-v panic -y -i <inputfile> -ar <samplerate> -acodec pcm_s24le <outputfile>", // ffmpeg: WAV encoding 24bits
+      "wav_maxbitdepth": "-v panic -y -i <inputfile> -acodec pcm_s24le <outputfile>", // ffmpeg: WAV encoding 24bits
+      "wav_volume": "-v panic -y -i <inputfile> -af volume=<volume>dB:precision=float -acodec pcm_s24le <outputfile>", // ffmpeg: WAV volume increase of <volume>dB
+      "wav_fadeout": "-v panic -y -i <inputfile> -af afade=t=out:st=<start>:d=<duration> -acodec pcm_s24le <outputfile>", // ffmpeg: WAV fadeout
+      "wav_silence": "-v panic -y -i <inputfile> -af silenceremove=start_periods=1:start_threshold=-90dB:stop_periods=1:stop_threshold=-90dB:detection=peak:window=0.001 -acodec pcm_s24le <outputfile>" // ffmpeg: WAV remove silence at the beginning and the end of wav file
+    },
+    "ffprobe": {
+      "info": "-v error -hide_banner -show_entries format=format_name,duration,size:stream=codec_name,sample_rate,channels,bits_per_sample,duration_ts,duration -print_format json=compact=1 <inputfile>"
+    }
+  }
+}

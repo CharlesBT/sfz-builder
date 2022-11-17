@@ -1,0 +1,30 @@
+app:
+  subtitle: Create your instruments
+
+menu:
+  home: Home
+  drumkit: Drumkit
+  instrument: Instrument
+  loops: Loops
+  help: Help
+  about: About
+
+instrument:
+  title: Create new instrument
+  subtitle: Fill this form to create a new instrument
+  name: Name
+  articulations: Articulations
+  attributes: Attributes
+  category: Category
+  format: Format
+  styles: Styles
+  timbres: Timbres
+
+dialog:
+  default: Default
+  select: Select
+  folder: Folder
+  files: Files
+  upload: Upload
+
+not-found: Not found

@@ -1,0 +1,30 @@
+app:
+  subtitle: Créer vos instruments
+
+menu:
+  home: Accueil
+  drumkit: Kit batterie
+  instrument: Instrument
+  loops: Boucles
+  help: Aide
+  about: A propos
+
+instrument:
+  title: Créer un nouvel instrument
+  subtitle: Utilisez ce formulaire pour créer un nouvel instrument
+  name: Nom
+  articulations: Articulations
+  attributes: Attributs
+  category: Categorie
+  format: Format
+  styles: Styles
+  timbres: Timbres
+
+dialog:
+  default: Défaut
+  select: Sélectionner
+  folder: Dossier
+  files: Fichiers
+  upload: Envoyer
+
+not-found: Page non trouvée

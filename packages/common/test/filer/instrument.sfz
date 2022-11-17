@@ -1,0 +1,14 @@
+//-----------------------------------------------------------------------------------
+// sfz Definition File
+//
+// this file was created with Skylife's SampleRobotΠVersion 6.01
+// for Cakewalk's virtual sampler "Dimension".
+//-----------------------------------------------------------------------------------
+
+
+<group> // parameters for the multi-sample "Velocity 127"
+lovel=0
+hivel=127
+
+<region> trigger=attack  pitch_keycenter=21 lokey=21 hikey=22 sample=sample-1.wav
+<region> trigger=attack  pitch_keycenter=24 lokey=23 hikey=25 sample=sample-2.wav

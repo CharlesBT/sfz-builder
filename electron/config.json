@@ -1,0 +1,15 @@
+{
+  "app": {
+    "title": "SFZ-BUILDER",
+    "icon": "app.ico",
+    "width": 1024,
+    "minWidth": 1024,
+    "height": 800,
+    "minHeight": 640,
+    "backgroundColor": "#282c34",
+    "spellcheck": true,
+    "autoHideMenuBar": true,
+    "silentUpdater": false,
+    "devTools": false
+  }
+}

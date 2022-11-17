@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext", "dom", "dom.iterable"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "rootDir": "./",
+    "baseUrl": "./",
+    "strict": true,
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"],
+      "@/*": ["src/*"],
+      "@electron/*": ["electron/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "composite": true,
+    "types": ["node", "vitest", "vite/client"]
+  },
+  "include": [
+    "*",
+    "electron/**/*",
+    "electron/**/*.json",
+    "src/**/*",
+    "src/**/*.json",
+    "package.json"
+  ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bec5"
+    },
+    "name": "Arpeggiated"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bec6"
+    },
+    "name": "Bowed"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bec7"
+    },
+    "name": "Expressive Tremolo"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bec8"
+    },
+    "name": "Expressive Trill"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bec9"
+    },
+    "name": "Expressive Vibrato"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3beca"
+    },
+    "name": "Fast Attack"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3becb"
+    },
+    "name": "Gated"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3becc"
+    },
+    "name": "Glissando"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3becd"
+    },
+    "name": "Legato"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bece"
+    },
+    "name": "Long Marcato"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3becf"
+    },
+    "name": "Long Sostenuto"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed0"
+    },
+    "name": "Percussive"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed1"
+    },
+    "name": "Plucked"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed2"
+    },
+    "name": "Pulsed"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed3"
+    },
+    "name": "Short Pizzicato"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed4"
+    },
+    "name": "Short Spiccato"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed5"
+    },
+    "name": "Short Staccato"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bed6"
+    },
+    "name": "Slow Attack"
+  }
+]

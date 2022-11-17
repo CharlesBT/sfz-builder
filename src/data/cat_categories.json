@@ -1,0 +1,198 @@
+[
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb0"
+    },
+    "shortname": "AR",
+    "name": "Arpeggio"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb1"
+    },
+    "shortname": "AT",
+    "name": "Atmosphere"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb2"
+    },
+    "shortname": "BA",
+    "name": "Bass"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb3"
+    },
+    "shortname": "BL",
+    "name": "Bell"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb4"
+    },
+    "shortname": "BR",
+    "name": "Brass"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb5"
+    },
+    "shortname": "CH",
+    "name": "Choir"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb6"
+    },
+    "shortname": "DR",
+    "name": "Drum"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb8"
+    },
+    "shortname": "FX",
+    "name": "FX"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfb9"
+    },
+    "shortname": "FL",
+    "name": "Flute"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfba"
+    },
+    "shortname": "GT",
+    "name": "Guitar"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfbb"
+    },
+    "shortname": "HT",
+    "name": "Hit"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfbc"
+    },
+    "shortname": "KE",
+    "name": "Key"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfbd"
+    },
+    "shortname": "LD",
+    "name": "Lead"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfbe"
+    },
+    "shortname": "ML",
+    "name": "Mallet"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfbf"
+    },
+    "shortname": "OC",
+    "name": "Orchestral"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc0"
+    },
+    "shortname": "OR",
+    "name": "Organ"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc1"
+    },
+    "shortname": "PD",
+    "name": "Pad"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc2"
+    },
+    "shortname": "PC",
+    "name": "Percussion"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc3"
+    },
+    "shortname": "PN",
+    "name": "Piano"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc4"
+    },
+    "shortname": "PL",
+    "name": "Pluck"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc5"
+    },
+    "shortname": "RD",
+    "name": "Reed"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc6"
+    },
+    "shortname": "SQ",
+    "name": "Sequence"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf16"
+    },
+    "shortname": "SN",
+    "name": "Soundscape"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc7"
+    },
+    "shortname": "ST",
+    "name": "String"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc8"
+    },
+    "shortname": "SU",
+    "name": "Sub"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfc9"
+    },
+    "shortname": "SY",
+    "name": "Synth"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfca"
+    },
+    "shortname": "VO",
+    "name": "Vocal"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfcb"
+    },
+    "shortname": "WW",
+    "name": "Woodwind"
+  }
+]

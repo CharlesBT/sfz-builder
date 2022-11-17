@@ -1,0 +1,18 @@
+# APP
+test
+logs
+
+# NODE
+node_modules
+build
+dist
+pnpm-lock.yaml
+
+# VITEST
+coverage
+
+# DOCS
+docs
+
+# MACOSX
+.DS_Store

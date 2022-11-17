@@ -1,0 +1,122 @@
+[
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf9c"
+    },
+    "name": "Breathy"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf9d"
+    },
+    "name": "Bright"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf9e"
+    },
+    "name": "Clean"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf9f"
+    },
+    "name": "Cold"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa0"
+    },
+    "name": "Complex"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa1"
+    },
+    "name": "Dark"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa2"
+    },
+    "name": "Detuned"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa3"
+    },
+    "name": "Distorted"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa4"
+    },
+    "name": "Fat"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa5"
+    },
+    "name": "Glitchy"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa6"
+    },
+    "name": "Harda"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa7"
+    },
+    "name": "Metallic"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa8"
+    },
+    "name": "Muted"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfa9"
+    },
+    "name": "Noisy"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfaa"
+    },
+    "name": "Organic"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfab"
+    },
+    "name": "Simple"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfac"
+    },
+    "name": "Smooth"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfad"
+    },
+    "name": "Soft"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfae"
+    },
+    "name": "Thin"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfaf"
+    },
+    "name": "Warm"
+  }
+]

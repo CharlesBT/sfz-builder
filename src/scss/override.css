@@ -1,0 +1,31 @@
+body {
+}
+
+#app {
+  /*
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  */
+}
+
+.v-navigation-drawer {
+  width: 100px;
+  min-width: 100px;
+}
+
+.page-wrapper {
+  padding: 30px;
+  min-width: 500px;
+  max-width: 1200px;
+}
+
+/* custom test */
+
+.topbar {
+  /* height: 100px; */
+}
+
+.tb {
+  border: solid 1px black !important;
+}

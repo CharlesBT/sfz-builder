@@ -1,0 +1,7 @@
+{
+  "name": "@bms/prettier-config-custom",
+  "main": "prettier-config.json",
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}

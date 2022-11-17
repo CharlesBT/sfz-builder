@@ -1,0 +1,29 @@
+[
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf22"
+    },
+    "uuid": "00000000-8326-41ed-9fd1-e9fcd203430c",
+    "meta": {
+      "name": "Disco Bass",
+      "description": "",
+      "source": "",
+      "image": "",
+      "author": "",
+      "type": "",
+      "pack": "",
+      "format": "",
+      "categories": [],
+      "articulations": [],
+      "attributes": [],
+      "styles": [],
+      "emotions": [],
+      "tags": [],
+      "links": [],
+      "deleted": false,
+      "published": false
+    },
+    "createdAt": "2021-11-17T17:56:36.081Z",
+    "updatedAt": "2022-04-01T14:52:07.977Z"
+  }
+]

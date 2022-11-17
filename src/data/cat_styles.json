@@ -1,0 +1,813 @@
+[
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf23"
+    },
+    "name": "60s"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf24"
+    },
+    "name": "8 Bits",
+    "parent_id": "63622947b314eb1b48d3bf63"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf25"
+    },
+    "name": "80s"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf26"
+    },
+    "name": "Acid House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf27"
+    },
+    "name": "Africa",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf28"
+    },
+    "name": "Afrobeat",
+    "parent_id": "63622947b314eb1b48d3bf68"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf29"
+    },
+    "name": "Ambient",
+    "parent_id": "63622947b314eb1b48d3bf3e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf2a"
+    },
+    "name": "Asia",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf2b"
+    },
+    "name": "Balkan",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf2c"
+    },
+    "name": "Baroque",
+    "parent_id": "63622947b314eb1b48d3bf7c"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf2d"
+    },
+    "name": "Bass House",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf2e"
+    },
+    "name": "Bass Music"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf2f"
+    },
+    "name": "Beatbox",
+    "parent_id": "63622947b314eb1b48d3bf33"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf30"
+    },
+    "name": "Big Beat",
+    "parent_id": "63622947b314eb1b48d3bf33"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf31"
+    },
+    "name": "Blues",
+    "parent_id": "63622947b314eb1b48d3bf7d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf32"
+    },
+    "name": "Brazilian",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf33"
+    },
+    "name": "Breakbeat"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf34"
+    },
+    "name": "Celtic",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf35"
+    },
+    "name": "Chill Trap",
+    "parent_id": "63622947b314eb1b48d3bf92"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf36"
+    },
+    "name": "Chillout",
+    "parent_id": "63622947b314eb1b48d3bf3e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf37"
+    },
+    "name": "Cinematic"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf38"
+    },
+    "name": "Complextro",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf39"
+    },
+    "name": "Country",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf3a"
+    },
+    "name": "Dancehall",
+    "parent_id": "63622947b314eb1b48d3bf82"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf3b"
+    },
+    "name": "Deep House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf3c"
+    },
+    "name": "Disco",
+    "parent_id": "63622947b314eb1b48d3bf3d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf3d"
+    },
+    "name": "Disco / Funk"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf3e"
+    },
+    "name": "Downtempo"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf3f"
+    },
+    "name": "Drill",
+    "parent_id": "63622947b314eb1b48d3bf92"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf40"
+    },
+    "name": "Drum'n'Bass",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf41"
+    },
+    "name": "Dub",
+    "parent_id": "63622947b314eb1b48d3bf82"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf42"
+    },
+    "name": "Dubstep",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf43"
+    },
+    "name": "EDM",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf44"
+    },
+    "name": "East Coast",
+    "parent_id": "63622947b314eb1b48d3bf60"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf45"
+    },
+    "name": "Electro House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf46"
+    },
+    "name": "Electro Swing",
+    "parent_id": "63622947b314eb1b48d3bf68"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf47"
+    },
+    "name": "Electronica",
+    "parent_id": "63622947b314eb1b48d3bf63"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf48"
+    },
+    "name": "Ethnic",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf49"
+    },
+    "name": "Eurodance",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf4a"
+    },
+    "name": "French House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf4b"
+    },
+    "name": "Funk",
+    "parent_id": "63622947b314eb1b48d3bf3d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf4c"
+    },
+    "name": "Funky House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf4d"
+    },
+    "name": "Future Bass",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf4e"
+    },
+    "name": "Future House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf4f"
+    },
+    "name": "Future Pop",
+    "parent_id": "63622947b314eb1b48d3bf7d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf50"
+    },
+    "name": "Future Rave",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf51"
+    },
+    "name": "Future RnB",
+    "parent_id": "63622947b314eb1b48d3bf8a"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf52"
+    },
+    "name": "Future Soul",
+    "parent_id": "63622947b314eb1b48d3bf8a"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf53"
+    },
+    "name": "G House",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf54"
+    },
+    "name": "G-Funk",
+    "parent_id": "63622947b314eb1b48d3bf3d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf55"
+    },
+    "name": "Gabber",
+    "parent_id": "63622947b314eb1b48d3bf90"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf56"
+    },
+    "name": "Garage",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf57"
+    },
+    "name": "Glitch",
+    "parent_id": "63622947b314eb1b48d3bf63"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf58"
+    },
+    "name": "Goa",
+    "parent_id": "63622947b314eb1b48d3bf91"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf59"
+    },
+    "name": "Gospel",
+    "parent_id": "63622947b314eb1b48d3bf8a"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf5a"
+    },
+    "name": "Grime",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf5b"
+    },
+    "name": "Groove House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf5c"
+    },
+    "name": "Hard Techno",
+    "parent_id": "63622947b314eb1b48d3bf90"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf5d"
+    },
+    "name": "Hardcore",
+    "parent_id": "63622947b314eb1b48d3bf90"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf5e"
+    },
+    "name": "Hardrock",
+    "parent_id": "63622947b314eb1b48d3bf85"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf5f"
+    },
+    "name": "Hardstyle",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf60"
+    },
+    "name": "Hip Hop"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf61"
+    },
+    "name": "Horror",
+    "parent_id": "63622947b314eb1b48d3bf37"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf62"
+    },
+    "name": "House"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf63"
+    },
+    "name": "IDM"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf64"
+    },
+    "name": "India",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf65"
+    },
+    "name": "Indie Pop",
+    "parent_id": "63622947b314eb1b48d3bf7d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf66"
+    },
+    "name": "Industrial",
+    "parent_id": "63622947b314eb1b48d3bf63"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf67"
+    },
+    "name": "Industrial Techno",
+    "parent_id": "63622947b314eb1b48d3bf90"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf68"
+    },
+    "name": "Jazz"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf69"
+    },
+    "name": "Jingle"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf6a"
+    },
+    "name": "Jungle",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf6b"
+    },
+    "name": "Latin"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf6c"
+    },
+    "name": "Latino",
+    "parent_id": "63622947b314eb1b48d3bf6b"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf6d"
+    },
+    "name": "Liquid",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf6e"
+    },
+    "name": "Lo-Fi Hip Hop",
+    "parent_id": "63622947b314eb1b48d3bf60"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf6f"
+    },
+    "name": "Lo-Fi House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf70"
+    },
+    "name": "Lounge",
+    "parent_id": "63622947b314eb1b48d3bf68"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf71"
+    },
+    "name": "Melodic Techno",
+    "parent_id": "63622947b314eb1b48d3bf90"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf72"
+    },
+    "name": "Metal",
+    "parent_id": "63622947b314eb1b48d3bf85"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf73"
+    },
+    "name": "Minimal House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf74"
+    },
+    "name": "Minimal Techno",
+    "parent_id": "63622947b314eb1b48d3bf90"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf75"
+    },
+    "name": "Moombah",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf76"
+    },
+    "name": "Moombahton",
+    "parent_id": "63622947b314eb1b48d3bf6b"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf77"
+    },
+    "name": "Motown",
+    "parent_id": "63622947b314eb1b48d3bf23"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf78"
+    },
+    "name": "Neo Soul",
+    "parent_id": "63622947b314eb1b48d3bf8a"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf79"
+    },
+    "name": "Neurofunk",
+    "parent_id": "63622947b314eb1b48d3bf2e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf7a"
+    },
+    "name": "Nu Disco",
+    "parent_id": "63622947b314eb1b48d3bf3d"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf7b"
+    },
+    "name": "Nu Jazz / Electro Jazz",
+    "parent_id": "63622947b314eb1b48d3bf68"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf7c"
+    },
+    "name": "Orchestral"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf7d"
+    },
+    "name": "Pop"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf7e"
+    },
+    "name": "Progressive House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf7f"
+    },
+    "name": "Psytrance",
+    "parent_id": "63622947b314eb1b48d3bf91"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf80"
+    },
+    "name": "Ragga",
+    "parent_id": "63622947b314eb1b48d3bf82"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf81"
+    },
+    "name": "Rave",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf82"
+    },
+    "name": "Reggae"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf83"
+    },
+    "name": "Reggaeton",
+    "parent_id": "63622947b314eb1b48d3bf6b"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf84"
+    },
+    "name": "RnB",
+    "parent_id": "63622947b314eb1b48d3bf60"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf85"
+    },
+    "name": "Rock"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf86"
+    },
+    "name": "Salsa",
+    "parent_id": "63622947b314eb1b48d3bf6b"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf87"
+    },
+    "name": "Samba",
+    "parent_id": "63622947b314eb1b48d3bf6b"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf88"
+    },
+    "name": "Sci-Fi",
+    "parent_id": "63622947b314eb1b48d3bf37"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf89"
+    },
+    "name": "Ska",
+    "parent_id": "63622947b314eb1b48d3bf82"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf8a"
+    },
+    "name": "Soul"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf8b"
+    },
+    "name": "Soundtrack",
+    "parent_id": "63622947b314eb1b48d3bf37"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf8c"
+    },
+    "name": "Swing",
+    "parent_id": "63622947b314eb1b48d3bf68"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf8d"
+    },
+    "name": "Synthpop",
+    "parent_id": "63622947b314eb1b48d3bf25"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf8e"
+    },
+    "name": "Synthwave",
+    "parent_id": "63622947b314eb1b48d3bf25"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf8f"
+    },
+    "name": "Tech House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf90"
+    },
+    "name": "Techno"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf91"
+    },
+    "name": "Trance"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf92"
+    },
+    "name": "Trap"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf93"
+    },
+    "name": "Tribal House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf94"
+    },
+    "name": "Trip",
+    "parent_id": "63622947b314eb1b48d3bf60"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf95"
+    },
+    "name": "Trip Hop",
+    "parent_id": "63622947b314eb1b48d3bf3e"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf96"
+    },
+    "name": "Tropical House",
+    "parent_id": "63622947b314eb1b48d3bf62"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf97"
+    },
+    "name": "West Coast",
+    "parent_id": "63622947b314eb1b48d3bf60"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf98"
+    },
+    "name": "World"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bf99"
+    },
+    "name": "Zouk",
+    "parent_id": "63622947b314eb1b48d3bf98"
+  }
+]

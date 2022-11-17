@@ -1,0 +1,39 @@
+#PRIVATE
+.private
+
+# APP
+.cache
+.temp
+
+# NODE
+node_modules
+dist
+dist-*
+build
+release
+
+# .env.*.local
+*.local
+
+# Logs
+logs
+*.log
+*.log*
+*gitlog
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# VITEST
+coverage
+
+# DOCS
+docs
+
+# MACOSX
+.DS_Store
+
+# CHROME CONFIG FOR DEBUGGING
+vscode-chrome-debug-userdatadir

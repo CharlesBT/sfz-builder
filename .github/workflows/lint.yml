@@ -1,0 +1,32 @@
+name: Lint & Format
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install dependencies
+        run: |
+          pnpm install
+          pnpm postinstall
+
+      - name: Lint & Format
+        run: |
+          pnpm lint
+          pnpm format

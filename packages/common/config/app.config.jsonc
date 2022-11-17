@@ -1,0 +1,16 @@
+{
+  // Application name
+  "appname": "CONFIG",
+
+  "folders": {
+    "temp": "./.temp",
+    "logs": "./logs",
+    "src": "./src",
+    "test": "./test"
+  },
+
+  // Server settings
+  "server": {
+    "logger": true // true/false to enable/disable logger (winston)
+  }
+}

@@ -1,0 +1,5 @@
+/*---------------------------------------------------------------------------------------------
+ *  SFZ definition file
+ *  Copyright (c) All rights reserved.
+ *--------------------------------------------------------------------------------------------*/
+<control> default_path=./samples/<global> global_label=oneshots volume=-3 polyphony=32 loop_mode=no_loop trigger=attack amp_veltrack=90 bend_up=200 bend_down=-200 ampeg_attack=0 ampeg_decay=0 ampeg_sustain=100 ampeg_release=1<group> group_label=OneShots lovel=0 hivel=127<region> pitch_keycenter=0 lokey=0 hikey=0 sample=oneshot_1.wav<region> pitch_keycenter=1 lokey=1 hikey=1 sample=oneshot_2.wav<region> pitch_keycenter=2 lokey=2 hikey=2 sample=oneshot_3.wav
