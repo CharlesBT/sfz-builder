@@ -69,7 +69,7 @@
     icon: 'public/app.icns',
     category: 'Audio',
     // todo: target: ['AppImage', 'snap'],
-    target: ['AppImage'],
+    target: ['snap'],
   },
   snap: {
     publish: ['github'],
