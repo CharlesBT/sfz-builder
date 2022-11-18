@@ -177,3 +177,11 @@ It can be understood as being no different from the Webpack solution
 
 1. It allows the usage of Node.js and its APIs in the rendering process
 2. It modifies some of the default Vite configuration to be compatible with Electron
+
+---
+
+## Known issues
+
+### Ubuntu snap GitHub build fails
+
+- Ubuntu snap GitHub build fails when using `"name": "@/bms/sfz-builder"` in package.json, it seems that npm workspace is not supported, use instead `"name": "sfz-builder"`
