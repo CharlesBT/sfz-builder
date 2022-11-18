@@ -1,11 +1,94 @@
 {
+  // Files
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.autoSave": "afterDelay",
+  "files.defaultLanguage": "markdown",
+  "search.exclude": {
+    "**/.cache": true,
+    "**/.temp": true
+  },
+
+  // Editor
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.suggest.showStatusBar": true,
+  "editor.suggest.insertMode": "insert",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.minimap.size": "fit",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true // turns on Auto Fix for all providers including ESLint ("source.fixAll.eslint": true)
+  },
+  "editor.inlineSuggest.enabled": true,
+
+  // Javascript
+  "javascript.format.semicolons": "remove",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.importModuleSpecifier": "relative",
+  // "javascript.preferences.importModuleSpecifierEnding": "js",
+
+  // Typescript
+  "typescript.format.semicolons": "remove",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  // "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // UI / Theme
+  "workbench.iconTheme": "vscode-icons",
+
+  // NPM package manager for running scripts
+  "npm.packageManager": "pnpm",
+
+  // NPM Script explorer
+  "npm.exclude": ["**/vscode-chrome-debug-userdatadir/**"],
+
+  // Prettier extension
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 100,
+  "prettier.endOfLine": "lf",
+
+  // Code Spell Checker
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext", "text", "yml"],
+
+  // Code Runner extension
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "typescript": "ts-node"
+  },
+
+  // Vitest extensions
+  "vitest.enable": true,
+  // "vitest.commandLine": "pnpm exec vitest"
+
+  // Volar extension
+  "volar.autoCompleteRefs": true,
+
+  // i18n Ally
+  "i18n-ally.localesPaths": ["src/locales", "src/assets/i18n"],
+  "i18n-ally.keystyle": "nested",
+
+  // Electron Builder json schema
   "json.schemas": [
     {
       "fileMatch": ["/*electron-builder.json5"],
       "url": "https://json.schemastore.org/electron-builder"
     }
-  ],
-  "i18n-ally.localesPaths": ["src/locales", "src/assets/i18n"]
+  ]
+
+  // disable tasks autodetection
+  // "typescript.tsc.autoDetect": "off",
+  // "npm.autoDetect": "off"
 }

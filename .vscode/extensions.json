@@ -1,3 +1,126 @@
 {
-  "recommendations": ["Vue.volar", "Vue.vscode-typescript-vue-plugin"]
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    // UI
+    "vscode-icons-team.vscode-icons",
+
+    // IntelliSense
+    "VisualStudioExptTeam.vscodeintellicode",
+    "christian-kohler.path-intellisense",
+
+    // Linters
+    "dbaeumer.vscode-eslint",
+
+    // Formatters
+    "esbenp.prettier-vscode",
+
+    // Code Spell Checker
+    "streetsidesoftware.code-spell-checker",
+
+    // Coding
+    "aaron-bond.better-comments",
+    "oderwat.indent-rainbow",
+
+    // Javascript
+    "xabikos.JavaScriptSnippets",
+
+    // JSDoc
+    // "oouo-diogo-perdigao.docthis",
+
+    // HTML/CSS
+    // "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "ecmel.vscode-html-css",
+    "pranaygp.vscode-css-peek",
+
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-emoji",
+    "DavidAnson.vscode-markdownlint",
+
+    // Vue
+    "Vue.volar",
+    "Vue.vscode-typescript-vue-plugin",
+    "sdras.vue-vscode-snippets",
+
+    // Vuetify
+    "vuetifyjs.vuetify-vscode",
+    "GaiyaObedMathias.vuetify-snippets",
+
+    // JSON5
+    "mrmlnc.vscode-json5",
+
+    //YAML
+    "redhat.vscode-yaml",
+
+    // PowerShell
+    "ms-vscode.powershell",
+
+    // Git
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+
+    // GitHub
+    "GitHub.codespaces",
+    "GitHub.copilot",
+    "ms-vscode.vscode-github-issue-notebooks",
+    "GitHub.vscode-pull-request-github",
+    "GitHub.remotehub",
+
+    // Debugging
+    "formulahendry.code-runner",
+
+    // .REST & GraphQL API
+    "rangav.vscode-thunder-client",
+
+    // Live Share
+    "ms-vsliveshare.vsliveshare",
+    "ms-vsliveshare.vsliveshare-audio",
+    "ms-vsliveshare.vsliveshare-pack",
+
+    // NPM
+    "pflannery.vscode-versionlens",
+    "christian-kohler.npm-intellisense",
+    "jasonnutter.search-node-modules",
+    "snyk-security.vscode-vuln-cost",
+
+    // NX Console / Monorepo management
+    // "nrwl.angular-console",
+
+    // i18n
+    "lokalise.i18n-ally",
+
+    // DotENV
+    "mikestead.dotenv",
+
+    // Vitest
+    "ZixuanChen.vitest-explorer",
+
+    // MongoDB
+    "mongodb.mongodb-vscode",
+
+    // GraphQL
+    "GraphQL.vscode-graphql",
+
+    // Docker
+    "ms-azuretools.vscode-docker",
+
+    // Remote
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "ms-vscode-remote.remote-wsl",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+
+    // sfz format
+    "jokela.vscode-sfz",
+
+    // Misc
+    "antfu.file-nesting",
+    "chrmarti.regex",
+    "ritwickdey.LiveServer",
+    "mitchdenny.ecdc",
+    "alefragnani.Bookmarks"
+  ]
 }
