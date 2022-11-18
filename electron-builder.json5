@@ -71,6 +71,7 @@
     target: ['AppImage', 'snap'],
   },
   snap: {
-    publish: ['github', 'snapStore'],
+    publish: ['github'],
+    // todo: publish: ['github', 'snapStore'],
   },
 }
