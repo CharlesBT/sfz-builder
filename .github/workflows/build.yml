@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-latest, windows-latest]
 
     steps:
       # Snapcraft needed for building Linux AppImage
@@ -62,5 +62,5 @@ jobs:
           ## Linux/Snapcraft specific
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
 
-          
+
           #################################################
