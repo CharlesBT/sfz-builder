@@ -68,7 +68,8 @@
   linux: {
     icon: 'public/app.icns',
     category: 'Audio',
-    target: ['AppImage', 'snap'],
+    // todo: target: ['AppImage', 'snap'],
+    target: ['AppImage'],
   },
   snap: {
     publish: ['github'],
