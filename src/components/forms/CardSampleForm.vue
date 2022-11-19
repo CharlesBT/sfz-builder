@@ -117,7 +117,7 @@ const pcode = ref('')
           ></v-select>
         </v-col>
       </v-row>
-      <v-btn color="success" class="mr-2">Save</v-btn>
+      <v-btn color="primary" class="mr-2">Save</v-btn>
       <v-btn color="black">Cancel</v-btn>
     </v-card-text>
   </v-card>

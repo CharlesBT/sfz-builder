@@ -1,30 +1,16 @@
 <script setup lang="ts">
-import { computed, reactive, ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
+import { useNavigation } from '@/composables/useNavigation'
 import pkg from '../package.json'
 
 import LocaleChanger from '@/components/LocaleChanger.vue'
 
-const route = useRoute()
 const router = useRouter()
-const { t, availableLocales, locale } = useI18n()
-
-const items = computed(() => [
-  { title: t('menu.home'), icon: 'mdi-home', to: '/' },
-  { title: t('menu.drumkit'), icon: 'mdi-apps', to: '/drumkit' },
-  { title: t('menu.instrument'), icon: 'mdi-piano', to: '/instrument' },
-  { title: t('menu.loops'), icon: 'mdi-autorenew', to: '/loops' },
-  { title: t('menu.help'), icon: 'mdi-help-box', to: '/help' },
-  { title: t('menu.about'), icon: 'mdi-information', to: '/about' },
-  { title: t('dialog.upload'), icon: 'mdi-information', to: '/upload' },
-])
-
-const currentPageTitle = computed(() => {
-  const item = items.value.find((e) => e.to === route.path)
-  return item?.title
-})
+const { t } = useI18n()
+const { items, currentPageTitle } = useNavigation()
 
 const theme = useTheme()
 function toggleTheme() {
@@ -38,11 +24,18 @@ onMounted(() => {
 
 <template>
   <v-app>
-    <v-navigation-drawer app permanent width="200" class="text-center">
-      <v-list-item class="topbar">
-        <v-list-item-title class="text-h6"> SFZ-BUILDER </v-list-item-title>
-        <v-list-item-subtitle> {{ t('app.subtitle') }} </v-list-item-subtitle>
-      </v-list-item>
+    <v-navigation-drawer app permanent class="text-center">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div>
+          <img src="/app.png" height="50" style="display: block" />
+        </div>
+        <div>
+          <v-list-item class="text-left">
+            <v-list-item-title class="text-h6"> SFZ-BUILDER </v-list-item-title>
+            <v-list-item-subtitle>{{ t('app.subtitle') }}</v-list-item-subtitle>
+          </v-list-item>
+        </div>
+      </div>
       <v-divider></v-divider>
       <v-list dense nav>
         <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
@@ -53,8 +46,7 @@ onMounted(() => {
     </v-navigation-drawer>
 
     <v-app-bar app class="">
-      <v-app-bar-title> > {{ currentPageTitle?.toUpperCase() }} </v-app-bar-title>
-
+      <v-app-bar-title></v-app-bar-title>
       <v-switch
         @click="toggleTheme"
         class="d-flex"
