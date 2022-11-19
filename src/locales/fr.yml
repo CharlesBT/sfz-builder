@@ -9,22 +9,45 @@ menu:
   help: Aide
   about: A propos
 
+page:
+  instrument:
+    title: Créer un nouvel instrument
+    subtitle: Utilisez ce formulaire pour créer un nouvel instrument
+  drumkit:
+    title: Créer un nouveau kit batterie
+    subtitle: Utilisez ce formulaire pour créer un nouveau kit batterie
+  loopkit:
+    title: Créer un nouveau kit de boucles
+    subtitle: Utilisez ce formulaire pour créer un nouveau kit de boucles
+
 instrument:
-  title: Créer un nouvel instrument
-  subtitle: Utilisez ce formulaire pour créer un nouvel instrument
-  name: Nom
   articulations: Articulations
   attributes: Attributs
   category: Categorie
   format: Format
   styles: Styles
   timbres: Timbres
+  samples: Échantillons
 
 dialog:
+  save: Sauvegarder
+  cancel: Annuler
   default: Défaut
   select: Sélectionner
   folder: Dossier
   files: Fichiers
+  file(s): Fichier(s)
   upload: Envoyer
+  submit: Envoyer
+  build: Créer
+  import-from: Importer depuis
+  not-found: Page non trouvée
 
-not-found: Page non trouvée
+generic:
+  or: ou
+  name: Nom
+
+dropzone:
+  drag-drop-folder: Glisser un dossier
+  select-folder: Selectionner un dossier
+  remove: Supprimer

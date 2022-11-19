@@ -16,15 +16,13 @@ body {
 
 .page-wrapper {
   padding: 30px;
-  min-width: 500px;
+  min-width: 600px;
   max-width: 1200px;
 }
 
 /* custom test */
 
-.topbar {
-  /* height: 100px; */
-}
+
 
 .tb {
   border: solid 1px black !important;

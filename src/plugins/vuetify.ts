@@ -1,7 +1,5 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
 import '@mdi/font/css/materialdesignicons.css'
-
 import type { ThemeDefinition } from 'vuetify'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -20,21 +18,21 @@ const Lighttheme: ThemeDefinition = {
     warning: '#607d8b',
     info: '#795548',
     success: '#4caf50',
-    back: '#f4f6f9',
+    back: '#f2f2f2',
   },
 }
 
 const Darktheme: ThemeDefinition = {
   dark: true,
   colors: {
-    primary: '#1879cd',
+    primary: '#673ab7',
+    secondary: '#ff9800',
     info: '#03c9d7',
     success: '#05b187',
     accent: '#fc4b6c',
     warning: '#fec90f',
     error: '#fc4b6c',
-    secondary: '#0cb9c5',
-    back: '#243042',
+    back: '#0d0d0d',
   },
 }
 

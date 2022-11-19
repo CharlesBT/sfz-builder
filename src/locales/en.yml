@@ -9,22 +9,45 @@ menu:
   help: Help
   about: About
 
+page:
+  instrument:
+    title: Create new instrument
+    subtitle: Fill this form to create a new instrument
+  drumkit:
+    title: Create new drumkit
+    subtitle: Fill this form to create a new drumkit
+  loopkit:
+    title: Create new loopkit
+    subtitle: Fill this form to create a new loopkit
+
 instrument:
-  title: Create new instrument
-  subtitle: Fill this form to create a new instrument
-  name: Name
   articulations: Articulations
   attributes: Attributes
   category: Category
   format: Format
   styles: Styles
   timbres: Timbres
+  samples: Samples
 
 dialog:
+  save: Save
+  cancel: Cancel
   default: Default
   select: Select
   folder: Folder
   files: Files
+  file(s): File(s)
   upload: Upload
+  submit: Submit
+  build: Build
+  import-from: Import from
+  not-found: Not found
 
-not-found: Not found
+generic:
+  or: or
+  name: Name
+
+dropzone:
+  drag-drop-folder: Drag & Drop folder
+  select-folder: Select folder
+  remove: Remove
