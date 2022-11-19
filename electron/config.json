@@ -10,6 +10,6 @@
     "spellcheck": true,
     "autoHideMenuBar": true,
     "silentUpdater": false,
-    "devTools": false
+    "devTools": true
   }
 }
