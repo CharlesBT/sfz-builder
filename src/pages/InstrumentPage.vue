@@ -11,7 +11,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('dialog.import-from') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <v-radio-group inline hide-details v-model="state.fSource">
+          <v-radio-group inline hide-details v-model="state.source">
             <v-radio label="FLStudio" value="flstudio"></v-radio>
             <v-radio label="Logic" value="logic"></v-radio>
             <v-radio label="AudioLayer" value="audiolayer"></v-radio>
@@ -26,7 +26,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('instrument.samples') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <FileDropZone :files="state.fFiles" />
+          <FileDropZone @files-dropped="addFiles" />
         </v-col>
       </v-row>
 
@@ -36,7 +36,7 @@
         </v-col>
         <v-col cols="12" sm="10">
           <v-text-field
-            v-model="state.fName"
+            v-model="state.name"
             hide-details
             background-color="transparent"
             filled
@@ -74,7 +74,12 @@
         </v-col>
       </v-row>
 
-      <v-btn prepend-icon="mdi-content-save-cog-outline" color="primary" class="mt-5 mr-2">
+      <v-btn
+        @click="createSfz"
+        prepend-icon="mdi-content-save-cog-outline"
+        color="primary"
+        class="mt-5 mr-2"
+      >
         {{ t('dialog.build') }} SFZ
       </v-btn>
       <v-btn prepend-icon="mdi-cloud-upload " color="primary" class="mt-5 mr-2">
@@ -85,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import _ from 'lodash'
@@ -106,16 +111,29 @@ const router = useRouter()
 const { t } = useI18n()
 
 interface State {
-  fSource: string
-  fName: string
-  fFiles: File[]
-  fArticulations: string[]
+  source: string
+  name: string
+  files: File[]
+  articulations: string[]
 }
 
 const state: State = reactive({
-  fSource: 'flstudio',
-  fName: '',
-  fFiles: [],
-  fArticulations: [''],
+  source: 'flstudio',
+  name: '',
+  files: [],
+  articulations: [''],
 })
+
+function addFiles(files: File[]) {
+  state.files = files
+  console.log('addFiles:', [...state.files])
+}
+
+watch(state, () => {
+  console.log('watch state:', [...state.files])
+})
+
+function createSfz(e: Event) {
+  console.log('createSfz:', [...state.files])
+}
 </script>

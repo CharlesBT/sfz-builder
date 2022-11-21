@@ -16,9 +16,11 @@ const state: State = reactive({
   files: [],
 })
 
-const props = defineProps<{
-  files?: File[]
-}>()
+// const props = defineProps<{
+//   files?: File[]
+// }>()
+
+const emit = defineEmits(['files-dropped'])
 
 // Drag & Drop items
 const options: Partial<FileUploadOptions> = {
@@ -31,6 +33,7 @@ const { getRootProps, getInputProps, isDragActive } = useDropzone(options)
 
 function onDropAccepted(acceptedFiles: InputFile[]) {
   state.files = acceptedFiles as File[]
+  emit('files-dropped', state.files)
   console.log('acceptedFiles', acceptedFiles)
   // console.log('acceptedFiles:state.files', state.files)
 }
