@@ -11,7 +11,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('dialog.import-from') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <v-radio-group inline hide-details v-model="fSource">
+          <v-radio-group inline hide-details v-model="state.fSource">
             <v-radio label="FLStudio" value="flstudio"></v-radio>
             <v-radio label="Logic" value="logic"></v-radio>
             <v-radio label="AudioLayer" value="audiolayer"></v-radio>
@@ -26,7 +26,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('instrument.samples') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <FileDropZone :files="fFiles" />
+          <FileDropZone :files="state.fFiles" />
         </v-col>
       </v-row>
 
@@ -36,7 +36,7 @@
         </v-col>
         <v-col cols="12" sm="10">
           <v-text-field
-            v-model="fName"
+            v-model="state.fName"
             hide-details
             background-color="transparent"
             filled
@@ -105,8 +105,17 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 
-const fSource = ref<string>('flstudio')
-const fName = ref<string>('')
-const fFiles = ref<[File]>([])
-const fArticulations = ref<[string]>([''])
+interface State {
+  fSource: string
+  fName: string
+  fFiles: File[]
+  fArticulations: string[]
+}
+
+const state: State = reactive({
+  fSource: 'flstudio',
+  fName: '',
+  fFiles: [],
+  fArticulations: [''],
+})
 </script>

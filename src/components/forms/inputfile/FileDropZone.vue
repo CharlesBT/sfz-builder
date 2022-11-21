@@ -17,7 +17,7 @@ const state: State = reactive({
 })
 
 const props = defineProps<{
-  files: File[]
+  files?: File[]
 }>()
 
 // Drag & Drop items
