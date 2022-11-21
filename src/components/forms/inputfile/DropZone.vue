@@ -1,8 +1,9 @@
 <script setup lang="ts">
-// TODO : rename componene to FileUploadDropZone
+// TODO : rename component to FileUploadDropZone
 import { ref, reactive, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
+// FIX : vue3-dropzone v2.0.1 with missing InputFile export fix https://github.com/Yaxian/vue3-dropzone/issues/18
 import { useDropzone } from '@bms/vue3-dropzone-fixed'
 import type { FileUploadOptions, InputFile, FileRejectReason } from '@bms/vue3-dropzone-fixed'
 const { t } = useI18n()
@@ -10,28 +11,13 @@ const theme = useTheme()
 
 const filesRef = ref<File[]>([])
 
-// function onDrop(acceptedFiles: File[], rejectReasons: FileRejectReason[]) {
-//   console.log('acceptedFiles', acceptedFiles)
-//   console.log('rejectReasons', rejectReasons)
-//   filesRef.value = acceptedFiles
-// }
-
-function onDropAccepted(acceptedFiles: InputFile[]) {
-  filesRef.value = acceptedFiles as File[]
-  console.log('acceptedFiles', filesRef.value)
+interface State {
+  files: File[]
 }
 
-function onDropRejected(rejectReasons: FileRejectReason[]) {
-  console.log('rejectReasons', rejectReasons)
-}
-
-// const options = reactive({
-//   multiple: true,
-//   // onDrop: onDrop,
-//   onDropAccepted: onDropAccepted,
-//   onDropRejected: onDropRejected,
-//   accept: '.wav',
-// })
+const state: State = reactive({
+  files: [],
+})
 
 const options: Partial<FileUploadOptions> = {
   multiple: true,
@@ -41,30 +27,33 @@ const options: Partial<FileUploadOptions> = {
   accept: '.wav',
 }
 
-const { getRootProps, getInputProps, isDragActive, isFocused, isDragReject, open } =
-  useDropzone(options)
+const { getRootProps, getInputProps, isDragActive } = useDropzone(options)
 
-///
+// function onDrop(acceptedFiles: File[], rejectReasons: FileRejectReason[]) {
+//   console.log('acceptedFiles', acceptedFiles)
+//   console.log('rejectReasons', rejectReasons)
+//   filesRef.value = acceptedFiles
+// }
+
+function onDropAccepted(acceptedFiles: InputFile[]) {
+  filesRef.value = acceptedFiles as File[]
+  state.files = acceptedFiles as File[]
+  console.log('acceptedFiles', acceptedFiles)
+  // console.log('acceptedFiles:filesRef', filesRef.value)
+  // console.log('acceptedFiles:state.files', state.files)
+}
+
+function onDropRejected(rejectReasons: FileRejectReason[]) {
+  console.log('rejectReasons', rejectReasons)
+}
 
 watch(filesRef, () => {
-  console.log('filesRef', filesRef.value)
+  // console.log('filesRef', filesRef.value)
 })
-
-watch(isDragActive, () => {
-  console.log('isDragActive', isDragActive.value)
-})
-
-watch(isDragReject, () => {
-  console.log('isDragReject', isDragReject.value)
-})
-
-///
 
 const props = defineProps<{
   files: File[]
 }>()
-
-const filesCount = ref<number>(0)
 
 // display error messgage
 const isErrorMsgDisplayed = ref<boolean>(false)
@@ -94,10 +83,6 @@ const onSelectItem = () => {
 }
 
 // Drag & Drop items
-const zoneActive = ref<boolean>(false)
-const toggleZoneActive = () => {
-  zoneActive.value = !zoneActive.value
-}
 
 async function isValidatedDroppedItems(DataTransferItems: DataTransferItemList) {
   if (DataTransferItems.length > 1) {
@@ -168,15 +153,6 @@ async function isValidatedDroppedItems(DataTransferItems: DataTransferItemList) 
   return true
 }
 
-async function onDropItem(e: DragEvent) {
-  const items = e.dataTransfer?.items as DataTransferItemList
-  if (await isValidatedDroppedItems(items)) {
-    const files = await getDroppedFilesAsync(items)
-    console.log(files)
-    filesCount.value = files.length
-  }
-}
-
 async function getDroppedFilesAsync(DataTransferItems: DataTransferItemList) {
   const files: File[] = []
   const filePromises: Promise<File>[] = [] // array of promises to resolve with Promise.all()
@@ -235,11 +211,27 @@ function getFileAsync(FileEntry: FileSystemFileEntry): Promise<File> {
   })
 }
 
-onMounted(() => {})
+onMounted(() => {
+  const dropzone = document.getElementById('dropzone')
+  dropzone?.addEventListener('drop', async (e: DragEvent) => {
+    e.preventDefault()
+    const items = e.dataTransfer?.items as DataTransferItemList
+    if (await isValidatedDroppedItems(items)) {
+      console.log('files are valid')
+      const files = await getDroppedFilesAsync(items)
+      console.log(files)
+    }
+  })
+})
 </script>
 
 <template>
-  <div v-bind="getRootProps()" class="dropzone" :class="{ 'active-dropzone': isDragActive }">
+  <div
+    id="dropzone"
+    v-bind="getRootProps()"
+    class="dropzone"
+    :class="{ 'active-dropzone': isDragActive }"
+  >
     <input v-bind="getInputProps()" />
     <v-icon icon="mdi-folder-arrow-left" size="50" />
     <p>{{ t('dropzone.drag-drop-here') }}</p>
@@ -259,19 +251,9 @@ onMounted(() => {})
     :class="{ 'active-dropzone': zoneActive }"
     class="dropzone"
   >
-    <v-icon icon="mdi-folder-arrow-left" size="50" />
-
-    <span>{{ t('dropzone.drag-drop-folder') }}</span>
-    <span>{{ t('generic.or') }}</span>
-    <v-label for="itemPicker" clickable>{{ t('dropzone.select-folder') }}</v-label>
     <input type="file" id="itemPicker" webkitdirectory />
-    <span v-if="filesCount > 0">
-      <span class="file-info">{{ t('dialog.file(s)') }}: {{ filesCount }}</span>
-      <span><v-icon icon="mdi-close-circle" /></span
-    ></span>
   </div>
-  <v-alert v-if="isErrorMsgDisplayed" type="error" closable elevation="4">{{ errorMsg }}</v-alert> -->
-</template>
+--></template>
 
 <style scoped lang="scss">
 .dropzone {
@@ -286,6 +268,10 @@ onMounted(() => {})
   border-radius: 15px;
   transition: 0.3s ease all;
   cursor: pointer;
+
+  .file-info {
+    vertical-align: middle;
+  }
 }
 
 .active-dropzone {
