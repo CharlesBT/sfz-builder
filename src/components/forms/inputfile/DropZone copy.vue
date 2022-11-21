@@ -1,70 +1,17 @@
 <script setup lang="ts">
-// TODO : rename componene to FileUploadDropZone
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
-import { useDropzone } from '@bms/vue3-dropzone-fixed'
-import type { FileUploadOptions, InputFile, FileRejectReason } from '@bms/vue3-dropzone-fixed'
+import { fromEvent } from 'file-selector'
 const { t } = useI18n()
 const theme = useTheme()
-
-const filesRef = ref<File[]>([])
-
-// function onDrop(acceptedFiles: File[], rejectReasons: FileRejectReason[]) {
-//   console.log('acceptedFiles', acceptedFiles)
-//   console.log('rejectReasons', rejectReasons)
-//   filesRef.value = acceptedFiles
-// }
-
-function onDropAccepted(acceptedFiles: InputFile[]) {
-  filesRef.value = acceptedFiles as File[]
-  console.log('acceptedFiles', filesRef.value)
-}
-
-function onDropRejected(rejectReasons: FileRejectReason[]) {
-  console.log('rejectReasons', rejectReasons)
-}
-
-// const options = reactive({
-//   multiple: true,
-//   // onDrop: onDrop,
-//   onDropAccepted: onDropAccepted,
-//   onDropRejected: onDropRejected,
-//   accept: '.wav',
-// })
-
-const options: Partial<FileUploadOptions> = {
-  multiple: true,
-  // onDrop: onDrop,
-  onDropAccepted: onDropAccepted,
-  onDropRejected: onDropRejected,
-  accept: '.wav',
-}
-
-const { getRootProps, getInputProps, isDragActive, isFocused, isDragReject, open } =
-  useDropzone(options)
-
-///
-
-watch(filesRef, () => {
-  console.log('filesRef', filesRef.value)
-})
-
-watch(isDragActive, () => {
-  console.log('isDragActive', isDragActive.value)
-})
-
-watch(isDragReject, () => {
-  console.log('isDragReject', isDragReject.value)
-})
-
-///
 
 const props = defineProps<{
   files: File[]
 }>()
 
 const filesCount = ref<number>(0)
+const emit = defineEmits(['files-dropped'])
 
 // display error messgage
 const isErrorMsgDisplayed = ref<boolean>(false)
@@ -169,8 +116,12 @@ async function isValidatedDroppedItems(DataTransferItems: DataTransferItemList) 
 }
 
 async function onDropItem(e: DragEvent) {
+  console.log(e.dataTransfer?.files)
+  debugger
   const items = e.dataTransfer?.items as DataTransferItemList
+  // debugger
   if (await isValidatedDroppedItems(items)) {
+    // debugger
     const files = await getDroppedFilesAsync(items)
     console.log(files)
     filesCount.value = files.length
@@ -235,26 +186,44 @@ function getFileAsync(FileEntry: FileSystemFileEntry): Promise<File> {
   })
 }
 
-onMounted(() => {})
+onMounted(() => {
+  const dropZone = document.getElementById('dropZone') as HTMLElement
+  dropZone.addEventListener('drop', async function (e) {
+    e.preventDefault()
+    // const files = await fromEvent(e)
+    // console.log(files)
+
+    // const items = { ...(e.dataTransfer?.items as DataTransferItemList) } as DataTransferItemList
+    // const items = structuredClone(e.dataTransfer?.items as DataTransferItemList)
+    // debugger
+    const items = e.dataTransfer?.items as DataTransferItemList
+    // if (await isValidatedDroppedItems(items)) {
+    const files = await getDroppedFilesAsync(items)
+    console.log(files)
+    //   filesCount.value = files.length
+    // }
+  })
+})
+
+// onUnmounted(() => {
+//   const dropZone = document.getElementById('dropZone') as HTMLElement
+//   dropZone.removeEventListener('drop', function (e) {
+//     e.preventDefault()
+//   })
+// })
+
+/*
+    @drop.prevent="toggleZoneActive, onDropItem($event)"
+*/
 </script>
 
 <template>
-  <div v-bind="getRootProps()" class="dropzone" :class="{ 'active-dropzone': isDragActive }">
-    <input v-bind="getInputProps()" />
-    <v-icon icon="mdi-folder-arrow-left" size="50" />
-    <p>{{ t('dropzone.drag-drop-here') }}</p>
-    <p v-if="filesRef.length > 0">
-      <span class="file-info">{{ t('dialog.file(s)') }}: {{ filesRef.length }}</span>
-      <span><v-icon icon="mdi-close-circle" /></span>
-    </p>
-  </div>
-  <v-alert v-if="isErrorMsgDisplayed" type="error" closable elevation="4">{{ errorMsg }}</v-alert>
-  <!-- <div
+  <div
     id="dropZone"
     @dragenter.prevent="toggleZoneActive"
     @dragleave.prevent="toggleZoneActive"
     @dragover.prevent
-    @drop.prevent="toggleZoneActive, onDropItem($event)"
+    @drop.prevent="toggleZoneActive"
     @change="onSelectItem"
     :class="{ 'active-dropzone': zoneActive }"
     class="dropzone"
@@ -270,35 +239,15 @@ onMounted(() => {})
       <span><v-icon icon="mdi-close-circle" /></span
     ></span>
   </div>
-  <v-alert v-if="isErrorMsgDisplayed" type="error" closable elevation="4">{{ errorMsg }}</v-alert> -->
+  <v-alert v-if="isErrorMsgDisplayed" type="error" closable elevation="4">{{ errorMsg }}</v-alert>
 </template>
 
 <style scoped lang="scss">
 .dropzone {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin: 10px 10px;
-  padding: 10px;
-  row-gap: 16px;
-  border: 2px dashed #aaa;
-  border-radius: 15px;
-  transition: 0.3s ease all;
-  cursor: pointer;
-}
-
-.active-dropzone {
-  border-color: rgb(var(--v-theme-primary));
-  background-color: rgba(var(--v-theme-primary), 0.5);
-}
-
-/*
-.dropzone {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin: 20px 20px;
   row-gap: 16px;
   border: 3px dashed rgba(var(--v-theme-primary), 0.5);
@@ -331,5 +280,4 @@ onMounted(() => {})
     // color: v-bind('theme.current.value.colors.primary');
   }
 }
-*/
 </style>

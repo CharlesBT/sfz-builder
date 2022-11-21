@@ -3,13 +3,18 @@ app:
 
 menu:
   home: Accueil
+  pack: Pack
   drumkit: Kit batterie
   instrument: Instrument
-  loops: Boucles
+  loopkit: Boucles
+  midikit: Kit Midi
   help: Aide
   about: A propos
 
 page:
+  pack:
+    title: Créer un nouveau pack
+    subtitle: Utilisez ce formulaire pour créer un nouveau pack
   instrument:
     title: Créer un nouvel instrument
     subtitle: Utilisez ce formulaire pour créer un nouvel instrument
@@ -19,6 +24,9 @@ page:
   loopkit:
     title: Créer un nouveau kit de boucles
     subtitle: Utilisez ce formulaire pour créer un nouveau kit de boucles
+  midikit:
+    title: Créer un nouveau kit de fichiers midi
+    subtitle: Utilisez ce formulaire pour créer un nouveau kit de fichiers midi
 
 instrument:
   articulations: Articulations
@@ -28,8 +36,10 @@ instrument:
   styles: Styles
   timbres: Timbres
   samples: Échantillons
+  existing-sfz: SFZ existant
 
 dialog:
+  create: Créer
   save: Sauvegarder
   cancel: Annuler
   default: Défaut
@@ -40,6 +50,7 @@ dialog:
   upload: Envoyer
   submit: Envoyer
   build: Créer
+  error: Erreur
   import-from: Importer depuis
   not-found: Page non trouvée
 
@@ -48,6 +59,10 @@ generic:
   name: Nom
 
 dropzone:
-  drag-drop-folder: Glisser un dossier
-  select-folder: Selectionner un dossier
+  drag-drop-here: Glisser un dossier ici, ou cliquer pour selectionner un dossier
   remove: Supprimer
+  empty-folder: Le dossier est vide
+  errors:
+    single-folder-only: Un seul dossier accepté
+    subfolders-not-allowed: Sous-dossier(s) non accepté(s)
+    wave-files-only: Fichiers audio/wav uniquement

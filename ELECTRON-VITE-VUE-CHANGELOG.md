@@ -7,12 +7,6 @@
 
 ## 2022-06-04
 
-
-
-
-
-
-
 [v2.0.0](https://github.com/electron-vite/electron-vite-vue/pull/156)
 
 - 🖖 Based on the `vue-ts` template created by `npm create vite`, integrate `vite-plugin-electron`

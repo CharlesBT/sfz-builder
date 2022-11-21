@@ -18,7 +18,7 @@ function toggleTheme() {
 }
 
 onMounted(() => {
-  router.push('/') // workarouns to fix electron blank start page
+  router.push('/instrument') // workarouns to fix electron blank start page
 })
 </script>
 

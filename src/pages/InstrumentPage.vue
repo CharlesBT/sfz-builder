@@ -16,6 +16,7 @@
             <v-radio label="Logic" value="logic"></v-radio>
             <v-radio label="AudioLayer" value="audiolayer"></v-radio>
             <v-radio label="SampleRobot" value="samplerobot"></v-radio>
+            <v-radio :label="t('instrument.existing-sfz')" value="sfz"></v-radio>
           </v-radio-group>
         </v-col>
       </v-row>
@@ -25,7 +26,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('instrument.samples') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <DropZone />
+          <DropZone :files="fFiles" />
         </v-col>
       </v-row>
 
@@ -104,10 +105,8 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 
-const fSource = ref('flstudio')
-const fName = ref(null)
-
-const select = ref(null)
-
-const fArticulations = ref(null)
+const fSource = ref<string>('flstudio')
+const fName = ref<string>('')
+const fFiles = ref<[File]>([])
+const fArticulations = ref<[string]>([''])
 </script>

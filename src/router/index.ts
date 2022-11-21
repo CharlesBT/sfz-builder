@@ -13,11 +13,16 @@ const router = createRouter({
       component: Home,
     },
     {
-      path: '/drumkit',
-      name: 'drumkit',
+      path: '/pack',
+      name: 'pack',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      component: () => import('../pages/PackPage.vue'),
+    },
+    {
+      path: '/drumkit',
+      name: 'drumkit',
       component: () => import('../pages/DrumkitPage.vue'),
     },
     {
@@ -26,9 +31,14 @@ const router = createRouter({
       component: () => import('../pages/InstrumentPage.vue'),
     },
     {
-      path: '/loops',
-      name: 'loops',
-      component: () => import('../pages/LoopsPage.vue'),
+      path: '/midikit',
+      name: 'midikit',
+      component: () => import('../pages/MidikitPage.vue'),
+    },
+    {
+      path: '/loopkit',
+      name: 'loopkit',
+      component: () => import('../pages/LoopkitPage.vue'),
     },
     {
       path: '/help',

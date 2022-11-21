@@ -7,7 +7,7 @@
     <v-card-text class="pa-5">
       <WebkitDirectory />
       <IpcAudioFile />
-        <h3 class="title text-h6 mb-5">DropZone</h3>
+      <h3 class="title text-h6 mb-5">DropZone</h3>
       <DropZone />
       <v-btn color="primary" class="mt-5 mr-2">{{ t('dialog.submit') }}</v-btn>
     </v-card-text>
