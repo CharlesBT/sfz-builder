@@ -1,15 +1,12 @@
 <script setup lang="ts">
-// TODO : rename component to FileUploadDropZone
 import { ref, reactive, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
-// FIX : vue3-dropzone v2.0.1 with missing InputFile export fix https://github.com/Yaxian/vue3-dropzone/issues/18
+// FIX: vue3-dropzone v2.0.1 with missing InputFile export fix https://github.com/Yaxian/vue3-dropzone/issues/18
 import { useDropzone } from '@bms/vue3-dropzone-fixed'
 import type { FileUploadOptions, InputFile, FileRejectReason } from '@bms/vue3-dropzone-fixed'
 const { t } = useI18n()
 const theme = useTheme()
-
-const filesRef = ref<File[]>([])
 
 interface State {
   files: File[]
@@ -19,27 +16,22 @@ const state: State = reactive({
   files: [],
 })
 
+const props = defineProps<{
+  files: File[]
+}>()
+
+// Drag & Drop items
 const options: Partial<FileUploadOptions> = {
   multiple: true,
-  // onDrop: onDrop,
   onDropAccepted: onDropAccepted,
   onDropRejected: onDropRejected,
   accept: '.wav',
 }
-
 const { getRootProps, getInputProps, isDragActive } = useDropzone(options)
 
-// function onDrop(acceptedFiles: File[], rejectReasons: FileRejectReason[]) {
-//   console.log('acceptedFiles', acceptedFiles)
-//   console.log('rejectReasons', rejectReasons)
-//   filesRef.value = acceptedFiles
-// }
-
 function onDropAccepted(acceptedFiles: InputFile[]) {
-  filesRef.value = acceptedFiles as File[]
   state.files = acceptedFiles as File[]
   console.log('acceptedFiles', acceptedFiles)
-  // console.log('acceptedFiles:filesRef', filesRef.value)
   // console.log('acceptedFiles:state.files', state.files)
 }
 
@@ -47,13 +39,22 @@ function onDropRejected(rejectReasons: FileRejectReason[]) {
   console.log('rejectReasons', rejectReasons)
 }
 
-watch(filesRef, () => {
-  // console.log('filesRef', filesRef.value)
+watch(state.files, () => {
+  // console.log('state.files', state.files)
 })
 
-const props = defineProps<{
-  files: File[]
-}>()
+onMounted(() => {
+  const dropzone = document.getElementById('dropzone')
+  dropzone?.addEventListener('drop', async (e: DragEvent) => {
+    e.preventDefault()
+    const items = e.dataTransfer?.items as DataTransferItemList
+    if (await isValidatedDroppedItems(items)) {
+      console.log('files are valid')
+      const files = await getDroppedFilesAsync(items)
+      console.log(files)
+    }
+  })
+})
 
 // display error messgage
 const isErrorMsgDisplayed = ref<boolean>(false)
@@ -62,27 +63,6 @@ function displayError(msg: string) {
   isErrorMsgDisplayed.value = true
   errorMsg.value = t(msg)
 }
-
-// validation
-function isValid(files: FileList) {
-  if (files.length === 0) {
-    isErrorMsgDisplayed.value = true
-    errorMsg.value = t('dropzone.empty-folder')
-    return false
-  }
-  return true
-}
-
-// Select items
-const onSelectItem = () => {
-  const input = document.getElementById('itemPicker') as HTMLInputElement
-  const files = input.files as FileList
-  if (isValid(files)) {
-    const { path } = files[0]
-  }
-}
-
-// Drag & Drop items
 
 async function isValidatedDroppedItems(DataTransferItems: DataTransferItemList) {
   if (DataTransferItems.length > 1) {
@@ -211,18 +191,23 @@ function getFileAsync(FileEntry: FileSystemFileEntry): Promise<File> {
   })
 }
 
-onMounted(() => {
-  const dropzone = document.getElementById('dropzone')
-  dropzone?.addEventListener('drop', async (e: DragEvent) => {
-    e.preventDefault()
-    const items = e.dataTransfer?.items as DataTransferItemList
-    if (await isValidatedDroppedItems(items)) {
-      console.log('files are valid')
-      const files = await getDroppedFilesAsync(items)
-      console.log(files)
-    }
-  })
-})
+// Select items
+function isValidatedSelectedItems(files: FileList) {
+  if (files.length === 0) {
+    isErrorMsgDisplayed.value = true
+    errorMsg.value = t('dropzone.empty-folder')
+    return false
+  }
+  return true
+}
+
+const onSelectItems = () => {
+  const input = document.getElementById('itemPicker') as HTMLInputElement
+  const files = input.files as FileList
+  if (isValidatedSelectedItems(files)) {
+    const { path } = files[0]
+  }
+}
 </script>
 
 <template>
@@ -235,8 +220,8 @@ onMounted(() => {
     <input v-bind="getInputProps()" />
     <v-icon icon="mdi-folder-arrow-left" size="50" />
     <p>{{ t('dropzone.drag-drop-here') }}</p>
-    <p v-if="filesRef.length > 0">
-      <span class="file-info">{{ t('dialog.file(s)') }}: {{ filesRef.length }}</span>
+    <p v-if="state.files.length > 0">
+      <span class="file-info">{{ t('dialog.file(s)') }}: {{ state.files.length }}</span>
       <span><v-icon icon="mdi-close-circle" /></span>
     </p>
   </div>

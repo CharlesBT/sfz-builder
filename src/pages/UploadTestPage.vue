@@ -8,7 +8,7 @@
       <WebkitDirectory />
       <IpcAudioFile />
       <h3 class="title text-h6 mb-5">DropZone</h3>
-      <DropZone />
+      <FileDropZone />
       <v-btn color="primary" class="mt-5 mr-2">{{ t('dialog.submit') }}</v-btn>
     </v-card-text>
   </v-card>
@@ -20,7 +20,7 @@ import { useNavigation } from '@/composables/useNavigation'
 
 import WebkitDirectory from '@/components/forms/inputfile/WebkitDirectory.vue'
 import IpcAudioFile from '@/components/forms/inputfile/IpcAudioFile.vue'
-import DropZone from '@/components/forms/inputfile/DropZone.vue'
+import FileDropZone from '@/components/forms/inputfile/FileDropZone.vue'
 
 const { t } = useI18n()
 const { currentPageTitle } = useNavigation()

@@ -26,7 +26,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('instrument.samples') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <DropZone :files="fFiles" />
+          <FileDropZone :files="fFiles" />
         </v-col>
       </v-row>
 
@@ -91,7 +91,7 @@ import { useI18n } from 'vue-i18n'
 import _ from 'lodash'
 
 import InstrumentCategories from '@/components/forms/InstrumentCategories.vue'
-import DropZone from '@/components/forms/inputfile/DropZone.vue'
+import FileDropZone from '@/components/forms/inputfile/FileDropZone.vue'
 
 // JSON data
 import articulations from '@/data/cat_articulations.json'
