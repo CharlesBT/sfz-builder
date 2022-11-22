@@ -140,7 +140,13 @@ function isWavFormat(files: File[]) {
     <p v-if="vstate.files.length > 0">
       <span class="file-info">{{ t('dialog.file(s)') }}: {{ vstate.files.length }}</span>
       <span
-        ><v-icon @click.stop="reset" icon="mdi-close-circle" size="24" color="red" class="ml-1"
+        ><v-icon
+          @click.stop="reset"
+          icon="mdi-close-circle"
+          :title="t('dropzone.remove')"
+          size="24"
+          color="red"
+          class="ml-1"
       /></span>
     </p>
   </div>

@@ -5,7 +5,7 @@ import { vi } from 'vitest'
 vi.mock('@bms/common', async () => {
   const mod = await vi.importActual('@bms/common')
   return {
-    ...mod,
+    ...mod ,
     config: mod.readConfigFromPackage(import.meta.url),
   }
 })

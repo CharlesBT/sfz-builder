@@ -8,7 +8,7 @@ import AdmZip from 'adm-zip'
 import filenamify from 'filenamify'
 import fsExtra from 'fs-extra'
 
-// import { Debug } from '../logger/logger.js'
+// import { Debug } from '@/logger/logger.js'
 
 // const debug = Debug(import.meta.url)
 const errorMessage = {
@@ -17,32 +17,32 @@ const errorMessage = {
 }
 
 export class filer {
-  static isExt(file, ext) {
+  static isExt(file: string, ext: string) {
     const e = path.parse(file).ext.toLowerCase()
     return e === '.' + ext.toLowerCase() ? true : false
   }
 
-  static writeJsonSync(file, object) {
+  static writeJsonSync(file: string, object: object) {
     fsExtra.writeJsonSync(file, object)
   }
 
-  static async writeJson(file, object) {
+  static async writeJson(file: string, object: object) {
     await fsExtra.writeJson(file, object)
   }
 
-  static readJsonSync(file) {
+  static readJsonSync(file: string) {
     if (!filer.existsSync(file)) throw new Error(errorMessage.FileNotFound)
     const r = fsExtra.readJsonSync(file)
     return r
   }
 
-  static async readJson(file) {
+  static async readJson(file: string) {
     if (!filer.existsSync(file)) throw new Error(errorMessage.FileNotFound)
     const r = await fsExtra.readJson(file)
     return r
   }
 
-  static moveSync(path, newpath, options) {
+  static moveSync(path: string, newpath: string, options?: fsExtra.MoveOptions | undefined) {
     if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     if (options) {
       fsExtra.moveSync(path, newpath, options)
@@ -51,7 +51,7 @@ export class filer {
     }
   }
 
-  static async move(path, newpath, options) {
+  static async move(path: string, newpath: string, options?: fsExtra.MoveOptions | undefined) {
     if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     if (options) {
       await fsExtra.move(path, newpath, options)
@@ -60,46 +60,46 @@ export class filer {
     }
   }
 
-  static copySync(src, dest) {
+  static copySync(src: string, dest: string) {
     if (!filer.existsSync(src)) throw new Error(errorMessage.FileNotFound)
     fsExtra.copySync(src, dest, { overwrite: true })
   }
 
-  static async copy(src, dest) {
+  static async copy(src: string, dest: string) {
     if (!filer.existsSync(src)) throw new Error(errorMessage.FileNotFound)
     await fsExtra.copy(src, dest, { overwrite: true })
   }
 
-  static deleteSync(path) {
+  static deleteSync(path: string) {
     if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     fsExtra.removeSync(path)
   }
 
-  static async delete(path) {
+  static async delete(path: string) {
     if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     await fsExtra.remove(path)
   }
 
-  static existsSync(path) {
+  static existsSync(path: string) {
     const r = fsExtra.pathExistsSync(path)
     return r
   }
 
-  static async exists(path) {
+  static async exists(path: string) {
     const r = await fsExtra.pathExists(path)
     return r
   }
 
-  static createDirSync(path) {
+  static createDirSync(path: string) {
     fsExtra.ensureDirSync(path)
   }
 
-  static async createDir(path) {
+  static async createDir(path: string) {
     await fsExtra.ensureDir(path)
   }
 
   // returns array of files with given extension in single folder
-  static async getFilesInFolder(folderPath, fileExtension) {
+  static async getFilesInFolder(folderPath: string, fileExtension: string) {
     if (typeof fileExtension !== 'string') {
       throw new Error(errorMessage.MissingFileExtensionInArgs)
     }
@@ -117,11 +117,11 @@ export class filer {
   }
 
   // returns array of files with given extension in subfolders
-  static async getFilesInSubFolders(folderPath, fileExtension) {
+  static async getFilesInSubFolders(folderPath: string, fileExtension: string) {
     if (typeof fileExtension !== 'string') {
       throw new Error(errorMessage.MissingFileExtensionInArgs)
     }
-    let files = []
+    let files: string[] = []
     const dir = path.resolve(folderPath)
     const directoryContent = await fsExtra.promises.readdir(dir, { withFileTypes: true })
     const directoryNames = directoryContent
@@ -137,7 +137,7 @@ export class filer {
     return files
   }
 
-  static async lowerCaseFileExt(file, ext) {
+  static async lowerCaseFileExt(file: string, ext: string) {
     if (typeof ext !== 'string') {
       throw new Error(errorMessage.MissingFileExtensionInArgs)
     }
@@ -151,7 +151,7 @@ export class filer {
     }
   }
 
-  static sanitizeName(filename) {
+  static sanitizeName(filename: string) {
     const charToRemove = [
       "'",
       '`',
@@ -190,7 +190,7 @@ export class filer {
     return filename
   }
 
-  static unZipFile(file, dest) {
+  static unZipFile(file: string, dest: string) {
     return new Promise((resolve, reject) => {
       try {
         // const _debug = debug.extend('unZipFile')

@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 
 import { packageDirectorySync } from 'pkg-dir'
 
-function pkgRoot(import_meta_url) {
-  let __pkgRoot
+function pkgRoot(import_meta_url?: string): string | undefined {
+  let __pkgRoot: string | undefined
   if (typeof import_meta_url === 'string') {
     const __filename = fileURLToPath(import_meta_url)
     const __dirname = dirname(__filename)

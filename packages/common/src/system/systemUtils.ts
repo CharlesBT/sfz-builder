@@ -3,17 +3,16 @@
 import _ from 'lodash'
 
 export class systemUtils {
-  static getMemoryUsageInMB(valueInBytes) {
+  static getMemoryUsageInMB(valueInBytes: number): number {
     // # bytes / KB / MB / GB
     const gbNow = valueInBytes / 1024 / 1024
     return _.round(gbNow, 2)
   }
 
-  // get node memroy usage to console
+  // get node memory usage to console
   static getNodeMemoryUsageInMB() {
-    const mu = process.memoryUsage()
-    const r = {}
-    for (const [key, value] of Object.entries(mu)) {
+    const r: { [key: string]: number } = {}
+    for (const [key, value] of Object.entries(process.memoryUsage())) {
       r[key] = systemUtils.getMemoryUsageInMB(value)
     }
     return r

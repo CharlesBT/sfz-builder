@@ -8,29 +8,34 @@ import util from 'node:util'
 
 import debug from 'debug' // needs also import 'dotenv/config'
 import { createLogger, format, transports } from 'winston'
+import type { Logger } from 'winston'
 
-import { config } from '../config/configProvider.js'
-import { dotenvConfig } from '../config/dotenvConfig.js'
-import { pkgRoot } from '../utils/pkgRoot.js'
+import { config } from '@/config/configProvider.js'
+import { dotenvConfig } from '@/config/dotenvConfig.js'
+import { pkgRoot } from '@/utils/pkgRoot.js'
 
-const __pkgRoot = pkgRoot()
+const __pkgRoot = pkgRoot(import.meta.url) as string
 
-let httpLogger = undefined
-let logger = undefined
+let httpLogger: Logger
+let logger: Logger
 
-function Debug(module) {
+function Debug(module: string) {
   return debug(getNamespace(module))
 }
 
 // extract namespace from given module = import.meta.url
-function getNamespace(import_meta_url) {
+function getNamespace(import_meta_url: string) {
   const filename = fileURLToPath(import_meta_url)
-  let namespace = filename.split(__pkgRoot).pop().replace(/\\/g, ':')
-  namespace = namespace.replace(/\.[^.]*$/, '')
-  return namespace.substring(1)
+  const t = filename.split(__pkgRoot).pop()
+  if (typeof t !== 'undefined') {
+    let namespace = t.replace(/\\/g, ':')
+    namespace = namespace.replace(/\.[^.]*$/, '')
+    return namespace.substring(1)
+  }
+  return ''
 }
 
-function formatModule(import_meta) {
+function formatModule(import_meta: string) {
   let r = undefined
   typeof import_meta === 'string' ? (r = { module: getNamespace(import_meta) }) : null
   return r
@@ -52,7 +57,7 @@ function redirectConsoleOutputs() {
 }
 
 try {
-  if (config.server.logger) {
+  if (config?.server.logger) {
     // httpLogger config
     httpLogger = createLogger({
       exitOnError: false,

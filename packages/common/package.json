@@ -29,7 +29,8 @@
     "test:ci": "vitest run",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage"
+    "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage",
+    "postinstall": "tsc"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
@@ -40,6 +41,7 @@
     "json5": "^2.2.1",
     "lodash": "^4.17.21",
     "pkg-dir": "7.0.0",
+    "uuidv4": "^6.2.13",
     "winston": "^3.8.2"
   },
   "devDependencies": {

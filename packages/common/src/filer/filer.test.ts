@@ -5,13 +5,14 @@ import path from 'node:path'
 import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
 
-import { readConfigFromPackage } from '../config/configProvider.js'
-import { pkgRoot } from '../utils/pkgRoot.js'
-import { uuid } from '../uuid/uuid.js'
+import { readConfigFromPackage } from '@/config/configProvider.js'
+import type { Config } from '@/config/configProvider.js'
+import { pkgRoot } from '@/utils/pkgRoot.js'
+import { uuid } from 'uuidv4'
 import { filer } from './filer.js'
 
-const __pkgRoot = pkgRoot(import.meta.url)
-const config = readConfigFromPackage(import.meta.url)
+const __pkgRoot = pkgRoot(import.meta.url) as string
+const config = readConfigFromPackage(import.meta.url) as Config
 
 // path to tests ressources
 const testdir = path.join(__pkgRoot, config.folders.test, 'filer')
@@ -20,7 +21,7 @@ const testtmp = path.join(__pkgRoot, config.folders.temp, '.test', 'filer')
 // Sync functions
 describe.concurrent('file and folder sync functions', () => {
   it('writeJsonSync(file, object)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const file = path.join(tmpdir, 'test1.json')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -31,7 +32,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('readJsonSync(file)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const file = path.join(tmpdir, 'test1.json')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -42,7 +43,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('moveSync(file, newpath, options)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const file1 = path.join(tmpdir, 'test1.json')
     const file2 = path.join(tmpdir, 'test2.json')
@@ -55,7 +56,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('moveSync(folder, newpath, options)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const tmpdir1 = path.join(tmpdir, 'dir1')
     const tmpdir2 = path.join(tmpdir, 'dir2')
@@ -67,7 +68,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('copySync(file, dest)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const file1 = path.join(tmpdir, 'test1.json')
     const file2 = path.join(tmpdir, 'test2.json')
@@ -80,7 +81,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('copySync(folder, dest)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const tmpdir1 = path.join(tmpdir, 'dir1')
     const tmpdir2 = path.join(tmpdir, 'dir2')
@@ -92,7 +93,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('deleteSync(file)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const file = path.join(tmpdir, 'test1.json')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -104,7 +105,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('deleteSync(folder)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     fsExtra.ensureDirSync(tmpdir)
     const tmpdir1 = path.join(tmpdir, 'dir1')
     fsExtra.ensureDirSync(tmpdir1)
@@ -126,7 +127,7 @@ describe.concurrent('file and folder sync functions', () => {
   })
 
   it('createDirSync(path)', () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     filer.createDirSync(tmpdir)
     const actual = fsExtra.pathExistsSync(tmpdir)
     expect(actual).toEqual(true)
@@ -137,7 +138,7 @@ describe.concurrent('file and folder sync functions', () => {
 // Async functions
 describe.concurrent('file and folder async functions', () => {
   it('writeJson(file, object)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const file = path.join(tmpdir, 'test1.json')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -147,7 +148,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('readJson(file)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const file = path.join(tmpdir, 'test1.json')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -157,7 +158,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('move(file, newpath, options)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const file1 = path.join(tmpdir, 'test1.json')
     const file2 = path.join(tmpdir, 'test2.json')
@@ -169,7 +170,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('move(folder, newpath, options)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const tmpdir1 = path.join(tmpdir, 'dir1')
     const tmpdir2 = path.join(tmpdir, 'dir2')
@@ -180,7 +181,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('copy(file, dest)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const file1 = path.join(tmpdir, 'test1.json')
     const file2 = path.join(tmpdir, 'test2.json')
@@ -192,7 +193,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('copy(folder, dest)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const tmpdir1 = path.join(tmpdir, 'dir1')
     const tmpdir2 = path.join(tmpdir, 'dir2')
@@ -203,7 +204,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('delete(file)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const file = path.join(tmpdir, 'test1.json')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -214,7 +215,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('delete(folder)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const tmpdir1 = path.join(tmpdir, 'dir1')
     await fsExtra.ensureDir(tmpdir1)
@@ -233,7 +234,7 @@ describe.concurrent('file and folder async functions', () => {
   })
 
   it('createDir(path)', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await filer.createDir(tmpdir)
     await expect(fsExtra.pathExists(tmpdir)).resolves.toEqual(true)
     await fsExtra.remove(tmpdir)
@@ -288,7 +289,7 @@ describe.concurrent('Additional functions', () => {
   })
 
   it('lowerCaseFileExt(file, ext): should rename file with lowercase extension file', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const file = path.join(tmpdir, 'test1.JSON')
     const obj = { name: 'Dupond', firstname: 'Michel' }
@@ -314,7 +315,7 @@ describe.concurrent('Additional functions', () => {
   })
 
   it('unZipFile(file, dest): should unzip file', async () => {
-    const tmpdir = path.join(testtmp, uuid.v4())
+    const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const zip = path.join(testdir, 'instrument.zip')
     const zippedFiles = ['instrument.sfz', 'sample-1.wav', 'sample-2.wav']

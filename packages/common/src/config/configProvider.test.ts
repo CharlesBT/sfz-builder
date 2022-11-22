@@ -4,42 +4,44 @@ import { join } from 'node:path'
 
 import { describe, expect, it } from 'vitest'
 
-import { pkgRoot } from '../utils/pkgRoot.js'
+import { pkgRoot } from '@/utils/pkgRoot.js'
 import { readConfigFromFile, readConfigFromPackage } from './configProvider.js'
 
 const __pkgRoot = pkgRoot(import.meta.url)
-const configFile = join(__pkgRoot, '/config/app.config.jsonc')
+const configFile = __pkgRoot ? join(__pkgRoot, '/config/app.config.jsonc') : undefined
 
 describe.concurrent('configProvider', () => {
   it(`readConfigFromFile(file): should read config file from (${configFile})`, () => {
-    const config = readConfigFromFile(configFile)
-    let actual
-    config && typeof config === 'object' && config !== null ? (actual = true) : (actual = false)
-    const expected = true
-    expect(actual).toEqual(expected)
+    let actual = false
+    if (typeof configFile !== 'undefined') {
+      const config = readConfigFromFile(configFile)
+      typeof config === 'object' && config !== null ? (actual = true) : (actual = false)
+    }
+    expect(actual).toEqual(true)
   })
 
   it(`should read appname attribute from (${configFile})`, () => {
-    const config = readConfigFromFile(configFile)
-    let actual
-    config.appname && config.appname === 'CONFIG' ? (actual = true) : (actual = false)
-    const expected = true
-    expect(actual).toEqual(expected)
+    let actual = false
+    if (typeof configFile !== 'undefined') {
+      const config = readConfigFromFile(configFile)
+      config.appname && config.appname === 'CONFIG' ? (actual = true) : (actual = false)
+    }
+    expect(actual).toEqual(true)
   })
 
   it(`readConfigFromPackage(import_meta_url): should read config file for current package (${__pkgRoot})`, () => {
+    let actual = false
     const config = readConfigFromPackage(import.meta.url)
-    let actual
     config && typeof config === 'object' && config !== null ? (actual = true) : (actual = false)
-    const expected = true
-    expect(actual).toEqual(expected)
+    expect(actual).toEqual(true)
   })
 
   it(`should read appname attribute for current package (${__pkgRoot})`, () => {
+    let actual = false
     const config = readConfigFromPackage(import.meta.url)
-    let actual
-    config.appname && config.appname === 'CONFIG' ? (actual = true) : (actual = false)
-    const expected = true
-    expect(actual).toEqual(expected)
+    if (typeof config !== 'undefined') {
+      config.appname && config.appname === 'CONFIG' ? (actual = true) : (actual = false)
+    }
+    expect(actual).toEqual(true)
   })
 })

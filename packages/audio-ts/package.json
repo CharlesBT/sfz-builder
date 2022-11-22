@@ -29,7 +29,8 @@
     "test:ci": "vitest run",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage"
+    "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage",
+    "postinstall": "tsc"
   },
   "dependencies": {
     "@bms/common": "*",

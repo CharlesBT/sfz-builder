@@ -53,7 +53,7 @@ importers:
       electron-updater: 5.3.0
       electron-util: 0.17.2
     devDependencies:
-      '@bms/audio': link:packages/audio
+      '@bms/audio': link:packages/audio-ts
       '@bms/common': link:packages/common
       '@charlesbt/eslint-config-custom': 1.0.2_wbcyan4knibwiqrg7345gyo3qi
       '@charlesbt/prettier-config-custom': 1.0.2
@@ -65,7 +65,7 @@ importers:
       '@types/node': 18.11.9
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
       '@vitest/coverage-c8': 0.24.5_jsdom@20.0.3+sass@1.56.1
-      '@vueuse/core': 9.5.0_vue@3.2.45
+      '@vueuse/core': 9.6.0_vue@3.2.45
       cross-env: 7.0.3
       electron: 21.3.0
       electron-builder: 23.6.0
@@ -80,16 +80,16 @@ importers:
       typescript: 4.9.3
       vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
       vite-electron-plugin: 0.5.2_esbuild@0.15.15
-      vite-plugin-vuetify: 1.0.0_dffzqce5sjr6djqjnizrvtj3hm
+      vite-plugin-vuetify: 1.0.0_w7sdy3jwnmolm53zkpvcwmbq7e
       vitest: 0.24.5_jsdom@20.0.3+sass@1.56.1
       vue: 3.2.45
       vue-i18n: 9.2.2_vue@3.2.45
       vue-router: 4.1.6_vue@3.2.45
       vue-tsc: 1.0.9_typescript@4.9.3
       vue3-dropzone: 2.0.1_vue@3.2.45
-      vuetify: 3.0.1_56p5gagqhtkn2vlbfpyfdrtkpi
+      vuetify: 3.0.2_56p5gagqhtkn2vlbfpyfdrtkpi
 
-  packages/audio:
+  packages/audio-ts:
     specifiers:
       '@bms/common': '*'
       '@bms/wavefile': '*'
@@ -153,6 +153,7 @@ importers:
       pkg-dir: 7.0.0
       ts-node: ^10.9.1
       typescript: ^4.9.3
+      uuidv4: ^6.2.13
       vitest: ^0.24.5
       winston: ^3.8.2
     dependencies:
@@ -164,6 +165,7 @@ importers:
       json5: 2.2.1
       lodash: 4.17.21
       pkg-dir: 7.0.0
+      uuidv4: 6.2.13
       winston: 3.8.2
     devDependencies:
       '@charlesbt/eslint-config-custom': 1.0.2_wbcyan4knibwiqrg7345gyo3qi
@@ -179,7 +181,7 @@ importers:
       typescript: 4.9.3
       vitest: 0.24.5
 
-  packages/common/test:
+  packages/common/src/utils:
     specifiers: {}
 
   packages/ui:
@@ -784,6 +786,10 @@ packages:
     resolution: {integrity: sha512-Q5vtl1W5ue16D+nIaW8JWebSSraJVlK+EthKn7e7UcD4KWsaSJ8BqGPXNaPghgtcn/fhvrN17Tv8ksUsQpiplw==}
     dev: true
 
+  /@types/uuid/8.3.4:
+    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
+    dev: false
+
   /@types/verror/1.10.6:
     resolution: {integrity: sha512-NNm+gdePAX1VGvPcGZCDKQZKYSiAWigKhKaz5KF94hG6f2s8de9Ow5+7AbXoeKxL8gavZfk4UquSAygOF2duEQ==}
     requiresBuild: true
@@ -1150,7 +1156,7 @@ packages:
     resolution: {integrity: sha512-Ewzq5Yhimg7pSztDV+RH1UDKBzmtqieXQlpTVm2AwraoRL/Rks96mvd8Vgi7Lj+h+TH8dv7mXD3FRZR3TUvbSg==}
     dev: true
 
-  /@vuetify/loader-shared/1.7.0_vue@3.2.45+vuetify@3.0.1:
+  /@vuetify/loader-shared/1.7.0_vue@3.2.45+vuetify@3.0.2:
     resolution: {integrity: sha512-Db4K67wMhduDsbvdRBYkrYuomti+j0E/1vlz1lnDng5F9LYYBcXa60qypIazVGI6GX/CuY1vshN6XGtGQI4FKg==}
     peerDependencies:
       vue: ^3.0.0
@@ -1159,27 +1165,27 @@ packages:
       find-cache-dir: 3.3.2
       upath: 2.0.1
       vue: 3.2.45
-      vuetify: 3.0.1_56p5gagqhtkn2vlbfpyfdrtkpi
+      vuetify: 3.0.2_56p5gagqhtkn2vlbfpyfdrtkpi
     dev: true
 
-  /@vueuse/core/9.5.0_vue@3.2.45:
-    resolution: {integrity: sha512-6GsWBsJHEb3sYw15mbLrcbslAVY45pkzjJYTKYKCXv88z7srAF0VEW0q+oXKsl58tCbqooplInahXFg8Yo1m4w==}
+  /@vueuse/core/9.6.0_vue@3.2.45:
+    resolution: {integrity: sha512-qGUcjKQXHgN+jqXEgpeZGoxdCbIDCdVPz3QiF1uyecVGbMuM63o96I1GjYx5zskKgRI0FKSNsVWM7rwrRMTf6A==}
     dependencies:
       '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.5.0
-      '@vueuse/shared': 9.5.0_vue@3.2.45
+      '@vueuse/metadata': 9.6.0
+      '@vueuse/shared': 9.6.0_vue@3.2.45
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
     dev: true
 
-  /@vueuse/metadata/9.5.0:
-    resolution: {integrity: sha512-4M1AyPZmIv41pym+K5+4wup3bKuYebbH8w8BROY1hmT7rIwcyS4tEL+UsGz0Hiu1FCOxcoBrwtAizc0YmBJjyQ==}
+  /@vueuse/metadata/9.6.0:
+    resolution: {integrity: sha512-sIC8R+kWkIdpi5X2z2Gk8TRYzmczDwHRhEFfCu2P+XW2JdPoXrziqsGpDDsN7ykBx4ilwieS7JUIweVGhvZ93w==}
     dev: true
 
-  /@vueuse/shared/9.5.0_vue@3.2.45:
-    resolution: {integrity: sha512-HnnCWU1Vg9CVWRCcI8ohDKDRB2Sc4bTgT1XAIaoLSfVHHn+TKbrox6pd3klCSw4UDxkhDfOk8cAdcK+Z5KleCA==}
+  /@vueuse/shared/9.6.0_vue@3.2.45:
+    resolution: {integrity: sha512-/eDchxYYhkHnFyrb00t90UfjCx94kRHxc7J1GtBCqCG4HyPMX+krV9XJgVtWIsAMaxKVU4fC8NSUviG1JkwhUQ==}
     dependencies:
       vue-demi: 0.13.11_vue@3.2.45
     transitivePeerDependencies:
@@ -1672,8 +1678,8 @@ packages:
     resolution: {integrity: sha512-1R5Fho+jBq0DDydt+/vHWj5KJNJCKdARKOCwZUen84I5BreWoLqRLANH1U87eJy1tiASPtMnGqJJq0ZsLoRPOw==}
     dev: true
 
-  /ci-info/3.6.1:
-    resolution: {integrity: sha512-up5ggbaDqOqJ4UqLKZ2naVkyqSJQgJi5lwD6b6mM748ysrghDBX0bx/qJTUHzw7zu6Mq4gycviSF5hJnwceD8w==}
+  /ci-info/3.6.2:
+    resolution: {integrity: sha512-lVZdhvbEudris15CLytp2u6Y0p5EKfztae9Fqa189MfNmln9F33XuH69v5fvNfiRN5/0eAUz2yJL3mo+nhaRKg==}
     engines: {node: '>=8'}
     dev: true
 
@@ -2290,8 +2296,8 @@ packages:
       once: 1.4.0
     dev: true
 
-  /enhanced-resolve/5.10.0:
-    resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
+  /enhanced-resolve/5.11.0:
+    resolution: {integrity: sha512-0Gcraf7gAJSQoPg+bTSXNhuzAYtXqLc4C011vb8S3B8XUSEkGYNBk20c68X9291VF4vvsCD8SPkr6Mza+DwU+g==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -2637,7 +2643,7 @@ packages:
       eslint-plugin-import: '*'
     dependencies:
       debug: 4.3.4
-      enhanced-resolve: 5.10.0
+      enhanced-resolve: 5.11.0
       eslint: 8.28.0
       eslint-plugin-import: 2.26.0_vfrilbydaxalswvos6uuh4sxs4
       get-tsconfig: 4.2.0
@@ -3595,7 +3601,7 @@ packages:
     resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==}
     hasBin: true
     dependencies:
-      ci-info: 3.6.1
+      ci-info: 3.6.2
     dev: true
 
   /is-core-module/2.11.0:
@@ -5425,6 +5431,18 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
+  /uuidv4/6.2.13:
+    resolution: {integrity: sha512-AXyzMjazYB3ovL3q051VLH06Ixj//Knx7QnUSi1T//Ie3io6CpsPu9nVMOx5MoLWh6xV0B9J0hIaxungxXUbPQ==}
+    dependencies:
+      '@types/uuid': 8.3.4
+      uuid: 8.3.2
+    dev: false
+
   /v8-compile-cache-lib/3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
     dev: true
@@ -5466,18 +5484,18 @@ packages:
       fast-glob: 3.2.12
     dev: true
 
-  /vite-plugin-vuetify/1.0.0_dffzqce5sjr6djqjnizrvtj3hm:
+  /vite-plugin-vuetify/1.0.0_w7sdy3jwnmolm53zkpvcwmbq7e:
     resolution: {integrity: sha512-30+W6H//wjOegKCha4wQ3IS+JyXDE6IayL5cK5S4IrM7WIceV/WitnxljbPZHER+Jyl3BGIuYV6nofjMOfRO1g==}
     engines: {node: '>=12'}
     peerDependencies:
       vite: ^2.7.0 || ^3.0.0
       vuetify: ^3.0.0-beta.4
     dependencies:
-      '@vuetify/loader-shared': 1.7.0_vue@3.2.45+vuetify@3.0.1
+      '@vuetify/loader-shared': 1.7.0_vue@3.2.45+vuetify@3.0.2
       debug: 4.3.4
       upath: 2.0.1
       vite: 3.2.4_ajklay5k626t46b6fyghkbup3i
-      vuetify: 3.0.1_56p5gagqhtkn2vlbfpyfdrtkpi
+      vuetify: 3.0.2_56p5gagqhtkn2vlbfpyfdrtkpi
     transitivePeerDependencies:
       - supports-color
       - vue
@@ -5730,8 +5748,8 @@ packages:
       vue: 3.2.45
     dev: true
 
-  /vuetify/3.0.1_56p5gagqhtkn2vlbfpyfdrtkpi:
-    resolution: {integrity: sha512-Vl4wYB4mCm6GFK6Q9KZDK+HM3YKI7md7BoUPwbgqZj4bkofjQ/8NVSRQQpTcwk0YoQrgw6qj0QaOtP5zitkS1Q==}
+  /vuetify/3.0.2_56p5gagqhtkn2vlbfpyfdrtkpi:
+    resolution: {integrity: sha512-d+lb8DHUrrn9GnKaZW1dEApjIEamUcZn1HxomiQ0+y8t+jKjktpruo16AvAjpEHhAcCeWZ5RuK/S9HdT6z68Uw==}
     engines: {node: ^12.20 || >=14.13}
     peerDependencies:
       vite-plugin-vuetify: ^1.0.0-alpha.12
@@ -5746,7 +5764,7 @@ packages:
       webpack-plugin-vuetify:
         optional: true
     dependencies:
-      vite-plugin-vuetify: 1.0.0_dffzqce5sjr6djqjnizrvtj3hm
+      vite-plugin-vuetify: 1.0.0_w7sdy3jwnmolm53zkpvcwmbq7e
       vue: 3.2.45
       vue-i18n: 9.2.2_vue@3.2.45
     dev: true
