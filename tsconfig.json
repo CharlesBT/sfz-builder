@@ -29,5 +29,8 @@
     "src/**/*",
     "src/**/*.json",
     "package.json"
-  ]
+  ],
+  "ts-node": {
+    "esm": true // Tell ts-node CLI to install the --loader automatically, explained below
+  }
 }

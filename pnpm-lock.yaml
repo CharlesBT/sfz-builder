@@ -6,8 +6,8 @@ importers:
     specifiers:
       '@bms/audio': '*'
       '@bms/common': '*'
-      '@bms/eslint-config-custom': '*'
-      '@bms/prettier-config-custom': '*'
+      '@charlesbt/eslint-config-custom': latest
+      '@charlesbt/prettier-config-custom': latest
       '@intlify/unplugin-vue-i18n': ^0.7.3
       '@mdi/font': ^7.0.96
       '@types/debug': ^4.1.7
@@ -55,8 +55,8 @@ importers:
     devDependencies:
       '@bms/audio': link:packages/audio
       '@bms/common': link:packages/common
-      '@bms/eslint-config-custom': link:packages/eslint-config-custom
-      '@bms/prettier-config-custom': link:packages/prettier-config-custom
+      '@charlesbt/eslint-config-custom': 1.0.2_wbcyan4knibwiqrg7345gyo3qi
+      '@charlesbt/prettier-config-custom': 1.0.2
       '@intlify/unplugin-vue-i18n': 0.7.3_zebjcmhz6zffeyiapi54axcesm
       '@mdi/font': 7.0.96
       '@types/debug': 4.1.7
@@ -92,9 +92,9 @@ importers:
   packages/audio:
     specifiers:
       '@bms/common': '*'
-      '@bms/eslint-config-custom': '*'
-      '@bms/prettier-config-custom': '*'
       '@bms/wavefile': '*'
+      '@charlesbt/eslint-config-custom': latest
+      '@charlesbt/prettier-config-custom': latest
       '@types/debug': ^4.1.7
       '@types/fs-extra': ^9.0.13
       '@types/lodash': ^4.14.189
@@ -120,8 +120,8 @@ importers:
       fs-extra: 10.1.0
       lodash: 4.17.21
     devDependencies:
-      '@bms/eslint-config-custom': link:../eslint-config-custom
-      '@bms/prettier-config-custom': link:../prettier-config-custom
+      '@charlesbt/eslint-config-custom': 1.0.2_wbcyan4knibwiqrg7345gyo3qi
+      '@charlesbt/prettier-config-custom': 1.0.2
       '@types/debug': 4.1.7
       '@types/fs-extra': 9.0.13
       '@types/lodash': 4.14.189
@@ -134,8 +134,8 @@ importers:
 
   packages/common:
     specifiers:
-      '@bms/eslint-config-custom': '*'
-      '@bms/prettier-config-custom': '*'
+      '@charlesbt/eslint-config-custom': latest
+      '@charlesbt/prettier-config-custom': latest
       '@types/adm-zip': ^0.5.0
       '@types/debug': ^4.1.7
       '@types/fs-extra': ^9.0.13
@@ -166,8 +166,8 @@ importers:
       pkg-dir: 7.0.0
       winston: 3.8.2
     devDependencies:
-      '@bms/eslint-config-custom': link:../eslint-config-custom
-      '@bms/prettier-config-custom': link:../prettier-config-custom
+      '@charlesbt/eslint-config-custom': 1.0.2_wbcyan4knibwiqrg7345gyo3qi
+      '@charlesbt/prettier-config-custom': 1.0.2
       '@types/adm-zip': 0.5.0
       '@types/debug': 4.1.7
       '@types/fs-extra': 9.0.13
@@ -179,52 +179,13 @@ importers:
       typescript: 4.9.3
       vitest: 0.24.5
 
-  packages/eslint-config-custom:
-    specifiers:
-      '@rushstack/eslint-patch': ^1.2.0
-      '@typescript-eslint/eslint-plugin': ^5.43.0
-      '@typescript-eslint/parser': ^5.43.0
-      '@vue/eslint-config-prettier': ^7.0.0
-      '@vue/eslint-config-typescript': ^11.0.2
-      eslint: ^8.27.0
-      eslint-config-prettier: ^8.5.0
-      eslint-import-resolver-typescript: ^3.5.2
-      eslint-plugin-cypress: ^2.12.1
-      eslint-plugin-eslint-comments: ^3.2.0
-      eslint-plugin-header: ^3.1.1
-      eslint-plugin-import: ^2.26.0
-      eslint-plugin-jsdoc: ^39.6.2
-      eslint-plugin-prettier: ^4.2.1
-      eslint-plugin-promise: ^6.1.1
-      eslint-plugin-vue: ^9.7.0
-    devDependencies:
-      '@rushstack/eslint-patch': 1.2.0
-      '@typescript-eslint/eslint-plugin': 5.44.0_fnsv2sbzcckq65bwfk7a5xwslu
-      '@typescript-eslint/parser': 5.44.0_hsf322ms6xhhd4b5ne6lb74y4a
-      '@vue/eslint-config-prettier': 7.0.0_bqvntwytoepwmeyeh2xeb7vzue
-      '@vue/eslint-config-typescript': 11.0.2_vf5i6yh7tubwt4lqvaz2kfrjpa
-      eslint: 8.28.0
-      eslint-config-prettier: 8.5.0_eslint@8.28.0
-      eslint-import-resolver-typescript: 3.5.2_ktrec6dplf4now6nlbc6d67jee
-      eslint-plugin-cypress: 2.12.1_eslint@8.28.0
-      eslint-plugin-eslint-comments: 3.2.0_eslint@8.28.0
-      eslint-plugin-header: 3.1.1_eslint@8.28.0
-      eslint-plugin-import: 2.26.0_vc54pluhgv7booofyyjouvuf74
-      eslint-plugin-jsdoc: 39.6.2_eslint@8.28.0
-      eslint-plugin-prettier: 4.2.1_pgxuib4rd7wiymfktharf5ydt4
-      eslint-plugin-promise: 6.1.1_eslint@8.28.0
-      eslint-plugin-vue: 9.7.0_eslint@8.28.0
-
-  packages/prettier-config-custom:
-    specifiers:
-      prettier: ^2.7.1
-    devDependencies:
-      prettier: 2.7.1
+  packages/common/test:
+    specifiers: {}
 
   packages/ui:
     specifiers:
-      '@bms/eslint-config-custom': '*'
-      '@bms/prettier-config-custom': '*'
+      '@charlesbt/eslint-config-custom': latest
+      '@charlesbt/prettier-config-custom': latest
       '@types/debug': ^4.1.7
       '@types/lodash': ^4.14.189
       '@types/node': ^18.11.9
@@ -234,8 +195,8 @@ importers:
       typescript: ^4.9.3
       vitest: ^0.24.5
     devDependencies:
-      '@bms/eslint-config-custom': link:../eslint-config-custom
-      '@bms/prettier-config-custom': link:../prettier-config-custom
+      '@charlesbt/eslint-config-custom': 1.0.2_wbcyan4knibwiqrg7345gyo3qi
+      '@charlesbt/prettier-config-custom': 1.0.2
       '@types/debug': 4.1.7
       '@types/lodash': 4.14.189
       '@types/node': 18.11.9
@@ -314,6 +275,38 @@ packages:
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+    dev: true
+
+  /@charlesbt/eslint-config-custom/1.0.2_wbcyan4knibwiqrg7345gyo3qi:
+    resolution: {integrity: sha512-tXad29plgWn0/XU0fYPkKJfa9OkFuhT9Dl2dwrixFBQ/LV1mFQhxhe71GUeVJfi9XAI8u1jN7wUDsgfMkPlVoA==}
+    dependencies:
+      '@rushstack/eslint-patch': 1.2.0
+      '@typescript-eslint/eslint-plugin': 5.44.0_fnsv2sbzcckq65bwfk7a5xwslu
+      '@typescript-eslint/parser': 5.44.0_hsf322ms6xhhd4b5ne6lb74y4a
+      '@vue/eslint-config-prettier': 7.0.0_bqvntwytoepwmeyeh2xeb7vzue
+      '@vue/eslint-config-typescript': 11.0.2_vf5i6yh7tubwt4lqvaz2kfrjpa
+      eslint: 8.28.0
+      eslint-config-prettier: 8.5.0_eslint@8.28.0
+      eslint-import-resolver-typescript: 3.5.2_ktrec6dplf4now6nlbc6d67jee
+      eslint-plugin-cypress: 2.12.1_eslint@8.28.0
+      eslint-plugin-eslint-comments: 3.2.0_eslint@8.28.0
+      eslint-plugin-header: 3.1.1_eslint@8.28.0
+      eslint-plugin-import: 2.26.0_vfrilbydaxalswvos6uuh4sxs4
+      eslint-plugin-jsdoc: 39.6.2_eslint@8.28.0
+      eslint-plugin-prettier: 4.2.1_pgxuib4rd7wiymfktharf5ydt4
+      eslint-plugin-promise: 6.1.1_eslint@8.28.0
+      eslint-plugin-vue: 9.7.0_eslint@8.28.0
+    transitivePeerDependencies:
+      - eslint-import-resolver-webpack
+      - prettier
+      - supports-color
+      - typescript
+    dev: true
+
+  /@charlesbt/prettier-config-custom/1.0.2:
+    resolution: {integrity: sha512-63wt+wXIbHmo3TYTk/DmjnfRWhUvpR7XTYDmi3Z3qfOtR+9SRsV4w1Fd+sGdTFrR8932dyL0sPXh2rcdejQKcw==}
+    dependencies:
+      prettier: 2.7.1
     dev: true
 
   /@colors/colors/1.5.0:
@@ -2646,7 +2639,7 @@ packages:
       debug: 4.3.4
       enhanced-resolve: 5.10.0
       eslint: 8.28.0
-      eslint-plugin-import: 2.26.0_vc54pluhgv7booofyyjouvuf74
+      eslint-plugin-import: 2.26.0_vfrilbydaxalswvos6uuh4sxs4
       get-tsconfig: 4.2.0
       globby: 13.1.2
       is-core-module: 2.11.0
@@ -2656,7 +2649,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.4_d2eo2jksnn7c2x6eoou4blnbne:
+  /eslint-module-utils/2.7.4_hohserqfhq4k7fjhuck6y26tu4:
     resolution: {integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -2681,7 +2674,6 @@ packages:
       debug: 3.2.7
       eslint: 8.28.0
       eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 3.5.2_ktrec6dplf4now6nlbc6d67jee
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2714,7 +2706,7 @@ packages:
       eslint: 8.28.0
     dev: true
 
-  /eslint-plugin-import/2.26.0_vc54pluhgv7booofyyjouvuf74:
+  /eslint-plugin-import/2.26.0_vfrilbydaxalswvos6uuh4sxs4:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -2731,7 +2723,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.28.0
       eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.4_d2eo2jksnn7c2x6eoou4blnbne
+      eslint-module-utils: 2.7.4_hohserqfhq4k7fjhuck6y26tu4
       has: 1.0.3
       is-core-module: 2.11.0
       is-glob: 4.0.3
