@@ -11,7 +11,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('dialog.import-from') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <v-radio-group inline hide-details v-model="state.source">
+          <v-radio-group inline hide-details v-model="vstate.source">
             <v-radio label="FLStudio" value="flstudio"></v-radio>
             <v-radio label="Logic" value="logic"></v-radio>
             <v-radio label="AudioLayer" value="audiolayer"></v-radio>
@@ -36,7 +36,7 @@
         </v-col>
         <v-col cols="12" sm="10">
           <v-text-field
-            v-model="state.name"
+            v-model="vstate.name"
             hide-details
             background-color="transparent"
             filled
@@ -110,14 +110,14 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 
-interface State {
+interface VState {
   source: string
   name: string
   files: File[]
   articulations: string[]
 }
 
-const state: State = reactive({
+const vstate: VState = reactive({
   source: 'flstudio',
   name: '',
   files: [],
@@ -125,15 +125,11 @@ const state: State = reactive({
 })
 
 function addFiles(files: File[]) {
-  state.files = files
-  console.log('addFiles:', [...state.files])
+  vstate.files = files
+  console.log('addFiles:', [...vstate.files])
 }
 
-watch(state, () => {
-  console.log('watch state:', [...state.files])
-})
-
 function createSfz(e: Event) {
-  console.log('createSfz:', [...state.files])
+  console.log('createSfz:', [...vstate.files])
 }
 </script>

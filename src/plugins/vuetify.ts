@@ -19,6 +19,7 @@ const Lighttheme: ThemeDefinition = {
     info: '#795548',
     success: '#4caf50',
     back: '#f2f2f2',
+    'alert-back': '#f2f2f2',
   },
 }
 
@@ -33,6 +34,7 @@ const Darktheme: ThemeDefinition = {
     warning: '#fec90f',
     error: '#fc4b6c',
     back: '#0d0d0d',
+    'alert-back': '#f2f2f2',
   },
 }
 
