@@ -5,9 +5,10 @@ import { join } from 'node:path'
 
 import JSON5 from 'json5'
 
-import { pkgRoot } from '@/utils/pkgRoot.js'
+import { pkgRoot } from '../utils/pkgRoot.js'
 
-export interface Config {
+export interface IConfig {
+  [key: string]: number | string | boolean | object | undefined
   appname: string
   folders: {
     temp: string
@@ -20,26 +21,29 @@ export interface Config {
   }
 }
 
-function readConfigFromFile(file: string): Config {
+function readConfigFromFile(file: string): IConfig {
   try {
     const data = fs.readFileSync(file)
     const config = JSON5.parse(data.toString())
-    return config as Config
+    return config as IConfig
   } catch {
-    return {} as Config
+    return {} as IConfig
   }
 }
 
-function readConfigFromPackage(import_meta_url?: string): Config | undefined {
+function readConfigFromPackage(import_meta_url?: string) {
+  let __pkgRoot
   if (typeof import_meta_url !== 'undefined') {
-    const __pkgRoot = pkgRoot(import_meta_url)
-    if (typeof __pkgRoot !== 'undefined') {
-      const configFile = join(__pkgRoot, 'config/app.config.jsonc')
-      const config: Config = readConfigFromFile(configFile)
-      return config
-    }
-    return undefined
+    __pkgRoot = pkgRoot(import_meta_url)
+  } else {
+    __pkgRoot = pkgRoot()
   }
+  if (typeof __pkgRoot !== 'undefined') {
+    const configFile = join(__pkgRoot, 'config/app.config.json5')
+    const config: IConfig = readConfigFromFile(configFile)
+    return config
+  }
+  return {} as IConfig
 }
 
 const config = readConfigFromPackage()

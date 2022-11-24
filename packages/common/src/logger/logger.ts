@@ -10,9 +10,9 @@ import debug from 'debug' // needs also import 'dotenv/config'
 import { createLogger, format, transports } from 'winston'
 import type { Logger } from 'winston'
 
-import { config } from '@/config/configProvider.js'
-import { dotenvConfig } from '@/config/dotenvConfig.js'
-import { pkgRoot } from '@/utils/pkgRoot.js'
+import { config } from '../config/configProvider.js'
+import { dotenvConfig } from '../config/dotenvConfig.js'
+import { pkgRoot } from '../utils/pkgRoot.js'
 
 const __pkgRoot = pkgRoot(import.meta.url) as string
 

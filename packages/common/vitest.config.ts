@@ -1,7 +1,6 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
 import { defineConfig } from 'vitest/config'
-import { fileURLToPath } from 'node:url'
 
 export default defineConfig({
   test: {
@@ -14,8 +13,6 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
+    alias: {},
   },
 })

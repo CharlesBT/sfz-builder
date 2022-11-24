@@ -4,11 +4,11 @@ import { join } from 'node:path'
 
 import { describe, expect, it } from 'vitest'
 
-import { pkgRoot } from '@/utils/pkgRoot.js'
+import { pkgRoot } from '../utils/pkgRoot.js'
 import { readConfigFromFile, readConfigFromPackage } from './configProvider.js'
 
 const __pkgRoot = pkgRoot(import.meta.url)
-const configFile = __pkgRoot ? join(__pkgRoot, '/config/app.config.jsonc') : undefined
+const configFile = __pkgRoot ? join(__pkgRoot, '/config/app.config.json5') : undefined
 
 describe.concurrent('configProvider', () => {
   it(`readConfigFromFile(file): should read config file from (${configFile})`, () => {

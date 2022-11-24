@@ -30,7 +30,7 @@
     "lint": "eslint --fix .",
     "format": "prettier --write .",
     "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage",
-    "postinstall": "tsc"
+    "postinstall": "pnpm build"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",

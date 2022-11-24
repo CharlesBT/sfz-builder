@@ -5,14 +5,14 @@ import path from 'node:path'
 import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
 
-import { readConfigFromPackage } from '@/config/configProvider.js'
-import type { Config } from '@/config/configProvider.js'
-import { pkgRoot } from '@/utils/pkgRoot.js'
+import { readConfigFromPackage } from '../config/configProvider.js'
+import type { IConfig } from '../config/configProvider.js'
+import { pkgRoot } from '../utils/pkgRoot.js'
 import { uuid } from 'uuidv4'
 import { filer } from './filer.js'
 
 const __pkgRoot = pkgRoot(import.meta.url) as string
-const config = readConfigFromPackage(import.meta.url) as Config
+const config = readConfigFromPackage(import.meta.url) as IConfig
 
 // path to tests ressources
 const testdir = path.join(__pkgRoot, config.folders.test, 'filer')
