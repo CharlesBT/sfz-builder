@@ -2,7 +2,7 @@
 
 import './ipcApi'
 import loader from './loaders/chase'
-import config from '@electron/config.json'
+import config from '../config.json'
 
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise((resolve) => {

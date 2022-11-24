@@ -6,7 +6,7 @@ import { initLogger } from './logger'
 import autoUpdater from './autoUpdater'
 import './ipcApi'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
-import config from '@electron/config.json'
+import config from '../config.json'
 
 process.env.DIST_ELECTRON = join(__dirname, '..')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')

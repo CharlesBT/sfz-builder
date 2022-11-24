@@ -11,11 +11,12 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('dialog.import-from') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <v-radio-group inline hide-details v-model="fSource">
+          <v-radio-group inline hide-details v-model="vstate.source">
             <v-radio label="FLStudio" value="flstudio"></v-radio>
             <v-radio label="Logic" value="logic"></v-radio>
             <v-radio label="AudioLayer" value="audiolayer"></v-radio>
             <v-radio label="SampleRobot" value="samplerobot"></v-radio>
+            <v-radio :label="t('instrument.existing-sfz')" value="sfz"></v-radio>
           </v-radio-group>
         </v-col>
       </v-row>
@@ -25,7 +26,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('instrument.samples') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <DropZone />
+          <FileDropZone @files-dropped="addFiles" />
         </v-col>
       </v-row>
 
@@ -35,7 +36,7 @@
         </v-col>
         <v-col cols="12" sm="10">
           <v-text-field
-            v-model="fName"
+            v-model="vstate.name"
             hide-details
             background-color="transparent"
             filled
@@ -73,7 +74,12 @@
         </v-col>
       </v-row>
 
-      <v-btn prepend-icon="mdi-content-save-cog-outline" color="primary" class="mt-5 mr-2">
+      <v-btn
+        @click="createSfz"
+        prepend-icon="mdi-content-save-cog-outline"
+        color="primary"
+        class="mt-5 mr-2"
+      >
         {{ t('dialog.build') }} SFZ
       </v-btn>
       <v-btn prepend-icon="mdi-cloud-upload " color="primary" class="mt-5 mr-2">
@@ -84,13 +90,13 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import _ from 'lodash'
 
 import InstrumentCategories from '@/components/forms/InstrumentCategories.vue'
-import DropZone from '@/components/forms/inputfile/DropZone.vue'
+import FileDropZone from '@/components/forms/inputfile/FileDropZone.vue'
 
 // JSON data
 import articulations from '@/data/cat_articulations.json'
@@ -104,10 +110,26 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 
-const fSource = ref('flstudio')
-const fName = ref(null)
+interface VState {
+  source: string
+  name: string
+  files: File[]
+  articulations: string[]
+}
 
-const select = ref(null)
+const vstate: VState = reactive({
+  source: 'flstudio',
+  name: '',
+  files: [],
+  articulations: [''],
+})
 
-const fArticulations = ref(null)
+function addFiles(files: File[]) {
+  vstate.files = files
+  console.log('addFiles:', [...vstate.files])
+}
+
+function createSfz(e: Event) {
+  console.log('createSfz:', [...vstate.files])
+}
 </script>

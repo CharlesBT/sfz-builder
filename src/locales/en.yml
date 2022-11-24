@@ -3,13 +3,18 @@ app:
 
 menu:
   home: Home
-  drumkit: Drumkit
+  pack: Pack
+  drumkit: Drum Kit
   instrument: Instrument
-  loops: Loops
+  loopkit: Loop Kit
+  midikit: Midi Kit
   help: Help
   about: About
 
 page:
+  pack:
+    title: Create new pack
+    subtitle: Fill this form to create a new pack
   instrument:
     title: Create new instrument
     subtitle: Fill this form to create a new instrument
@@ -17,8 +22,11 @@ page:
     title: Create new drumkit
     subtitle: Fill this form to create a new drumkit
   loopkit:
-    title: Create new loopkit
-    subtitle: Fill this form to create a new loopkit
+    title: Create new loop kit
+    subtitle: Fill this form to create a new loop kit
+  midikit:
+    title: Create new midi files it
+    subtitle: Fill this form to create a new midi files kit
 
 instrument:
   articulations: Articulations
@@ -28,8 +36,10 @@ instrument:
   styles: Styles
   timbres: Timbres
   samples: Samples
+  existing-sfz: Existing SFZ
 
 dialog:
+  create: Create
   save: Save
   cancel: Cancel
   default: Default
@@ -40,6 +50,7 @@ dialog:
   upload: Upload
   submit: Submit
   build: Build
+  error: Error
   import-from: Import from
   not-found: Not found
 
@@ -48,6 +59,10 @@ generic:
   name: Name
 
 dropzone:
-  drag-drop-folder: Drag & Drop folder
-  select-folder: Select folder
+  drag-drop-here: Drag and drop folder here, or Click to select folder
   remove: Remove
+  empty-folder: Folder is empty
+  errors:
+    single-folder-only: Only 1 folder accepted
+    subfolders-not-allowed: Subfolders are not allowed
+    wave-files-only: Only audio/wav files accepted
