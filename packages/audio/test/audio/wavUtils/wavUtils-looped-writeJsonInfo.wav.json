@@ -1,0 +1,1 @@
+{"streams":[{"codec_name":"pcm_s24le","sample_rate":"48000","channels":2,"bits_per_sample":24,"duration_ts":14302,"duration":"0.297958","nb_samples":28604,"max_volume":-1,"mean_volume":-13}],"format":{"format_name":"wav","duration":"0.297958","size":"86004"},"loop":{"start_sample":6660,"end_sample":14301,"start_time":0.13875,"end_time":0.2979375}}
