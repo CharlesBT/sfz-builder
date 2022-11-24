@@ -3,7 +3,7 @@ import { dialog } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import { is } from 'electron-util'
 import logger from 'electron-log'
-import config from '@electron/config.json'
+import config from '../config.json'
 
 autoUpdater.logger = logger
 
