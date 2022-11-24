@@ -1,6 +1,6 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
-// TODO: to remove
+// TODO: finish TS convertion for regex, assess replacement of regexp clone with native JS functions
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
