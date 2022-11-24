@@ -1,5 +1,0 @@
-/*---------------------------------------------------------------------------------------------
- *  SFZ definition file
- *  Copyright (c) All rights reserved.
- *--------------------------------------------------------------------------------------------*/
-<control> default_path=./samples/<global> global_label=sin_looped volume=-3 polyphony=32 loop_mode=loop_sustain trigger=attack amp_veltrack=20 bend_up=200 bend_down=-200 ampeg_attack=0 ampeg_decay=0 ampeg_sustain=100 ampeg_release=1.5<group> group_label=Layer_64 lovel=0 hivel=64<region> pitch_keycenter=60 lokey=55 hikey=66 loop_start=1032 loop_end=47999 sample=sin_looped_C3_031.wav<region> pitch_keycenter=72 lokey=67 hikey=78 loop_start=1032 loop_end=47999 sample=sin_looped_C4_031.wav<group> group_label=Layer_127 lovel=63 hivel=127<region> pitch_keycenter=60 lokey=55 hikey=66 loop_start=1032 loop_end=47999 sample=sin_looped_C3_095.wav<region> pitch_keycenter=72 lokey=67 hikey=78 loop_start=1032 loop_end=47999 sample=sin_looped_C4_095.wav

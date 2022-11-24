@@ -1,1 +1,0 @@
-{"programs":[],"streams":[{"codec_name":"pcm_f32le","sample_rate":"96000","channels":2,"bits_per_sample":32,"duration_ts":28604,"duration":"0.297958","nb_samples":57208,"max_volume":-1,"mean_volume":-13}],"format":{"format_name":"wav","duration":"0.297958","size":"240876"}}
