@@ -196,14 +196,14 @@ export class sfzBuilder {
         switch (elt.section) {
           case 'control':
           case 'global':
-            for (const [key, value] of Object.entries(elt.property)) {
+            for (const [key, value] of Object.entries(elt.props)) {
               patch.set(key, value as string)
             }
             break
           case 'group':
             {
               const group = new sfzGroup(`Layer_${patch.groups.length + 1}`)
-              for (const [key, value] of Object.entries(elt.property)) {
+              for (const [key, value] of Object.entries(elt.props)) {
                 group.set(key, value as string)
               }
               patch.groups.push(group)
@@ -211,7 +211,7 @@ export class sfzBuilder {
             break
           case 'region':
             {
-              const wav = filer.sanitizeName(elt.property.sample as string)
+              const wav = filer.sanitizeName(elt.props.sample as string)
               const region = new sfzRegion(wav)
 
               // get loop points from wav.json file if available
@@ -219,7 +219,7 @@ export class sfzBuilder {
               sfzUtils.setSfzLoopPoints(patch, region, info)
 
               // get region data from initial sfz file
-              for (const [key, value] of Object.entries(elt.property)) {
+              for (const [key, value] of Object.entries(elt.props)) {
                 key !== 'sample' ? region.set(key, <string | number>value) : null
               }
               patch.groups[patch.groups.length - 1].regions.push(region)

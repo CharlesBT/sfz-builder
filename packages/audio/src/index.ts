@@ -33,7 +33,7 @@ export type {
   VelocityTransformer,
   PatchProcessingFunction,
 } from './sfz/sfzBuilder.js'
-export type { sfzParserSection, sfzParserProperties } from './sfz/sfzParser.js'
+export type { sfzParsedSection, sfzParsedProps } from './sfz/sfzParser.js'
 export type { sfzPatchOptions, sfzPatchProps } from './sfz/sfzPatch.js'
 export type { sfzGroupProps } from './sfz/sfzGroup.js'
 export type { sfzRegionProps } from './sfz/sfzRegion.js'

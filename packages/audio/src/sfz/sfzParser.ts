@@ -1,15 +1,15 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
-export interface sfzParserSection {
+export interface sfzParsedSection {
   section: string
-  property: sfzParserProperties
+  props: sfzParsedProps
 }
 
-export interface sfzParserProperties {
+export interface sfzParsedProps {
   [key: string]: number | string | boolean
 }
 
-export function parseSfzSection(sfzText: string): sfzParserSection[] {
+export function parseSfzSection(sfzText: string): sfzParsedSection[] {
   // remove comments
   sfzText = sfzText.replace(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm, '').trim() // remove inline/block comments from code files
   /* combination of the followings :
@@ -30,7 +30,7 @@ export function parseSfzSection(sfzText: string): sfzParserSection[] {
   return matchesArray.map(function (res) {
     const section = res[1].toLowerCase()
     const kvs = [...res[2].matchAll(/(.*?)=(.*?)($|\s(?=.*?=))/gm)]
-    const prop: sfzParserProperties = {}
+    const prop: sfzParsedProps = {}
     kvs.forEach(function (kv) {
       const attribute = kv[1].replace(/\s/gm, '')
       const value = kv[2]
@@ -49,8 +49,8 @@ export function parseSfzSection(sfzText: string): sfzParserSection[] {
     if (prop.sample) prop.sample = (prop.sample as string).replace(/\\/g, '/')
     return {
       section: section,
-      property: prop,
-    } as sfzParserSection
+      props: prop,
+    } as sfzParsedSection
   })
 }
 
