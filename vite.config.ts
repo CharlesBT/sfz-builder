@@ -32,11 +32,13 @@ export default defineConfig({
         sourcemap: !!process.env.VSCODE_DEBUG,
       },
       plugins: [
+        /*
         alias([
           // `replacement` is recommented to use absolute path,
           // it will be automatically calculated as relative path.
-          // { find: '@electron', replacement: fileURLToPath(new URL('./electron', import.meta.url)) },
+          { find: '@electron', replacement: fileURLToPath(new URL('./electron', import.meta.url)) },
         ]),
+        */
         copy([{ from: 'electron/**/*.json', to: 'dist-electron' }]),
         ...(process.env.VSCODE_DEBUG
           ? [

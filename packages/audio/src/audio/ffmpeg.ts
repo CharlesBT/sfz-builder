@@ -3,13 +3,10 @@ import childProcess from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import util from 'node:util'
-import { regExpUtils } from '../utils/regExpUtils.js'
 import { config } from '../config/configProvider.js'
 import { packageDirectorySync } from 'pkg-dir'
 import _ from 'lodash'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import shellEscape from 'any-shell-escape'
+import { shellEscape } from '../utils/shellEscape.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ffmpegBin from 'ffmpeg-static-electron'
@@ -99,16 +96,15 @@ export class ffmpeg {
     const info = JSON.parse(
       await fs.promises.readFile(relativePosixInputFilepath + '.json', 'utf8'),
     )
-
-    const nbsamplesRe = _.clone(nbsamplesRegex)
-    const nb_samples = parseInt(regExpUtils.getFirstMatch(txt, nbsamplesRe).trim(), 10)
+    const [[, nb_samplesRe]] = [...txt.matchAll(_.clone(_.clone(nbsamplesRegex)))]
+    const nb_samples = parseInt(nb_samplesRe.trim(), 10)
     info.streams[0].nb_samples = nb_samples
 
     if (nb_samples > 0) {
-      const maxvolRe = _.clone(maxvolRegex)
-      const maxvolume = parseInt(regExpUtils.getFirstMatch(txt, maxvolRe).trim(), 10)
-      const meanvolRe = _.clone(meanvolRegex)
-      const meanvolume = parseInt(regExpUtils.getFirstMatch(txt, meanvolRe).trim(), 10)
+      const [[, maxvolRe]] = [...txt.matchAll(_.clone(_.clone(maxvolRegex)))]
+      const maxvolume = parseInt(maxvolRe.trim(), 10)
+      const [[, meanvolRe]] = [...txt.matchAll(_.clone(_.clone(meanvolRegex)))]
+      const meanvolume = parseInt(meanvolRe.trim(), 10)
       info.streams[0].max_volume = maxvolume
       info.streams[0].mean_volume = meanvolume
     }

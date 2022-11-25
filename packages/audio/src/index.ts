@@ -18,7 +18,6 @@ export { parseSfzSection } from './sfz/sfzParser.js'
 export { sfzPatch } from './sfz/sfzPatch.js'
 export { sfzRegion } from './sfz/sfzRegion.js'
 export { sfzUtils } from './sfz/sfzUtils.js'
-export { regExpUtils } from './utils/regExpUtils.js'
 
 // export types
 export type {
@@ -34,8 +33,10 @@ export type {
   VelocityTransformer,
   PatchProcessingFunction,
 } from './sfz/sfzBuilder.js'
-export type { sfzParserSection, sfzParserProperties } from './sfz/sfzParser.js'
-export type { sfzPatchOptions } from './sfz/sfzPatch.js'
+export type { sfzParsedSection, sfzParsedProps } from './sfz/sfzParser.js'
+export type { sfzPatchOptions, sfzPatchProps } from './sfz/sfzPatch.js'
+export type { sfzGroupProps } from './sfz/sfzGroup.js'
+export type { sfzRegionProps } from './sfz/sfzRegion.js'
 export type {
   sfzSettings,
   sfzDefaultPatchSettings,

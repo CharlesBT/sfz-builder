@@ -171,7 +171,7 @@ export class sfzUtils {
       switch (elt.section) {
         case 'region':
           {
-            for (const [key, value] of Object.entries(elt.property)) {
+            for (const [key, value] of Object.entries(elt.props)) {
               if (key.toLowerCase() === 'sample') {
                 const file = path.join(dir, default_path, value as string)
                 try {
@@ -197,7 +197,7 @@ export class sfzUtils {
     for (const elt of sfz) {
       switch (elt.section) {
         case 'control':
-          for (const [key, value] of Object.entries(elt.property)) {
+          for (const [key, value] of Object.entries(elt.props)) {
             if (key.toLowerCase() === 'default_path') {
               return value as string
             }

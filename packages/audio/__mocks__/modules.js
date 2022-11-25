@@ -1,5 +1,6 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
+// * kept as example, no more used since the @bms/common dependency has been removed
 import { vi } from 'vitest'
 
 vi.mock('@bms/common', async () => {

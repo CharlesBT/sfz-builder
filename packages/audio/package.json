@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
-    "any-shell-escape": "^0.1.1",
     "debug": "^4.3.4",
     "ffmpeg-static-electron": "^2.0.3",
     "ffprobe-static-electron": "^2.0.2",

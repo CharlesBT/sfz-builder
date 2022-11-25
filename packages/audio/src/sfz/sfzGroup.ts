@@ -1,13 +1,15 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 import type { sfzRegion } from './sfzRegion.js'
 
+export interface sfzGroupProps {
+  [key: string]: number | string | boolean | undefined
+  group_label?: string
+  lovel?: number
+  hivel?: number
+}
+
 export class sfzGroup {
-  sfz: {
-    [key: string]: number | string | boolean | undefined
-    group_label?: string
-    lovel?: number
-    hivel?: number
-  } = {
+  sfzProps: sfzGroupProps = {
     group_label: 'Layer 1',
     lovel: 0,
     hivel: 127,
@@ -20,17 +22,17 @@ export class sfzGroup {
   }
 
   set(key: string, value: string | number) {
-    this.sfz[key] = value
+    this.sfzProps[key] = value
   }
 
   get(key: string) {
-    return this.sfz[key]
+    return this.sfzProps[key]
   }
 
   build() {
     let r = `\r\r<group>`
-    for (const key of Object.keys(this.sfz)) {
-      key !== 'regions' ? (r += this.writeSfzAttribute(this.sfz, key)) : null
+    for (const key of Object.keys(this.sfzProps)) {
+      key !== 'regions' ? (r += this.writeSfzAttribute(this.sfzProps, key)) : null
     }
 
     // regions

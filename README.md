@@ -192,3 +192,7 @@ It can be understood as being no different from the Webpack solution
 ### Ubuntu snap GitHub build fails
 
 - Ubuntu snap GitHub build fails when using `"name": "@/bms/sfz-builder"` in package.json, it seems that npm workspace is not supported, use instead `"name": "sfz-builder"`
+
+### Build fails with style written in SCSS and compiled with SASS
+
+- workaround SASS removed and style stick to standard CSS
