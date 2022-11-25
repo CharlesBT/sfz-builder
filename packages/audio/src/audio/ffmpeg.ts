@@ -6,9 +6,7 @@ import util from 'node:util'
 import { config } from '../config/configProvider.js'
 import { packageDirectorySync } from 'pkg-dir'
 import _ from 'lodash'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import shellEscape from 'any-shell-escape'
+import { shellEscape } from '../utils/shellEscape.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ffmpegBin from 'ffmpeg-static-electron'
