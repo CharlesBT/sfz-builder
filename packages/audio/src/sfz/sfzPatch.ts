@@ -85,14 +85,14 @@ export class sfzPatch {
   }
 
   set(key: string, value: string | number | boolean) {
-    this.setObjectValue(this, key, value)
+    this.setObjectValue(this.sfz, key, value)
   }
 
   get(key: string) {
     return this.getObjectValue(this.sfz, key)
   }
 
-  getObjectValue<O extends sfzPatchOptions>(object: O, key: string) {
+  getObjectValue(object: sfzPatchOptions, key: string): sfzPatchOptions['key'] {
     const self = this as sfzPatch // Get a reference to your object.
     let value
     Object.keys(object).some(function (k) {
@@ -101,14 +101,14 @@ export class sfzPatch {
         return true
       }
       if (object[k] && typeof object[k] === 'object') {
-        value = self.getObjectValue(object[k] as O, key)
+        value = self.getObjectValue(object[k] as sfzPatchOptions, key)
         return value !== undefined
       }
     })
     return value
   }
 
-  setObjectValue(object: any, key: string, value: any) {
+  setObjectValue(object: sfzPatchOptions, key: string, value: sfzPatchOptions['key']) {
     const self = this as sfzPatch // Get a reference to your object.
     Object.keys(object).some(function (k) {
       if (k === key) {
@@ -116,7 +116,7 @@ export class sfzPatch {
         return true
       }
       if (object[k] && typeof object[k] === 'object') {
-        self.setObjectValue(object[k], key, value)
+        self.setObjectValue(object[k] as sfzPatchOptions, key, value)
       }
     })
   }
