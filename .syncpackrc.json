@@ -1,11 +1,6 @@
 {
   "versionGroups": [
     {
-      "dependencies": ["@bms/**"],
-      "packages": ["@bms/sfz-builder"]
-    },
-
-    {
       "packages": ["@bms/audio"],
       "dependencies": ["@bms/**"]
     }
