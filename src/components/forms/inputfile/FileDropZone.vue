@@ -152,7 +152,7 @@ function isWavFormat(files: File[]) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .dropzone {
   display: flex;
   flex-direction: column;
@@ -165,18 +165,19 @@ function isWavFormat(files: File[]) {
   border-radius: 15px;
   transition: 0.3s ease all;
   cursor: pointer;
-
-  .file-info {
-    vertical-align: middle;
-  }
-
-  .alert-box {
-    z-index: 2;
-    position: absolute;
-    background-color: rgb(var(--v-theme-alert-back));
-    pointer-events: auto;
-  }
 }
+
+.file-info {
+  vertical-align: middle;
+}
+
+.alert-box {
+  z-index: 2;
+  position: absolute;
+  background-color: rgb(var(--v-theme-alert-back));
+  pointer-events: auto;
+}
+
 .active-dropzone {
   border-color: rgb(var(--v-theme-primary));
   background-color: rgba(var(--v-theme-primary), 0.5);
