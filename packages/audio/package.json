@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
-    "debug": "^4.3.4",
     "any-shell-escape": "^0.1.1",
+    "debug": "^4.3.4",
     "ffmpeg-static-electron": "^2.0.3",
     "ffprobe-static-electron": "^2.0.2",
     "filenamify": "^5.1.1",
@@ -50,7 +50,7 @@
     "@types/adm-zip": "^0.5.0",
     "@types/debug": "^4.1.7",
     "@types/fs-extra": "^9.0.13",
-    "@types/lodash": "^4.14.189",
+    "@types/lodash": "^4.14.190",
     "@types/node": "^18.11.9",
     "@types/uuid": "^8.3.4",
     "@vitest/coverage-c8": "^0.24.5",
