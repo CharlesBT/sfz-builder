@@ -18,7 +18,6 @@ export { parseSfzSection } from './sfz/sfzParser.js'
 export { sfzPatch } from './sfz/sfzPatch.js'
 export { sfzRegion } from './sfz/sfzRegion.js'
 export { sfzUtils } from './sfz/sfzUtils.js'
-export { regExpUtils } from './utils/regExpUtils.js'
 
 // export types
 export type {
