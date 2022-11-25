@@ -34,7 +34,9 @@ export type {
   PatchProcessingFunction,
 } from './sfz/sfzBuilder.js'
 export type { sfzParserSection, sfzParserProperties } from './sfz/sfzParser.js'
-export type { sfzPatchOptions } from './sfz/sfzPatch.js'
+export type { sfzPatchOptions, sfzPatchProps } from './sfz/sfzPatch.js'
+export type { sfzGroupProps } from './sfz/sfzGroup.js'
+export type { sfzRegionProps } from './sfz/sfzRegion.js'
 export type {
   sfzSettings,
   sfzDefaultPatchSettings,

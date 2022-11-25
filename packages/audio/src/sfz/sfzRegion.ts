@@ -1,16 +1,18 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
+export interface sfzRegionProps {
+  [key: string]: number | string | boolean | undefined
+  pitch_keycenter?: number
+  lokey?: number
+  hikey?: number
+  loop_type?: string
+  loop_start?: number
+  loop_end?: number
+  sample?: string
+}
+
 export class sfzRegion {
-  sfz: {
-    [key: string]: number | string | boolean | undefined
-    pitch_keycenter?: number
-    lokey?: number
-    hikey?: number
-    loop_type?: string
-    loop_start?: number
-    loop_end?: number
-    sample?: string
-  } = {
+  sfzProps: sfzRegionProps = {
     pitch_keycenter: undefined,
     lokey: undefined,
     hikey: undefined,
@@ -27,17 +29,17 @@ export class sfzRegion {
   }
 
   set(key: string, value: string | number) {
-    this.sfz[key] = value
+    this.sfzProps[key] = value
   }
 
   get(key: string) {
-    return this.sfz[key]
+    return this.sfzProps[key]
   }
 
   build() {
     let r = `\r<region>`
-    for (const key of Object.keys(this.sfz)) {
-      r += this.writeSfzAttribute(this.sfz, key)
+    for (const key of Object.keys(this.sfzProps)) {
+      r += this.writeSfzAttribute(this.sfzProps, key)
     }
     return r
   }

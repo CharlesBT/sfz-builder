@@ -13,30 +13,32 @@ export interface sfzPatchOptions {
   [key: string]: number | string | boolean | object | undefined
 }
 
+export interface sfzPatchProps {
+  [key: string]: number | string | boolean | object | undefined
+  control?: { default_path?: string }
+  global?: {
+    [key: string]: number | string | undefined
+    global_label?: string
+    volume?: number
+    polyphony?: number
+    loop_mode?: string
+    trigger?: string
+    amp_veltrack?: number
+    bend_up?: number
+    bend_down?: number
+    ampeg_attack?: number
+    ampeg_decay?: number
+    ampeg_sustain?: number
+    ampeg_release?: number
+  }
+}
+
 export class sfzPatch {
   name?: string
   type?: string
   multi_velocity_layer?: boolean
 
-  sfz: {
-    [key: string]: number | string | boolean | object | undefined
-    control?: { default_path?: string }
-    global?: {
-      [key: string]: number | string | undefined
-      global_label?: string
-      volume?: number
-      polyphony?: number
-      loop_mode?: string
-      trigger?: string
-      amp_veltrack?: number
-      bend_up?: number
-      bend_down?: number
-      ampeg_attack?: number
-      ampeg_decay?: number
-      ampeg_sustain?: number
-      ampeg_release?: number
-    }
-  } = {
+  sfzProps: sfzPatchProps = {
     control: { default_path: undefined },
     global: {
       global_label: undefined,
@@ -76,7 +78,7 @@ export class sfzPatch {
     })
 
     for (const key of Object.keys(options)) {
-      this.setObjectValue(this.sfz, key, options[key])
+      this.setObjectValue(this.sfzProps, key, options[key])
     }
 
     this.setName(options.name as string)
@@ -85,11 +87,11 @@ export class sfzPatch {
   }
 
   set(key: string, value: string | number | boolean) {
-    this.setObjectValue(this.sfz, key, value)
+    this.setObjectValue(this.sfzProps, key, value)
   }
 
   get(key: string) {
-    return this.getObjectValue(this.sfz, key)
+    return this.getObjectValue(this.sfzProps, key)
   }
 
   getObjectValue(object: sfzPatchOptions, key: string): sfzPatchOptions['key'] {
@@ -124,7 +126,7 @@ export class sfzPatch {
   setName(name: string) {
     this.name = name
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    this.sfz.global!.global_label = name
+    this.sfzProps.global!.global_label = name
   }
 
   setType(type: string) {
@@ -134,10 +136,10 @@ export class sfzPatch {
       if (value?.toString().toLowerCase() === 'global.default') {
         // process default sfz value from config file
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        this.sfz.global![key] = sfzDefault.global[key]
+        this.sfzProps.global![key] = sfzDefault.global[key]
       } else {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        this.sfz.global![key] = value
+        this.sfzProps.global![key] = value
       }
     }
   }
@@ -148,22 +150,22 @@ export class sfzPatch {
     if (bool) {
       // multi velocity layer
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this.sfz.global!.amp_veltrack = sfzDefault.multi_velocity_layer__amp_veltrack
+      this.sfzProps.global!.amp_veltrack = sfzDefault.multi_velocity_layer__amp_veltrack
     } else {
       // single velocity layer
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this.sfz.global!.amp_veltrack = sfzDefault.single_velocity_layer__amp_veltrack
+      this.sfzProps.global!.amp_veltrack = sfzDefault.single_velocity_layer__amp_veltrack
     }
   }
 
   build() {
     // pre process data if needed
-    let path = this.sfz.control?.default_path
+    let path = this.sfzProps.control?.default_path
     if (typeof path !== 'undefined') {
       path.lastIndexOf('/') !== path.length - 1 ? (path += '/') : null
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    this.sfz.global!.global_label = this.name
+    this.sfzProps.global!.global_label = this.name
 
     // build sfz output
     let r = sfzHeader
@@ -183,7 +185,7 @@ export class sfzPatch {
 
   buildSection(section: string) {
     let r = ''
-    const node = this.sfz[section]
+    const node = this.sfzProps[section]
     if (typeof node !== 'undefined') {
       r += `\r\r<${section}>\r`
       for (const key of Object.keys(node)) {
