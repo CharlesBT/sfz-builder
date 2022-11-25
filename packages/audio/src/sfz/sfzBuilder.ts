@@ -142,10 +142,10 @@ export class sfzBuilder {
     for (const file of files) {
       const filename = path.parse(file).base
       try {
-        const [[, patchName]] = [
+        const [matches] = [
           ...filename.matchAll(new RegExp(options.process?.wav_regexp as string, 'g')),
         ]
-        const patchFile = path.join(path.parse(file).dir, patchName)
+        const patchFile = path.join(path.parse(file).dir, matches.groups?.name as string)
         if (patchFiles.find((elt) => elt === patchFile) === undefined) patchFiles.push(patchFile)
       } catch (err) {
         throw new Error(errorMessages.WrongWavFilename)
@@ -270,12 +270,12 @@ export class sfzBuilder {
     // process each files
     for (const wav of samples) {
       const filename = path.parse(wav).base
-      const [[, , rootkey, velocity]] = [
+      const [matches] = [
         ...filename.matchAll(new RegExp(options.process?.wav_regexp as string, 'g')),
       ]
-      let layer = parseInt(velocity, 10)
+      let layer = parseInt(<string>matches.groups?.velocity, 10)
       const region = new sfzRegion(filename)
-      region.set('pitch_keycenter', midiKeyMap.get(rootkey) as number)
+      region.set('pitch_keycenter', midiKeyMap.get(<string>matches.groups?.key) as number)
       // set lokey and hikey
       switch (keyIntervals[0]) {
         case 1:

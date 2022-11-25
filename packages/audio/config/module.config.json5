@@ -111,9 +111,10 @@
     },
     processing: 'sequential', // sequential (default) | parallel, select processing method for SFZ files (sequential = process patches sequentially, parallel = process patch in parallel)
     wav_regexp: {
-      samplerobot: '(.*)-[0-9]{3}-[0-9]{3}-[a-h]#?\\d.wav',
-      flstudio: '(.*)_([A-G]#?\\d)_([0-9]{1,3}).wav',
-      audiolayer: '(.*)_([A-G]#?-?\\d)_([0-9]{1,3}).wav',
+      // use ?<group> regexp syntax to capture corresponding group, used to capture name, key, velocity
+      samplerobot: '(?<name>.*)-[0-9]{3}-[0-9]{3}-[a-h]#?\\d.wav',
+      flstudio: '(?<name>.*)_(?<key>[A-G]#?\\d)_(?<velocity>[0-9]{1,3}).wav',
+      audiolayer: '(?<name>.*)_(?<key>[A-G]#?-?\\d)_(?<velocity>[0-9]{1,3}).wav',
     },
     header: [
       '/*---------------------------------------------------------------------------------------------',
