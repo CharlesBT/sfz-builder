@@ -12,7 +12,6 @@ importers:
       '@types/debug': ^4.1.7
       '@types/jsdom': ^20.0.1
       '@types/lodash': ^4.14.190
-      '@types/node': ^18.11.9
       '@vitejs/plugin-vue': ^3.2.0
       '@vitest/coverage-c8': ^0.24.5
       '@vueuse/core': ^9.6.0
@@ -59,7 +58,6 @@ importers:
       '@types/debug': 4.1.7
       '@types/jsdom': 20.0.1
       '@types/lodash': 4.14.190
-      '@types/node': 18.11.9
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
       '@vitest/coverage-c8': 0.24.5_jsdom@20.0.3
       '@vueuse/core': 9.6.0_vue@3.2.45
@@ -69,7 +67,7 @@ importers:
       electron-builder-notarize: 1.5.0_electron-builder@23.6.0
       jsdom: 20.0.3
       lodash: 4.17.21
-      pinia: 2.0.26_mgnvym7yiazkylwwogi5r767ue
+      pinia: 2.0.27_mgnvym7yiazkylwwogi5r767ue
       roboto-fontface: 0.10.0
       syncpack: 8.3.9
       ts-node: 10.9.1_wup25etrarvlqkprac7h35hj7u
@@ -97,7 +95,6 @@ importers:
       '@types/uuid': ^8.3.4
       '@vitest/coverage-c8': ^0.24.5
       adm-zip: ^0.5.9
-      cross-env: ^7.0.3
       debug: ^4.3.4
       ffmpeg-static-electron: ^2.0.3
       ffprobe-static-electron: ^2.0.2
@@ -131,7 +128,6 @@ importers:
       '@types/node': 18.11.9
       '@types/uuid': 8.3.4
       '@vitest/coverage-c8': 0.24.5
-      cross-env: 7.0.3
       ts-node: 10.9.1_wup25etrarvlqkprac7h35hj7u
       typescript: 4.9.3
       vitest: 0.24.5
@@ -629,7 +625,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 16.18.3
     dev: true
 
   /@types/lodash/4.14.190:
@@ -673,7 +669,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 16.18.3
     dev: true
 
   /@types/semver/7.3.13:
@@ -711,7 +707,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 16.18.3
     dev: true
     optional: true
 
@@ -3041,7 +3037,7 @@ packages:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
     dev: true
 
   /fs.realpath/1.0.0:
@@ -3961,8 +3957,8 @@ packages:
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
 
-  /minipass/3.3.4:
-    resolution: {integrity: sha512-I9WPbWHCGu8W+6k1ZiGpPu0GkoKBeorkfKNuAFBNS1HNFJvke82sxvI5bzcCNpWPorkOO5QQ+zomzzwRxejXiw==}
+  /minipass/3.3.6:
+    resolution: {integrity: sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==}
     engines: {node: '>=8'}
     dependencies:
       yallist: 4.0.0
@@ -3972,7 +3968,7 @@ packages:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.4
+      minipass: 3.3.6
       yallist: 4.0.0
     dev: true
 
@@ -4284,8 +4280,8 @@ packages:
     dev: true
     optional: true
 
-  /pinia/2.0.26_mgnvym7yiazkylwwogi5r767ue:
-    resolution: {integrity: sha512-tSxZNUcMGxQOvKZRjPKXxd2+/2NZhRF/CoYVE/+K6uE/Z3v1Oi4fcQFpxu5nMB1dCchjXUZ+lz0tBxV5ntwmQQ==}
+  /pinia/2.0.27_mgnvym7yiazkylwwogi5r767ue:
+    resolution: {integrity: sha512-nOnXP0OFeL8R4WjAHsterU+11vptda643gH02xKNtSCDPiRzVfRYodOLihLDoa0gL1KKuQKV+KOzEgdt3YvqEw==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
@@ -4894,7 +4890,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 3.3.4
+      minipass: 3.3.6
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
