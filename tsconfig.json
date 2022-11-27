@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext", "dom", "dom.iterable"],
-    "module": "ESNext",
+    "target": "es2021",
+    "lib": ["es2021", "dom", "dom.iterable"],
+    "module": "es2022",
     "moduleResolution": "node",
     "importHelpers": true,
     "jsx": "preserve",
