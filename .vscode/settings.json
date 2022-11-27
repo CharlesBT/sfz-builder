@@ -6,9 +6,12 @@
   "files.autoSave": "afterDelay",
   "files.defaultLanguage": "markdown",
   "search.exclude": {
+    "**/build": true,
+    "**/dist": true,
+    "**/coverage": true,
     "**/.cache": true,
     "**/.temp": true
-  },
+  }
 
   // Editor
   "editor.suggestSelection": "first",
