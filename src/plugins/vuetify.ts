@@ -1,7 +1,6 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 import '@mdi/font/css/materialdesignicons.css'
-import type { ThemeDefinition } from 'vuetify'
-import { createVuetify } from 'vuetify'
+import { createVuetify, type ThemeDefinition } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
