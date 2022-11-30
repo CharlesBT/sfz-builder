@@ -35,25 +35,25 @@ features :
 ## Folder structure
 
 ```
-    PROJECT
-    ├── _DEV // development todos, fixes, resources and archives
-    ├── .temp // folder dedicated to temporary storage
-    ├── .vscode // VSCode project settings
-    │   ├── extensions.json // recommended VSCode extension for this project
-    │   ├── launch.json // debugger config
-    │   ├── settings.json // VSCode project settings
-    │   └── tasks.json // VSCode tasks
-    ├── __mocks__ // mocks for test mocks
-    ├── config
-    │   └── app.config.json5 // application configuration file
-    ├── doc // directory to store all documentation
-    ├── logs // log file storage
-    ├── packages // custom dependencies symlinked to /node_modules
-    ├── src // source code
-    │   ├── modules
-    │   ├── services
-    │   └── utils
-    └── test // assets used for running tests
+PROJECT
+├── _DEV // development todos, fixes, resources and archives
+├── .temp // folder dedicated to temporary storage
+├── .vscode // VSCode project settings
+│   ├── extensions.json // recommended VSCode extension for this project
+│   ├── launch.json // debugger config
+│   ├── settings.json // VSCode project settings
+│   └── tasks.json // VSCode tasks
+├── __mocks__ // mocks for test mocks
+├── config
+│   └── app.config.json5 // application configuration file
+├── doc // directory to store all documentation
+├── logs // log file storage
+├── packages // custom dependencies symlinked to /node_modules
+├── src // source code
+│   ├── modules
+│   ├── services
+│   └── utils
+└── test // assets used for running tests
 ```
 
 ## The built directory structure
