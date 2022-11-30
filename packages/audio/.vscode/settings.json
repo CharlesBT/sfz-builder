@@ -2,6 +2,7 @@
   "search.exclude": {
     "**/build": true,
     "**/dist": true,
+    "**/docs": true,
     "**/coverage": true,
     "**/.cache": true,
     "**/.temp": true
