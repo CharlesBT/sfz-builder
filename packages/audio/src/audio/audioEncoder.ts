@@ -3,38 +3,9 @@
 import { config } from '../config/configProvider.js'
 import { filer } from '../filer/filer.js'
 import { ffmpeg } from './ffmpeg.js'
+import type { IAudioEncoderOptions, IBulkEncodeResult, EncoderFunction } from '../types/audio.js'
 
-export interface IAudioEncoderOptions {
-  timeout: number
-  maxsamplerate: number
-  maxbitdepth: number
-  fadeoutratio: number
-  headroom: number
-  lowvolumethreshold: number
-  ffmpeg: {
-    flac: string
-    ogg: string
-    wav_getvolume: string
-    wav_maxsamplerate: string
-    wav_maxbitdepth: string
-    wav_volume: string
-    wav_fadeout: string
-    wav_silence: string
-  }
-  ffprobe: {
-    info: string
-  }
-}
-export interface IBulkEncodeResult {
-  count: number
-  success: number
-  fail: number
-  time: number
-  result: boolean
-}
-export type EncoderFunction = (file: string) => void
-
-const encoderOptions = config.encoder as IAudioEncoderOptions
+const encoderOptions = <IAudioEncoderOptions>config.encoder
 const errorMessage = {
   isNotWavFile: 'Wrong file extension for FFmpeg encoding, wav file expected',
   LowVolumeLevelExceeded: 'WARNING: very low volume level < <value>dB',
@@ -97,13 +68,13 @@ export class audioEncoder {
       }
     }
     const time = Math.round((Date.now() - start) / 1000) // return execution time in seconds
-    return {
+    return <IBulkEncodeResult>{
       count: files.length,
       success: results.filter((elt) => elt.result === true).length,
       fail: results.filter((elt) => elt.result === false).length,
       time: time, // execution time in seconds
       result: results.every((elt) => elt.result === true) ? true : false,
-    } as IBulkEncodeResult
+    }
   }
 
   static async WAV2FLAC(file: string): Promise<void> {

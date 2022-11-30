@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid'
 import { filer } from './filer.js'
 import { config } from '../config/configProvider.js'
 
-const __pkgRoot = packageDirectorySync() as string
+const __pkgRoot = <string>packageDirectorySync()
 
 // path to tests ressources
 const testdir = path.join(__pkgRoot, config.folders.test, 'filer')

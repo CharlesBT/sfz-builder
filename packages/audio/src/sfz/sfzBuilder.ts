@@ -14,42 +14,23 @@ import { sfzGroup } from './sfzGroup.js'
 import { sfzPatch } from './sfzPatch.js'
 import { sfzRegion } from './sfzRegion.js'
 import { sfzUtils } from './sfzUtils.js'
-import type { sfzPatchOptions } from './sfzPatch.js'
+import type {
+  sfzPatchOptions,
+  sfzOptions,
+  sfzProcessOptions,
+  PatchProcessingFunction,
+} from '../types/sfz.js'
 
 const HEADROOM = Math.abs(config.encoder.headroom)
-
-export interface sfzOptions {
-  process?: sfzProcessOptions
-  patch?: sfzPatchOptions
-}
-
-export interface sfzProcessOptions {
-  [key: string]: number | string | boolean | Map<string, number> | VelocityTransformer | undefined
-  update_sfzfile: boolean
-  recursive: boolean
-  remove_empty_wavfile: boolean
-  autorename_wavfile: boolean
-  patchname_from: string
-  wav_regexp?: string
-  midikeymap: Map<string, number>
-  velocitytransformer?: VelocityTransformer
-  lowercase_extension: boolean
-  jsoninfo: boolean
-  convert_samplerate: boolean
-  convert_bitdepth: boolean
-  volume_reference: string
-  volume: number
-  trim: boolean
-  fadeout: boolean
-}
-export type VelocityTransformer = (value: number) => number
-export type PatchProcessingFunction = (patchFileName: string, options: sfzOptions) => Promise<void>
 
 export class sfzBuilder {
   // process all patches in inputPath folder
   static async processAllPatches(inputPath: string, options: sfzOptions = {}) {
-    _.defaults(options, { process: {} as sfzProcessOptions, patch: {} as sfzPatchOptions })
-    _.defaults(options.process as sfzProcessOptions, {
+    _.defaults(options, {
+      process: <sfzProcessOptions>{},
+      patch: <sfzPatchOptions>{},
+    })
+    _.defaults(<sfzProcessOptions>options.process, {
       update_sfzfile: true, // update initial sfz files
       recursive: false, // true for processing subfolders
       remove_empty_wavfile: false, // delete empty wave files
@@ -78,7 +59,7 @@ export class sfzBuilder {
 
     let patchFileNames: string[] | undefined = undefined
     let patchProcessingFunction: PatchProcessingFunction | undefined = undefined
-    switch (options.process?.patchname_from as string) {
+    switch (<string>options.process?.patchname_from) {
       case 'sfz':
         patchFileNames = await sfzBuilder.getPatchNamesFromSfzFiles(inputPath, options) // detect patches names in inputPath
         patchProcessingFunction = sfzBuilder.processPatchFromSfz
@@ -143,9 +124,9 @@ export class sfzBuilder {
       const filename = path.parse(file).base
       try {
         const [matches] = [
-          ...filename.matchAll(new RegExp(options.process?.wav_regexp as string, 'g')),
+          ...filename.matchAll(new RegExp(<string>options.process?.wav_regexp, 'g')),
         ]
-        const patchFile = path.join(path.parse(file).dir, matches.groups?.name as string)
+        const patchFile = path.join(path.parse(file).dir, <string>matches.groups?.name)
         if (patchFiles.find((elt) => elt === patchFile) === undefined) patchFiles.push(patchFile)
       } catch (err) {
         throw new Error(errorMessages.WrongWavFilename)
@@ -197,21 +178,21 @@ export class sfzBuilder {
           case 'control':
           case 'global':
             for (const [key, value] of Object.entries(elt.props)) {
-              patch.set(key, value as string)
+              patch.set(key, <string>value)
             }
             break
           case 'group':
             {
               const group = new sfzGroup(`Layer_${patch.groups.length + 1}`)
               for (const [key, value] of Object.entries(elt.props)) {
-                group.set(key, value as string)
+                group.set(key, <string>value)
               }
               patch.groups.push(group)
             }
             break
           case 'region':
             {
-              const wav = filer.sanitizeName(elt.props.sample as string)
+              const wav = filer.sanitizeName(<string>elt.props.sample)
               const region = new sfzRegion(wav)
 
               // get loop points from wav.json file if available
@@ -245,7 +226,7 @@ export class sfzBuilder {
 
     const patchName = path.parse(patchFileName).name
     const inputPath = path.parse(patchFileName).dir
-    const midiKeyMap = options.process?.midikeymap as Map<string, number>
+    const midiKeyMap = <Map<string, number>>options.process?.midikeymap
     const patch = new sfzPatch(options.patch)
     patch.name = patchName
 
@@ -257,7 +238,7 @@ export class sfzBuilder {
     const keyIntervals = sfzBuilder.getKeyIntervalsFromFiles(samples, options)
     // check that key intervals are constant :
     if (
-      (options.patch?.type as string) !== 'drumkit' &&
+      <string>options.patch?.type !== 'drumkit' &&
       !keyIntervals?.every((elt) => elt === keyIntervals[0])
     ) {
       console.info(errorMessages.KeyIntervalNotConstant)
@@ -270,33 +251,31 @@ export class sfzBuilder {
     // process each files
     for (const wav of samples) {
       const filename = path.parse(wav).base
-      const [matches] = [
-        ...filename.matchAll(new RegExp(options.process?.wav_regexp as string, 'g')),
-      ]
+      const [matches] = [...filename.matchAll(new RegExp(<string>options.process?.wav_regexp, 'g'))]
       let layer = parseInt(<string>matches.groups?.velocity, 10)
       const region = new sfzRegion(filename)
-      region.set('pitch_keycenter', midiKeyMap.get(<string>matches.groups?.key) as number)
+      region.set('pitch_keycenter', <number>midiKeyMap.get(<string>matches.groups?.key))
       // set lokey and hikey
       switch (keyIntervals[0]) {
         case 1:
-          region.set('lokey', region.get('pitch_keycenter') as number)
-          region.set('hikey', region.get('pitch_keycenter') as number)
+          region.set('lokey', <number>region.get('pitch_keycenter'))
+          region.set('hikey', <number>region.get('pitch_keycenter'))
           break
         case 3:
-          region.set('lokey', (region.get('pitch_keycenter') as number) - 1)
-          region.set('hikey', (region.get('pitch_keycenter') as number) + 1)
+          region.set('lokey', <number>region.get('pitch_keycenter') - 1)
+          region.set('hikey', <number>region.get('pitch_keycenter') + 1)
           break
         case 6:
-          region.set('lokey', (region.get('pitch_keycenter') as number) - 2)
-          region.set('hikey', (region.get('pitch_keycenter') as number) + 3)
+          region.set('lokey', <number>region.get('pitch_keycenter') - 2)
+          region.set('hikey', <number>region.get('pitch_keycenter') + 3)
           break
         case 12:
-          region.set('lokey', (region.get('pitch_keycenter') as number) - 5)
-          region.set('hikey', (region.get('pitch_keycenter') as number) + 6)
+          region.set('lokey', <number>region.get('pitch_keycenter') - 5)
+          region.set('hikey', <number>region.get('pitch_keycenter') + 6)
           break
         default:
-          region.set('lokey', region.get('pitch_keycenter') as number)
-          region.set('hikey', region.get('pitch_keycenter') as number)
+          region.set('lokey', <number>region.get('pitch_keycenter'))
+          region.set('hikey', <number>region.get('pitch_keycenter'))
       }
 
       // get loop points from wav.json file if available
@@ -336,7 +315,7 @@ export class sfzBuilder {
 
     const patchName = path.parse(patchFileName).name
     const inputPath = path.parse(patchFileName).dir
-    const midiKeyMap = options.process?.midikeymap as Map<string, number>
+    const midiKeyMap = <Map<string, number>>options.process?.midikeymap
 
     // process patch wav samples
     let samples = await filer.getFilesInFolder(patchFileName, 'wav')
@@ -345,7 +324,7 @@ export class sfzBuilder {
     // process each files
     let startkeyInit: number, startkey: number
     options.patch?.startkey
-      ? (startkeyInit = <number>midiKeyMap.get(options.patch?.startkey as string))
+      ? (startkeyInit = <number>midiKeyMap.get(<string>options.patch?.startkey))
       : (startkeyInit = 0)
 
     const slicedSamples = _.chunk(samples, 128 - startkeyInit)
@@ -361,8 +340,8 @@ export class sfzBuilder {
       for (const wav of slice) {
         const region = new sfzRegion(path.parse(wav).base)
         region.set('pitch_keycenter', startkey++)
-        region.set('lokey', region.get('pitch_keycenter') as number)
-        region.set('hikey', region.get('pitch_keycenter') as number)
+        region.set('lokey', <number>region.get('pitch_keycenter'))
+        region.set('hikey', <number>region.get('pitch_keycenter'))
 
         // get loop points from wav.json file if available
         const info = await wavUtils.getJsonInfo(wav)
@@ -390,7 +369,7 @@ export class sfzBuilder {
     patchFileName: string,
     patch: sfzPatch,
   ) {
-    const sampleFolderPath = path.join(patchFileName, patch.get('default_path') as string)
+    const sampleFolderPath = path.join(patchFileName, <string>patch.get('default_path'))
     const patchPath = path.normalize(path.join(patchFileName, './'))
     const samplePath = path.normalize(path.join(sampleFolderPath, './'))
     if (patchPath !== samplePath) {
@@ -409,8 +388,8 @@ export class sfzBuilder {
   static async getProcessPatchSamples(
     inputFiles: string[],
     options: sfzOptions = {
-      process: {} as sfzProcessOptions,
-      patch: {} as sfzPatchOptions,
+      process: <sfzProcessOptions>{},
+      patch: <sfzPatchOptions>{},
     },
   ) {
     // create temp folder
@@ -500,7 +479,7 @@ export class sfzBuilder {
             const peak = max_files_volume + volume
             peak > -HEADROOM ? (volume = Math.abs(max_files_volume) - Math.abs(HEADROOM)) : null
             tasks = files.map(async (file) => {
-              await wavUtils.processVolume(file, volume as number)
+              await wavUtils.processVolume(file, <number>volume)
             })
             await Promise.all(tasks)
           }
@@ -512,7 +491,7 @@ export class sfzBuilder {
               const max_file_volume = info.streams[0].max_volume
               const peak = max_file_volume + volume
               peak > -HEADROOM ? (volume = Math.abs(max_file_volume) - Math.abs(HEADROOM)) : null
-              await wavUtils.processVolume(file, volume as number)
+              await wavUtils.processVolume(file, <number>volume)
             })
             await Promise.all(tasks)
           }
@@ -574,8 +553,8 @@ export class sfzBuilder {
   }
 
   static getKeyIntervalsFromFiles(files: string[], options: sfzOptions) {
-    const wavRegExp = new RegExp(options.process?.wav_regexp as string, 'g')
-    const midiKeyMap = options.process?.midikeymap as Map<string, number>
+    const wavRegExp = new RegExp(<string>options.process?.wav_regexp, 'g')
+    const midiKeyMap = <Map<string, number>>options.process?.midikeymap
     const keyMap: number[] = []
     for (const file of files) {
       const filename = path.parse(file).base
@@ -597,7 +576,7 @@ export class sfzBuilder {
   }
 
   static getVelocityMapFromFiles(files: string[], options: sfzOptions) {
-    const wavRegExp = new RegExp(options.process?.wav_regexp as string, 'g')
+    const wavRegExp = new RegExp(<string>options.process?.wav_regexp, 'g')
     const velocityTransformer = options.process?.velocitytransformer
     const velocityMap = []
     for (const file of files) {
@@ -624,7 +603,7 @@ export class sfzBuilder {
   }
 
   static async removeEmptyFiles(files: string[], options: sfzOptions) {
-    if (options.process?.remove_empty_wavfile as boolean) {
+    if (<boolean>options.process?.remove_empty_wavfile) {
       // detect files to remove
       const filesToDelete: string[] = []
       let tasks = files.map(async (file) => {
@@ -646,7 +625,7 @@ export class sfzBuilder {
   }
 
   static async autoRenameFolder(inputPath: string, options: sfzOptions) {
-    if (options.process?.autorename_wavfile as boolean) {
+    if (<boolean>options.process?.autorename_wavfile) {
       // auto rename folders
       const directoryContent = await fsExtra.promises.readdir(inputPath, {
         withFileTypes: true,
@@ -665,7 +644,7 @@ export class sfzBuilder {
   }
 
   static async autoRenameWavFiles(inputPath: string, options: sfzOptions) {
-    if (options.process?.autorename_wavfile as boolean) {
+    if (<boolean>options.process?.autorename_wavfile) {
       // auto rename files
       const directoryContent = await fsExtra.promises.readdir(inputPath, {
         withFileTypes: true,

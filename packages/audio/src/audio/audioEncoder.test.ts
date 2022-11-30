@@ -8,7 +8,7 @@ import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
 import { audioEncoder } from './audioEncoder.js'
 
-const __pkgRoot = packageDirectorySync() as string
+const __pkgRoot = <string>packageDirectorySync()
 
 const MAX_SAMPLERATE = config.encoder.maxsamplerate
 const MAX_BITDEPTH = config.encoder.maxbitdepth

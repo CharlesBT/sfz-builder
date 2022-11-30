@@ -1,15 +1,6 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
-export interface sfzRegionProps {
-  [key: string]: number | string | boolean | undefined
-  pitch_keycenter?: number
-  lokey?: number
-  hikey?: number
-  loop_type?: string
-  loop_start?: number
-  loop_end?: number
-  sample?: string
-}
+import type { sfzRegionProps } from '../types/sfz.js'
 
 export class sfzRegion {
   sfzProps: sfzRegionProps = {
@@ -45,7 +36,7 @@ export class sfzRegion {
   }
 
   writeSfzAttribute<S, A>(section: S, attribute: A) {
-    const t = section[attribute as keyof S]
+    const t = section[<keyof S>attribute]
     if (typeof t !== 'undefined') {
       return ` ${attribute}=${t}`
     } else {

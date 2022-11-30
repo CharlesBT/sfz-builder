@@ -4,34 +4,15 @@ import _ from 'lodash'
 import { config } from '../config/configProvider.js'
 import { sfzHeader } from './sfzHeader.js'
 import type { sfzGroup } from './sfzGroup.js'
-import type { sfzDefaultPatchSettings, sfzPatchTemplateSettings } from './sfzSettings.js'
+import type {
+  sfzPatchOptions,
+  sfzPatchProps,
+  sfzDefaultPatchSettings,
+  sfzPatchTemplateSettings,
+} from '../types/sfz.js'
 
-const sfzDefault = config.sfz.default.patch as sfzDefaultPatchSettings
-const sfzTemplates = config.sfz.global_templates as sfzPatchTemplateSettings
-
-export interface sfzPatchOptions {
-  [key: string]: number | string | boolean | object | undefined
-}
-
-export interface sfzPatchProps {
-  [key: string]: number | string | boolean | object | undefined
-  control?: { default_path?: string }
-  global?: {
-    [key: string]: number | string | undefined
-    global_label?: string
-    volume?: number
-    polyphony?: number
-    loop_mode?: string
-    trigger?: string
-    amp_veltrack?: number
-    bend_up?: number
-    bend_down?: number
-    ampeg_attack?: number
-    ampeg_decay?: number
-    ampeg_sustain?: number
-    ampeg_release?: number
-  }
-}
+const sfzDefault = <sfzDefaultPatchSettings>config.sfz.default.patch
+const sfzTemplates = <sfzPatchTemplateSettings>config.sfz.global_templates
 
 export class sfzPatch {
   name?: string
@@ -81,9 +62,9 @@ export class sfzPatch {
       this.setObjectValue(this.sfzProps, key, options[key])
     }
 
-    this.setName(options.name as string)
-    this.setType(options.type as string) // update patch setting according to instrument type
-    this.setMultiVelocityLayer(options.multi_velocity_layer as boolean)
+    this.setName(<string>options.name)
+    this.setType(<string>options.type) // update patch setting according to instrument type
+    this.setMultiVelocityLayer(<boolean>options.multi_velocity_layer)
   }
 
   set(key: string, value: string | number | boolean) {
@@ -95,7 +76,7 @@ export class sfzPatch {
   }
 
   getObjectValue(object: sfzPatchOptions, key: string): sfzPatchOptions['key'] {
-    const self = this as sfzPatch // Get a reference to your object.
+    const self = <sfzPatch>this // Get a reference to your object.
     let value
     Object.keys(object).some(function (k) {
       if (k === key) {
@@ -103,7 +84,7 @@ export class sfzPatch {
         return true
       }
       if (object[k] && typeof object[k] === 'object') {
-        value = self.getObjectValue(object[k] as sfzPatchOptions, key)
+        value = self.getObjectValue(<sfzPatchOptions>object[k], key)
         return value !== undefined
       }
     })
@@ -111,14 +92,14 @@ export class sfzPatch {
   }
 
   setObjectValue(object: sfzPatchOptions, key: string, value: sfzPatchOptions['key']) {
-    const self = this as sfzPatch // Get a reference to your object.
+    const self = <sfzPatch>this // Get a reference to your object.
     Object.keys(object).some(function (k) {
       if (k === key) {
         object[k] = value
         return true
       }
       if (object[k] && typeof object[k] === 'object') {
-        self.setObjectValue(object[k] as sfzPatchOptions, key, value)
+        self.setObjectValue(<sfzPatchOptions>object[k], key, value)
       }
     })
   }
@@ -196,7 +177,7 @@ export class sfzPatch {
   }
 
   writeSfzAttribute<S, A>(section: S, attribute: A) {
-    const t = section[attribute as keyof S]
+    const t = section[<keyof S>attribute]
     if (typeof t !== 'undefined') {
       return ` ${attribute}=${t}`
     } else {

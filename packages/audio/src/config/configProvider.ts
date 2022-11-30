@@ -20,7 +20,7 @@ function readConfigFromFile(file: string): IConfig {
 }
 
 function readConfig() {
-  const configFile = join(packageDirectorySync() as string, 'config/module.config.json5')
+  const configFile = join(<string>packageDirectorySync(), 'config/module.config.json5')
   return readConfigFromFile(configFile)
 }
 

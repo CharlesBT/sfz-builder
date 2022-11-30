@@ -1,13 +1,6 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
-export interface sfzParsedSection {
-  section: string
-  props: sfzParsedProps
-}
-
-export interface sfzParsedProps {
-  [key: string]: number | string | boolean
-}
+import type { sfzParsedSection, sfzParsedProps } from '../types/sfz.js'
 
 export function parseSfzSection(sfzText: string): sfzParsedSection[] {
   // remove comments
@@ -46,11 +39,11 @@ export function parseSfzSection(sfzText: string): sfzParsedSection[] {
       }
     })
 
-    if (prop.sample) prop.sample = (prop.sample as string).replace(/\\/g, '/')
-    return {
+    if (prop.sample) prop.sample = (<string>prop.sample).replace(/\\/g, '/')
+    return <sfzParsedSection>{
       section: section,
       props: prop,
-    } as sfzParsedSection
+    }
   })
 }
 

@@ -4,8 +4,7 @@ import { config } from '../config/configProvider.js'
 import _ from 'lodash'
 import { midiKeyMap } from './midiKeyMap_FLStudio.js'
 import { sfzBuilder } from './sfzBuilder.js'
-import type { sfzOptions, sfzProcessOptions } from './sfzBuilder.js'
-import type { sfzPatchOptions } from './sfzPatch.js'
+import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 
 // const midiVelocityMap = new Map([
 //     [1, [127]],

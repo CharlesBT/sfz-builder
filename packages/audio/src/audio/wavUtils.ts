@@ -6,10 +6,10 @@ import { config } from '../config/configProvider.js'
 import { filer } from '../filer/filer.js'
 import { WaveFile } from 'wavefile'
 import _ from 'lodash'
-
 import { audioEncoder } from './audioEncoder.js'
 import { errorMessages } from './errorMessages.js'
 import { ffmpeg } from './ffmpeg.js'
+import type { IWavInfo, IWavInfoLoopPoint, smpl } from '../types/audio.js'
 
 const MAX_SAMPLERATE = config.encoder.maxsamplerate
 const MAX_BITDEPTH = config.encoder.maxbitdepth
@@ -22,18 +22,6 @@ const FFMPEG_WAV_FADEOUT = config.encoder.ffmpeg.wav_fadeout
 const FFMPEG_WAV_SILENCE = config.encoder.ffmpeg.wav_silence
 const LOW_VOLUME_THRESHOLD = config.encoder.lowvolumethreshold
 
-export interface IWavInfo {
-  [key: string]: any
-}
-export interface IWavInfoLoopPoint {
-  start_sample: number
-  end_sample: number
-  start_time: number
-  end_time: number
-}
-export type LoopPoint = { dwStart: number; dwEnd: number }
-export type smpl = { loops: LoopPoint[]; dwNumSampleLoops?: number }
-
 export class wavUtils {
   // write Json file for WAV files containing loop points, keep historic of previous processings
   static async writeJsonInfo(file: string) {
@@ -45,7 +33,7 @@ export class wavUtils {
     } catch {}
 
     await ffmpeg.writeJsonInfo(file)
-    const info = (await wavUtils.getJsonInfo(file)) as IWavInfo
+    const info = <IWavInfo>await wavUtils.getJsonInfo(file)
 
     // remove prgram entry if exists
     if (info.programs) {
@@ -56,7 +44,7 @@ export class wavUtils {
     const loop: Partial<IWavInfoLoopPoint> = {}
     const samplerate = parseInt(info.streams[0].sample_rate, 10)
     const wav = new WaveFile(await fs.promises.readFile(file))
-    const wavloop = (wav.smpl as smpl).loops[0]
+    const wavloop = (<smpl>wav.smpl).loops[0]
     if (wavloop !== undefined) {
       loop.start_sample = wavloop.dwStart
       loop.end_sample = wavloop.dwEnd
@@ -100,7 +88,7 @@ export class wavUtils {
   // get Json file info from WAV files containing loop points
   static async getJsonInfo(file: string): Promise<IWavInfo> {
     const data = await fs.promises.readFile(file + '.json', 'utf8')
-    return JSON.parse(data) as IWavInfo
+    return <IWavInfo>JSON.parse(data)
   }
 
   static async addProcessToJsonInfo(file: string, processname: string) {
@@ -129,7 +117,7 @@ export class wavUtils {
   // returns TRUE when wav file contains sample loop points (smpl.loop)
   static async wavHasLoop(file: string) {
     const wav = new WaveFile(await fs.promises.readFile(file))
-    const sampleloop = (wav.smpl as smpl).loops[0]
+    const sampleloop = (<smpl>wav.smpl).loops[0]
     if (sampleloop === undefined) {
       return false
     } else {
@@ -218,7 +206,7 @@ export class wavUtils {
   // edit WAV file and remove all loopint points in smpl.loops
   static async removeLoops(file: string) {
     const wav = new WaveFile(await fs.promises.readFile(file))
-    const t = wav.smpl as smpl
+    const t = <smpl>wav.smpl
     t.dwNumSampleLoops = 0 // remove loops
     await fs.promises.writeFile(file, wav.toBuffer())
   }
