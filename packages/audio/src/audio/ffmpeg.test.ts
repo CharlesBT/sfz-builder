@@ -8,7 +8,7 @@ import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
 import { ffmpeg } from './ffmpeg.js'
 
-const __pkgRoot = packageDirectorySync() as string
+const __pkgRoot = <string>packageDirectorySync()
 
 // path to tests ressources
 const testdir = join(__pkgRoot, config.folders.test, 'audio/audioEncoder')

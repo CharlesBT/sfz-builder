@@ -7,7 +7,7 @@ import { errorMessages } from './errorMessages.js'
 import { parseSfzSection } from './sfzParser.js'
 import { sfzPatch } from './sfzPatch.js'
 import { sfzRegion } from './sfzRegion.js'
-import type { IWavInfo } from '../audio/wavUtils.js'
+import type { IWavInfo } from '../types/audio.js'
 
 export class sfzUtils {
   // returns JSON formated document from sfz file
@@ -32,7 +32,7 @@ export class sfzUtils {
 
     const data = patch.build()
     const dir = path.resolve(folderPath)
-    const filename = filer.sanitizeName(patch.name as string)
+    const filename = filer.sanitizeName(<string>patch.name)
     const file = path.join(dir, `${filename}.sfz`)
     await fs.promises.writeFile(file, data, {
       encoding: 'utf8',
@@ -173,7 +173,7 @@ export class sfzUtils {
           {
             for (const [key, value] of Object.entries(elt.props)) {
               if (key.toLowerCase() === 'sample') {
-                const file = path.join(dir, default_path, value as string)
+                const file = path.join(dir, default_path, <string>value)
                 try {
                   await fs.promises.access(file)
                   results.push({ file: file, result: true })
@@ -199,7 +199,7 @@ export class sfzUtils {
         case 'control':
           for (const [key, value] of Object.entries(elt.props)) {
             if (key.toLowerCase() === 'default_path') {
-              return value as string
+              return <string>value
             }
           }
           break

@@ -15,6 +15,9 @@ release
 # .env.*.local
 *.local
 
+# Docs
+!docs
+
 # Logs
 logs
 *.log

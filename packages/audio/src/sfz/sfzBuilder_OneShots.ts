@@ -3,13 +3,15 @@
 import _ from 'lodash'
 import { midiKeyMap } from './midiKeyMap.js'
 import { sfzBuilder } from './sfzBuilder.js'
-import type { sfzOptions, sfzProcessOptions } from './sfzBuilder.js'
-import type { sfzPatchOptions } from './sfzPatch.js'
+import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 
 export class sfzBuilder_OneShots {
   static async process(
     inputPath: string,
-    options: sfzOptions = { process: {} as sfzProcessOptions, patch: {} as sfzPatchOptions },
+    options: sfzOptions = {
+      process: <sfzProcessOptions>{},
+      patch: <sfzPatchOptions>{},
+    },
   ) {
     _.defaults(options, { process: {}, patch: {} })
     _.defaults(options.process, {

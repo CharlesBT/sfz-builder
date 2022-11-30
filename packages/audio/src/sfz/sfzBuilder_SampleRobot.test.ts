@@ -9,10 +9,9 @@ import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
 import { sfzBuilder_SampleRobot } from './sfzBuilder_SampleRobot.js'
 import { sfzUtils } from './sfzUtils.js'
-import type { sfzOptions, sfzProcessOptions } from './sfzBuilder.js'
-import type { sfzPatchOptions } from './sfzPatch.js'
+import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 
-const __pkgRoot = packageDirectorySync() as string
+const __pkgRoot = <string>packageDirectorySync()
 
 // path to tests ressources
 const testdir = path.join(__pkgRoot, config.folders.test, 'audio/sfz/sfzBuilder_SampleRobot')
@@ -34,7 +33,7 @@ describe('sfzBuilder_SampleRobot: should create sfz patch file for nolooped and 
     await filer.copy(path.join(testdir, patchName), path.join(tmpdir, patchName))
 
     const OPTIONS: sfzOptions = {
-      process: {
+      process: <sfzProcessOptions>{
         recursive: false, // true for processing subfolders
         lowercase_extension: true,
         jsoninfo: true,
@@ -43,12 +42,12 @@ describe('sfzBuilder_SampleRobot: should create sfz patch file for nolooped and 
         volume: 0,
         trim: false,
         fadeout: false,
-      } as sfzProcessOptions,
-      patch: {
+      },
+      patch: <sfzPatchOptions>{
         type: 'pad', // drumkit | instrument | piano | key | bass | guitar | pad | string | brass
         multi_velocity_layer: true,
         default_path: './samples/',
-      } as sfzPatchOptions,
+      },
     }
     const source = path.join(tmpdir, patchName)
     await sfzBuilder_SampleRobot.process(source, OPTIONS)

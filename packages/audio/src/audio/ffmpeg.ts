@@ -14,7 +14,7 @@ import ffmpegBin from 'ffmpeg-static-electron'
 // @ts-ignore
 import ffprobeBin from 'ffprobe-static-electron'
 
-const __pkgRoot = packageDirectorySync() as string
+const __pkgRoot = <string>packageDirectorySync()
 
 const FFMPEG_POSIX_RELATIVEPATH = path
   .relative(__pkgRoot, ffmpegBin.path)
