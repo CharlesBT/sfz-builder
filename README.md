@@ -23,7 +23,7 @@ features :
 - all wave file processing is managed by ffmpeg
 
 - wav processes :
-  - filename sanitization to be conpliante on all operating systems
+  - filename sanitization to be compliant on all operating systems
   - json info file generation
   - encoding samples to 24Bits / 48kHz
   - trim
@@ -32,82 +32,20 @@ features :
 
 ## Configuration
 
-Default setting for encoding, instruments templates and SFZ default values are defined in `./config/app.config.jsonc`
-
-## sfzBuilder_FLStudio
-
-usage :
-
-```js
-const OPTIONS = {
-  process: {
-    lowercase_extension: true,
-    jsoninfo: true,
-    convert_samplerate: true,
-    convert_bitdepth: true,
-    volume: 12,
-    trim: true,
-    fadeout: true,
-  },
-  patch: {
-    type: 'piano', // drumkit | instrument | piano | key | bass | guitar | pad | string | brass
-    multi_velocity_layer: true,
-    // default_path: './samples/',
-    // volume: 0,
-    // polyphony: 32,
-    // loop_mode: 'no_loop'', // no_loop (default) | one_shot | loop_continuous | loop_sustain
-    // amp_veltrack: 0, // 100 | 75 | 50 | 0
-    // bend_up: 200,
-    // bend_down: -200,
-    // ampeg_attack: 0,
-    // ampeg_decay: 0,
-    // ampeg_sustain: 100,
-    // ampeg_release: 1.0 // 0.5 | 1.0 | 1.2 | 1.5}
-  },
-}
-
-await sfzBuilder_FLStudio.process(FLSTUDIO_DIR, OPTIONS)
-```
-
-regex to extract patch name from WAV files :
-
-processing steps :
-
-```regex
-/(.*)_([A-G]#?\d)_([0-9]{1,3}).wav/g
-```
-
-## sfzBuilder_SampleRobot
-
-regex to extract patch name from WAV files :
-
-```regex
-/(.*)-[0-9]{3}-[0-9]{3}-[a-h]#?\d.wav/g
-```
-
-## sfzBuilder_AudioLayer
-
-regex to extract patch name from WAV files :
-
-```regex
-/(.*)_([A-G]#?-?\d)_([0-9]{1,3}).wav/g
-```
-
-## sfzBuilder_Logic
-
 ## Folder structure
 
+```
     PROJECT
-    ├── _DEV // development todos, fixes, ressources and archives
-    ├── .temp // folder dedidacted to temporary storage
+    ├── _DEV // development todos, fixes, resources and archives
+    ├── .temp // folder dedicated to temporary storage
     ├── .vscode // VSCode project settings
-    │   ├── extensions.json // recommanded VSCode extension for this project
+    │   ├── extensions.json // recommended VSCode extension for this project
     │   ├── launch.json // debugger config
-    │   ├── settings.json // VSCode projet settings
+    │   ├── settings.json // VSCode project settings
     │   └── tasks.json // VSCode tasks
-    ├── bin // executable and script folder, powershell & mongo scripts
+    ├── __mocks__ // mocks for test mocks
     ├── config
-    │   └── app.config.jsonc // application configuration file
+    │   └── app.config.json5 // application configuration file
     ├── doc // directory to store all documentation
     ├── logs // log file storage
     ├── packages // custom dependencies symlinked to /node_modules
@@ -116,9 +54,11 @@ regex to extract patch name from WAV files :
     │   ├── services
     │   └── utils
     └── test // assets used for running tests
+```
 
 ## The built directory structure
 
+```
 ├─┬ dist-electron
 │ ├─┬ main
 │ │ └── index.js > Electron-Main
@@ -126,6 +66,7 @@ regex to extract patch name from WAV files :
 │ └── index.js > Preload-Scripts
 ├─┬ dist
 │ └── index.html > Electron-Renderer
+```
 
 ---
 
