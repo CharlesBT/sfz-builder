@@ -1,4 +1,5 @@
 {
   "entryPoints": ["./src/index.ts", "./electron/index.ts"],
+  "exclude": ["**/*+(.spec|.test|.e2e).ts"],
   "out": "./docs"
 }
