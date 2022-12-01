@@ -32,9 +32,6 @@ pnpm-debug.log*
 # VITEST
 coverage
 
-# DOCS
-docs
-
 # MACOSX
 .DS_Store
 
