@@ -12,7 +12,7 @@
     "**/coverage": true,
     "**/.cache": true,
     "**/.temp": true
-  }
+  },
 
   // Editor
   "editor.suggestSelection": "first",
