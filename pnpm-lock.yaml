@@ -30,6 +30,7 @@ importers:
       lodash: ^4.17.21
       pinia: ^2.0.26
       roboto-fontface: '*'
+      serve: ^14.1.2
       syncpack: ^8.3.9
       ts-node: ^10.9.1
       typedoc: ^0.23.21
@@ -72,7 +73,8 @@ importers:
       lodash: 4.17.21
       pinia: 2.0.27_mgnvym7yiazkylwwogi5r767ue
       roboto-fontface: 0.10.0
-      syncpack: 8.4.10
+      serve: 14.1.2
+      syncpack: 8.4.11
       ts-node: 10.9.1_eoe7put6ewfbqpy6gs36tihw6y
       typedoc: 0.23.21_typescript@4.9.3
       typescript: 4.9.3
@@ -4734,7 +4736,7 @@ packages:
     resolution: {integrity: sha512-JL39c60XlzCVgNrO+qq68FoNb56w/m7JYvGR2jT5iR1xBrUA3Mfx5Twk5rqTThPmQKMWydGmq8oFtDlxfrmxnQ==}
     dependencies:
       rc: 1.2.8
-      safe-buffer: 5.1.2
+      safe-buffer: 5.2.1
     dev: true
 
   /registry-url/3.1.0:
@@ -4836,6 +4838,10 @@ packages:
 
   /safe-buffer/5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
+
+  /safe-buffer/5.2.1:
+    resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
+    dev: true
 
   /safe-regex-test/1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
@@ -5198,8 +5204,8 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /syncpack/8.4.10:
-    resolution: {integrity: sha512-Yt7mYGEAz8uLPDQdgd5YrfO+B/y7RuZhPJ07GQhnaEIuuTeseM58z+Z3SEBunq3uTeV3qlRhIoC3uIeXkanVFQ==}
+  /syncpack/8.4.11:
+    resolution: {integrity: sha512-qYhkDvPr0goemEqykGaUKF4TD9sRlPQXNy0wn60SXsatAVaZPrNn/nFtfYBLGBp4gNlrpVzixnzBOTihQZxhmg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
