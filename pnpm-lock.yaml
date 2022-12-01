@@ -9,6 +9,7 @@ importers:
       '@charlesbt/prettier-config-custom': latest
       '@intlify/unplugin-vue-i18n': ^0.7.3
       '@mdi/font': ^7.0.96
+      '@microsoft/tsdoc': ^0.14.2
       '@types/debug': ^4.1.7
       '@types/jsdom': ^20.0.1
       '@types/lodash': ^4.14.190
@@ -31,6 +32,7 @@ importers:
       roboto-fontface: '*'
       syncpack: ^8.3.9
       ts-node: ^10.9.1
+      typedoc: ^0.23.21
       typescript: ^4.9.3
       vite: ^3.2.4
       vite-electron-plugin: ^0.5.2
@@ -39,7 +41,7 @@ importers:
       vue: ^3.2.45
       vue-i18n: ^9.2.2
       vue-router: ^4.1.6
-      vue-tsc: ^1.0.9
+      vue-tsc: ^1.0.10
       vue3-dropzone: ^2.0.1
       vuetify: ^3.0.2
     dependencies:
@@ -55,14 +57,15 @@ importers:
       '@charlesbt/prettier-config-custom': 1.0.3
       '@intlify/unplugin-vue-i18n': 0.7.3_rwzkaywi37sas3pqc5zpwat3ca
       '@mdi/font': 7.0.96
+      '@microsoft/tsdoc': 0.14.2
       '@types/debug': 4.1.7
       '@types/jsdom': 20.0.1
-      '@types/lodash': 4.14.190
+      '@types/lodash': 4.14.191
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
       '@vitest/coverage-c8': 0.24.5_jsdom@20.0.3
       '@vueuse/core': 9.6.0_vue@3.2.45
       cross-env: 7.0.3
-      electron: 21.3.1
+      electron: 21.3.3
       electron-builder: 23.6.0
       electron-builder-notarize: 1.5.0_electron-builder@23.6.0
       jsdom: 20.0.3
@@ -70,9 +73,10 @@ importers:
       pinia: 2.0.27_mgnvym7yiazkylwwogi5r767ue
       roboto-fontface: 0.10.0
       syncpack: 8.4.10
-      ts-node: 10.9.1_wup25etrarvlqkprac7h35hj7u
+      ts-node: 10.9.1_eoe7put6ewfbqpy6gs36tihw6y
+      typedoc: 0.23.21_typescript@4.9.3
       typescript: 4.9.3
-      vite: 3.2.4_@types+node@18.11.9
+      vite: 3.2.4_@types+node@18.11.10
       vite-electron-plugin: 0.5.2_esbuild@0.15.16
       vite-plugin-vuetify: 1.0.0_nrhyzgwp3u7z7ihvmb5mpqssda
       vitest: 0.24.5_jsdom@20.0.3
@@ -127,11 +131,11 @@ importers:
       '@types/adm-zip': 0.5.0
       '@types/debug': 4.1.7
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.190
-      '@types/node': 18.11.9
+      '@types/lodash': 4.14.191
+      '@types/node': 18.11.10
       '@types/uuid': 8.3.4
       '@vitest/coverage-c8': 0.24.5
-      ts-node: 10.9.1_wup25etrarvlqkprac7h35hj7u
+      ts-node: 10.9.1_eoe7put6ewfbqpy6gs36tihw6y
       typedoc: 0.23.21_typescript@4.9.3
       typescript: 4.9.3
       vitest: 0.24.5
@@ -576,7 +580,7 @@ packages:
   /@types/adm-zip/0.5.0:
     resolution: {integrity: sha512-FCJBJq9ODsQZUNURo5ILAQueuA8WJhRvuihS3ke2iI25mJlfV2LK8jG2Qj2z2AWg8U0FtWWqBHVRetceLskSaw==}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
     dev: true
 
   /@types/chai-subset/1.3.3:
@@ -598,7 +602,7 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
     dev: true
 
   /@types/glob/7.2.0:
@@ -606,7 +610,7 @@ packages:
     requiresBuild: true
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
     dev: true
     optional: true
 
@@ -617,7 +621,7 @@ packages:
   /@types/jsdom/20.0.1:
     resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       '@types/tough-cookie': 4.0.2
       parse5: 7.1.2
     dev: true
@@ -633,11 +637,11 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 16.18.3
+      '@types/node': 16.18.4
     dev: true
 
-  /@types/lodash/4.14.190:
-    resolution: {integrity: sha512-5iJ3FBJBvQHQ8sFhEhJfjUP+G+LalhavTkYyrAYqz5MEJG+erSv0k9KJLb6q7++17Lafk1scaTIFXcMJlwK8Mw==}
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/minimatch/5.1.2:
@@ -649,12 +653,12 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
-  /@types/node/16.18.3:
-    resolution: {integrity: sha512-jh6m0QUhIRcZpNv7Z/rpN+ZWXOicUUQbSoWks7Htkbb9IjFQj4kzcX/xFCkjstCj5flMsN8FiSvt+q+Tcs4Llg==}
+  /@types/node/16.18.4:
+    resolution: {integrity: sha512-9qGjJ5GyShZjUfx2ArBIGM+xExdfLvvaCyQR0t6yRXKPcWCVYF/WemtX/uIU3r7FYECXRXkIiw2Vnhn6y8d+pw==}
     dev: true
 
-  /@types/node/18.11.9:
-    resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
+  /@types/node/18.11.10:
+    resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -669,7 +673,7 @@ packages:
     resolution: {integrity: sha512-ULqvZNGMv0zRFvqn8/4LSPtnmN4MfhlPNtJCTpKuIIxGVGZ2rYWzFXrvEBoh9CVyqSE7D6YFRJ1hydLHI6kbWw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       xmlbuilder: 15.1.1
     dev: true
     optional: true
@@ -677,7 +681,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 16.18.3
+      '@types/node': 16.18.4
     dev: true
 
   /@types/semver/7.3.13:
@@ -715,7 +719,7 @@ packages:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 16.18.3
+      '@types/node': 16.18.4
     dev: true
     optional: true
 
@@ -855,7 +859,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.4_@types+node@18.11.9
+      vite: 3.2.4_@types+node@18.11.10
       vue: 3.2.45
     dev: true
 
@@ -2133,14 +2137,14 @@ packages:
       new-github-issue-url: 0.2.1
     dev: false
 
-  /electron/21.3.1:
-    resolution: {integrity: sha512-Ik/I9oFHA1h32JRtRm6GMgYdUctFpF/tPnHyATg4r3LXBTUT6habGh3GxSdmmTa5JgtA7uJUEm8EjjZItk7T3g==}
+  /electron/21.3.3:
+    resolution: {integrity: sha512-2a9l8mUQlzXH/9WZrGYDJTyJOliLKbmEuCrQ8bfX1McAQOmI6PDQxfHV4qFUtyCDUp5SHrq5nuvg0c1pIkDBhg==}
     engines: {node: '>= 10.17.0'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@electron/get': 1.14.1
-      '@types/node': 16.18.3
+      '@types/node': 16.18.4
       extract-zip: 2.0.1
     transitivePeerDependencies:
       - supports-color
@@ -5024,7 +5028,7 @@ packages:
       utf8-byte-length: 1.0.4
     dev: true
 
-  /ts-node/10.9.1_wup25etrarvlqkprac7h35hj7u:
+  /ts-node/10.9.1_eoe7put6ewfbqpy6gs36tihw6y:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -5043,7 +5047,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -5200,7 +5204,7 @@ packages:
       acorn: 8.8.1
       chokidar: 3.5.3
       esbuild: 0.15.16
-      vite: 3.2.4_@types+node@18.11.9
+      vite: 3.2.4_@types+node@18.11.10
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.4.6
     dev: true
@@ -5300,14 +5304,14 @@ packages:
       '@vuetify/loader-shared': 1.7.0_vue@3.2.45+vuetify@3.0.3
       debug: 4.3.4
       upath: 2.0.1
-      vite: 3.2.4_@types+node@18.11.9
+      vite: 3.2.4_@types+node@18.11.10
       vuetify: 3.0.3_56p5gagqhtkn2vlbfpyfdrtkpi
     transitivePeerDependencies:
       - supports-color
       - vue
     dev: true
 
-  /vite/3.2.4_@types+node@18.11.9:
+  /vite/3.2.4_@types+node@18.11.10:
     resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5332,7 +5336,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       esbuild: 0.15.16
       postcss: 8.4.19
       resolve: 1.22.1
@@ -5365,7 +5369,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.4
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       chai: 4.3.7
       debug: 4.3.4
       local-pkg: 0.4.2
@@ -5373,7 +5377,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.4_@types+node@18.11.9
+      vite: 3.2.4_@types+node@18.11.10
     transitivePeerDependencies:
       - less
       - sass
@@ -5407,7 +5411,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.4
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.9
+      '@types/node': 18.11.10
       chai: 4.3.7
       debug: 4.3.4
       jsdom: 20.0.3
@@ -5416,7 +5420,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.2.4_@types+node@18.11.9
+      vite: 3.2.4_@types+node@18.11.10
     transitivePeerDependencies:
       - less
       - sass
