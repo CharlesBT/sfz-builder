@@ -35,6 +35,7 @@
     "lint": "eslint --fix .",
     "format": "prettier --write .",
     "doc": "typedoc src/index.ts",
+    "doc:watch": "typedoc --watch src/index.ts",
     "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage",
     "postinstall": "pnpm build"
   },

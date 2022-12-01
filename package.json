@@ -33,6 +33,7 @@
     "lint": "eslint --fix . && pnpm -r run lint",
     "format": "prettier --write . && pnpm -r run format",
     "doc": "typedoc",
+    "doc:watch": "typedoc --watch",
     "clean": "rimraf ./dist ./dist-* ./build ./release ./.cache ./.temp ./logs ./test/coverage",
     "clean:nodemodules": "rimraf **/node_modules **/pnpm-lock.yaml **/.pnpm-debug.log",
     "clean:all": "pnpm run clean && pnpm run clean:packages && pnpm run clean:nodemodules",
