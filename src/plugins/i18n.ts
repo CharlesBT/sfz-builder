@@ -18,4 +18,4 @@ const i18n = createI18n({
   messages: messages,
 })
 
-export default i18n
+export { i18n }
