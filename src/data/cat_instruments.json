@@ -3,30 +3,17 @@
     "_id": {
       "$oid": "63622947b314eb1b48d3bf20"
     },
-    "uuid": "00000000-8326-41ed-9fd1-e9fcd203430c",
     "meta": {
       "name": "Piano",
-      "description": "",
-      "source": "",
-      "image": "",
-      "author": "",
-      "type": "",
-      "pack": "",
-      "format": "",
-      "categories": [],
-      "timbres": [],
-      "articulations": [],
-      "attributes": [],
-      "styles": [],
-      "emotions": [],
-      "tags": ["disco", "house"],
-      "links": [],
       "deleted": false,
       "published": false
     },
-    "sfz_patch": {
-      "attack": 0,
-      "release": 0
+    "sfz": {
+      "samples": ["63622947b314eb1b48d3bf21.wav", "63622947b314eb1b48d3bf22.wav"],
+      "params": {
+        "attack": 0,
+        "release": 0
+      }
     },
     "createdAt": "2021-11-17T17:56:36.081Z",
     "updatedAt": "2022-04-01T14:52:07.977Z"
@@ -35,30 +22,18 @@
     "_id": {
       "$oid": "63622947b314eb1b48d3bf21"
     },
-    "uuid": "11111111-8326-41ed-9fd1-e9fcd203430c",
     "meta": {
       "name": "Brass",
       "description": "Orchestral brass including trumpet, trombone and sax",
-      "source": "",
-      "image": "",
-      "author": "",
-      "type": "",
-      "pack": "",
-      "format": "",
-      "categories": [],
-      "timbres": [],
-      "articulations": [],
-      "attributes": [],
-      "styles": [],
-      "emotions": [],
-      "tags": ["funky", "house"],
-      "links": [],
       "deleted": false,
       "published": false
     },
-    "sfz_patch": {
-      "attack": 0,
-      "release": 0
+    "sfz": {
+      "samples": ["63622947b314eb1b48d3bf21.wav", "63622947b314eb1b48d3bf22.wav"],
+      "params": {
+        "attack": 0,
+        "release": 0
+      }
     },
     "createdAt": "2021-11-17T17:56:36.081Z",
     "updatedAt": "2022-04-01T14:52:07.977Z"

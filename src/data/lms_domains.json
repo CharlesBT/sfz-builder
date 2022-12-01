@@ -1,0 +1,16 @@
+[
+  {
+    "_id": {
+      "$oid": "63822488fc2d7fc9185aebd2"
+    },
+    "name": "Melody",
+    "description": "Everything about producing beautiful melodies"
+  },
+  {
+    "_id": {
+      "$oid": "63822488fc2d7fc918895ad2"
+    },
+    "name": "Chord progressions",
+    "description": "Everything about producing chord progessions"
+  }
+]
