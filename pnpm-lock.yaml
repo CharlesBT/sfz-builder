@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@bms/audio': ^0.1.0
+      '@bms/audio': '*'
       '@charlesbt/eslint-config-custom': latest
       '@charlesbt/prettier-config-custom': latest
       '@intlify/unplugin-vue-i18n': ^0.7.3
