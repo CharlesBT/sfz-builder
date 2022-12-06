@@ -134,7 +134,7 @@ function isWavFormat(files: File[]) {
     >
       {{ vstate.errorMsg }}
     </v-alert>
-    <input type="file" v-bind="getInputProps()" webkitdirectory />
+    <input v-bind="getInputProps()" webkitdirectory />
     <v-icon icon="mdi-folder-arrow-left" size="50" />
     <p>{{ t('dropzone.drag-drop-here') }}</p>
     <p v-if="vstate.files.length > 0">

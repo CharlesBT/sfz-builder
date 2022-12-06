@@ -16,7 +16,7 @@ release
 *.local
 
 # Docs
-!docs
+docs
 
 # Logs
 logs
@@ -31,9 +31,6 @@ pnpm-debug.log*
 
 # VITEST
 coverage
-
-# DOCS
-docs
 
 # MACOSX
 .DS_Store

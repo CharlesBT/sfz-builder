@@ -5,13 +5,13 @@
 type escapeFunction = (path: string) => string
 
 function escapePathSh(path: string) {
-  if (!/^[A-Za-z0-9_\/-]+$/.test(path))
+  if (!/^[A-Za-z0-9_/-]+$/.test(path))
     return ("'" + path.replace(/'/g, "'\"'\"'") + "'").replace(/''/g, '')
   else return path
 }
 
 function escapePathWin(path: string) {
-  if (!/^[A-Za-z0-9_\/-]+$/.test(path)) return '"' + path.replace(/"/g, '""') + '"'
+  if (!/^[A-Za-z0-9_/-]+$/.test(path)) return '"' + path.replace(/"/g, '""') + '"'
   else return path
 }
 

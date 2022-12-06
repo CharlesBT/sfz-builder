@@ -8,6 +8,7 @@ test
 logs
 data
 uploads
+release
 
 # NODE
 node_modules

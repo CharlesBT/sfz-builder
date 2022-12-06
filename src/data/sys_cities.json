@@ -1,0 +1,82 @@
+[
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfcc"
+    },
+    "name": "San Francisco",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfcd"
+    },
+    "name": "New York",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfce"
+    },
+    "name": "Chicago",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfcf"
+    },
+    "name": "Bogotá",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfd0"
+    },
+    "name": "Bucaramanga",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfd1"
+    },
+    "name": "Oakland",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfd2"
+    },
+    "name": "San Leandro",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfd3"
+    },
+    "name": "Medellín",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfd4"
+    },
+    "name": "Cali",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  },
+  {
+    "_id": {
+      "$oid": "63622947b314eb1b48d3bfd5"
+    },
+    "name": "Barranquilla",
+    "createdAt": "2021-05-01T09:24:15.988Z",
+    "updatedAt": "2021-05-01T09:24:15.988Z"
+  }
+]

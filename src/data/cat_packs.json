@@ -1,0 +1,9 @@
+[
+  {
+    "_id": {
+      "$oid": "63822488fc2d7fc9185aebd2"
+    },
+    "name": "Essential Pack",
+    "description": "Essential Pack description here"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "_id": {
+      "$oid": "63625677b314eb1b48d3bf20"
+    },
+    "name": "Producing melody tutorial",
+    "description": "Tutorial description here",
+    "language": "en",
+    "createdAt": "2021-11-17T17:56:36.081Z",
+    "updatedAt": "2022-04-01T14:52:07.977Z"
+  }
+]

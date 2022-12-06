@@ -90,22 +90,22 @@ regex to extract patch name from WAV files :
 ## Folder structure
 
 ```
-    PACKAGE
-    ├── .temp // folder dedicated to temporary storage
-    ├── .vscode // VSCode project settings
-    │   ├── extensions.json // recommended VSCode extension for this project
-    │   ├── launch.json // debugger config
-    │   ├── settings.json // VSCode project settings
-    │   └── tasks.json // VSCode tasks
-    ├── config
-    │   └── module.config.json5 // module configuration file
-    ├── docs // directory to store all documentation
-    ├── src // source code
-    │   ├── audio
-    │   ├── config
-    │   ├── filer
-    │   ├── sfz
-    │   ├── types
-    │   └── utils
-    └── test // assets used for running tests
+PACKAGE
+├── .temp // folder dedicated to temporary storage
+├── .vscode // VSCode project settings
+│   ├── extensions.json // recommended VSCode extension for this project
+│   ├── launch.json // debugger config
+│   ├── settings.json // VSCode project settings
+│   └── tasks.json // VSCode tasks
+├── config
+│   └── module.config.json5 // module configuration file
+├── docs // directory to store all documentation
+├── src // source code
+│   ├── audio
+│   ├── config
+│   ├── filer
+│   ├── sfz
+│   ├── types
+│   └── utils
+└── test // assets used for running tests
 ```
