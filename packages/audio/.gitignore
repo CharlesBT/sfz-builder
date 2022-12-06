@@ -12,7 +12,7 @@ release
 *.local
 
 # Docs
-!docs
+docs
 
 # Logs
 logs

@@ -37,8 +37,8 @@
     "doc:serve": "serve -l 3030 ./docs",
     "doc:build": "typedoc",
     "doc:watch": "typedoc --watch",
-    "clean": "rimraf ./dist ./build ./.cache ./.temp ./logs ./test/coverage",
-    "postinstall": "pnpm build"
+    "clean": "rimraf ./dist ./build ./docs ./.cache ./.temp ./logs ./test/coverage",
+    "postinstall": "pnpm build && pnpm doc:build"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
