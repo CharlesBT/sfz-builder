@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/CharlesBT/sfz-builder.git"
   },
+  "bugs": {
+    "url": "https://github.com/CharlesBT/sfz-builder/issues"
+  },
+  "homepage": "https://github.com/CharlesBT/sfz-builder#readme",
   "keywords": [
     "SFZ",
     "sfzbuilder"
@@ -19,7 +23,7 @@
   "private": true,
   "packageManager": "pnpm@7.10.0",
   "engines": {
-    "node": ">=16.14.0",
+    "node": ">=16.13.0",
     "pnpm": ">=7.10.0"
   },
   "main": "dist-electron/main/index.js",
