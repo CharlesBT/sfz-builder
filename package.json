@@ -36,7 +36,7 @@
     "test:ci": "cross-env DOTENV_CONFIG_PATH=.env.test vitest run && pnpm -r run test:ci",
     "lint": "eslint --fix . && pnpm -r run lint",
     "format": "prettier --write . && pnpm -r run format",
-    "doc:serve": "serve -l 3030 ./docs",
+    "doc:serve": "serve -p 3030 ./docs",
     "doc:build": "typedoc",
     "doc:watch": "typedoc --watch",
     "clean": "rimraf ./dist ./dist-* ./build ./release ./docs ./.cache ./.temp ./logs ./test/coverage",

@@ -34,7 +34,7 @@
     "test:ci": "vitest run",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "doc:serve": "serve -l 3030 ./docs",
+    "doc:serve": "serve -p 3030 ./docs",
     "doc:build": "typedoc",
     "doc:watch": "typedoc --watch",
     "clean": "rimraf ./dist ./build ./docs ./.cache ./.temp ./logs ./test/coverage",
