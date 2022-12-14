@@ -1,8 +1,8 @@
 {
   "versionGroups": [
     {
-      "packages": ["@bms/audio"],
-      "dependencies": ["@bms/**"]
+      "packages": ["bms-audio"],
+      "dependencies": ["bms-**"]
     }
   ]
 }

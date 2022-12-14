@@ -5,7 +5,7 @@ import loader from './loaders/chase'
 import config from '../config.json'
 
 // TODO: for testing import
-import { audioEncoder } from '@bms/audio'
+import { audioEncoder } from 'bms-audio'
 
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise((resolve) => {
