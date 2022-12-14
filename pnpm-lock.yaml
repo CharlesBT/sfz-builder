@@ -4,7 +4,6 @@ importers:
 
   .:
     specifiers:
-      '@bms/audio': '*'
       '@charlesbt/eslint-config-custom': latest
       '@charlesbt/prettier-config-custom': latest
       '@intlify/unplugin-vue-i18n': ^0.7.3
@@ -16,6 +15,7 @@ importers:
       '@vitejs/plugin-vue': ^3.2.0
       '@vitest/coverage-c8': ^0.24.5
       '@vueuse/core': ^9.6.0
+      bms-audio: '*'
       cross-env: ^7.0.3
       electron: ^21.3.3
       electron-builder: ^23.6.0
@@ -53,8 +53,7 @@ importers:
       electron-updater: 5.3.0
       electron-util: 0.17.2
     devDependencies:
-      '@bms/audio': link:packages/audio
-      '@charlesbt/eslint-config-custom': 1.0.6_brpckf4sz23pco3jyty2eys3iq
+      '@charlesbt/eslint-config-custom': 1.0.8_brpckf4sz23pco3jyty2eys3iq
       '@charlesbt/prettier-config-custom': 1.0.3
       '@intlify/unplugin-vue-i18n': 0.7.3_cop36ak466ctxiclesjna3indm
       '@mdi/font': 7.0.96
@@ -65,6 +64,7 @@ importers:
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.45
       '@vitest/coverage-c8': 0.24.5_jsdom@20.0.3
       '@vueuse/core': 9.6.0_vue@3.2.45
+      bms-audio: link:packages/audio
       cross-env: 7.0.3
       electron: 21.3.3
       electron-builder: 23.6.0
@@ -128,7 +128,7 @@ importers:
       uuid: 9.0.0
       wavefile: 11.0.0
     devDependencies:
-      '@charlesbt/eslint-config-custom': 1.0.6_brpckf4sz23pco3jyty2eys3iq
+      '@charlesbt/eslint-config-custom': 1.0.8_brpckf4sz23pco3jyty2eys3iq
       '@charlesbt/prettier-config-custom': 1.0.3
       '@microsoft/tsdoc': 0.14.2
       '@types/adm-zip': 0.5.0
@@ -197,8 +197,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@charlesbt/eslint-config-custom/1.0.6_brpckf4sz23pco3jyty2eys3iq:
-    resolution: {integrity: sha512-lPlWs+n1OeEkCvlQ6Vu5F7T9j6Vp25qH/7G/RVg22i6Izw6gUVup66JvGlzL2FmU+KTL8VAIrmf2c2teEkbl7Q==}
+  /@charlesbt/eslint-config-custom/1.0.8_brpckf4sz23pco3jyty2eys3iq:
+    resolution: {integrity: sha512-Oth0LQRIMOGDdNeLaML2pW5gTOVxT7kd64Fas3Gq1JePZgDxjsg1iFZ5PN2njI3E15rAtnG6iQUBNNzycQEtBA==}
     dependencies:
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/eslint-plugin': 5.45.1_tdm6ms4ntwhlpozn7kjqrhum74
@@ -2287,6 +2287,7 @@ packages:
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
+    requiresBuild: true
     dev: true
 
   /emoji-regex/9.2.2:
@@ -3643,6 +3644,7 @@ packages:
   /is-fullwidth-code-point/3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
+    requiresBuild: true
     dev: true
 
   /is-glob/4.0.3:

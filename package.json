@@ -66,7 +66,6 @@
     "electron-util": "^0.17.2"
   },
   "devDependencies": {
-    "@bms/audio": "*",
     "@charlesbt/eslint-config-custom": "latest",
     "@charlesbt/prettier-config-custom": "latest",
     "@intlify/unplugin-vue-i18n": "^0.7.3",
@@ -78,6 +77,7 @@
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitest/coverage-c8": "^0.24.5",
     "@vueuse/core": "^9.6.0",
+    "bms-audio": "*",
     "cross-env": "^7.0.3",
     "electron": "^21.3.3",
     "electron-builder": "^23.6.0",

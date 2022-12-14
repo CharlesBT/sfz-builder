@@ -1,11 +1,15 @@
 {
-  "name": "@bms/audio",
+  "name": "bms-audio",
   "version": "0.1.0",
   "description": "BMS Audio",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CharlesBT/bms.git"
+    "url": "https://github.com/CharlesBT/bms-audio.git"
   },
+  "bugs": {
+    "url": "https://github.com/CharlesBT/bms-audio/issues"
+  },
+  "homepage": "https://github.com/CharlesBT/bms-audio#readme",
   "keywords": [],
   "author": {
     "name": "Charles Brébant",
