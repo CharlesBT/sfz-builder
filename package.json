@@ -67,7 +67,6 @@
   },
   "devDependencies": {
     "@charlesbt/eslint-config-custom": "latest",
-    "@charlesbt/prettier-config-custom": "latest",
     "@intlify/unplugin-vue-i18n": "^0.7.3",
     "@mdi/font": "^7.0.96",
     "@microsoft/tsdoc": "^0.14.2",
@@ -85,6 +84,7 @@
     "jsdom": "^20.0.3",
     "lodash": "^4.17.21",
     "pinia": "^2.0.27",
+    "prettier": "^2.8.1",
     "roboto-fontface": "^0.10.0",
     "serve": "^14.1.2",
     "syncpack": "^8.4.11",

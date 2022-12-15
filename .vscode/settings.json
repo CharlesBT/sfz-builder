@@ -28,7 +28,9 @@
   "editor.tabSize": 2,
   "editor.minimap.size": "fit",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true // turns on Auto Fix for all providers including ESLint ("source.fixAll.eslint": true)
+    "source.fixAll": true, // turns on Auto Fix for all providers including ESLint ("source.fixAll.eslint": true)
+    "source.organizeImports": true
+    // "source.sortImports": true // = source.organizeImports without removing unused imports
   },
   "editor.inlineSuggest.enabled": true,
 
@@ -44,23 +46,19 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   // "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
 
-  // UI / Theme
-  "workbench.iconTheme": "vscode-icons",
+  /* --- Extensions --- */
+
+  // Emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html"
+  },
 
   // NPM package manager for running scripts
   "npm.packageManager": "pnpm",
 
   // NPM Script explorer
   "npm.exclude": ["**/vscode-chrome-debug-userdatadir/**"],
-
-  // Prettier extension
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.tabWidth": 2,
-  "prettier.printWidth": 100,
-  "prettier.endOfLine": "lf",
 
   // Code Spell Checker
   "cSpell.enabledLanguageIds": ["markdown", "plaintext", "text", "yml"],

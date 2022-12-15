@@ -58,7 +58,6 @@
   },
   "devDependencies": {
     "@charlesbt/eslint-config-custom": "latest",
-    "@charlesbt/prettier-config-custom": "latest",
     "@microsoft/tsdoc": "^0.14.2",
     "@types/adm-zip": "^0.5.0",
     "@types/debug": "^4.1.7",
@@ -67,6 +66,7 @@
     "@types/node": "^18.11.11",
     "@types/uuid": "^8.3.4",
     "@vitest/coverage-c8": "^0.24.5",
+    "prettier": "^2.8.1",
     "serve": "^14.1.2",
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.21",
