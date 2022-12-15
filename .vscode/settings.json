@@ -28,7 +28,9 @@
   "editor.tabSize": 2,
   "editor.minimap.size": "fit",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true // turns on Auto Fix for all providers including ESLint ("source.fixAll.eslint": true)
+    "source.fixAll": true, // turns on Auto Fix for all providers including ESLint ("source.fixAll.eslint": true)
+    "source.organizeImports": true
+    // "source.sortImports": true // = source.organizeImports without removing unused imports
   },
   "editor.inlineSuggest.enabled": true,
 

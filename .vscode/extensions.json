@@ -47,6 +47,9 @@
     "vuetifyjs.vuetify-vscode",
     "GaiyaObedMathias.vuetify-snippets",
 
+    // Nuxt
+    "antfu.goto-alias",
+
     // JSON5
     "mrmlnc.vscode-json5",
 
@@ -69,6 +72,7 @@
     "GitHub.remotehub",
 
     // Debugging
+    "ms-edgedevtools.vscode-edge-devtools",
     "formulahendry.code-runner",
 
     // .REST & GraphQL API
@@ -118,6 +122,7 @@
 
     // Misc
     "antfu.file-nesting",
+    "antfu.iconify",
     "chrmarti.regex",
     "ritwickdey.LiveServer",
     "mitchdenny.ecdc",
