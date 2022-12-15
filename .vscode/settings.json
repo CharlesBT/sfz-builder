@@ -46,10 +46,13 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   // "typescript.preferences.importModuleSpecifierEnding": "js",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
 
-  // UI / Theme
-  "workbench.iconTheme": "vscode-icons",
+  /* --- Extensions --- */
+
+  // Emmet
+  "emmet.includeLanguages": {
+    "vue-html": "html"
+  },
 
   // NPM package manager for running scripts
   "npm.packageManager": "pnpm",
