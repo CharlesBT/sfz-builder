@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@charlesbt/eslint-config-custom': latest
-  '@charlesbt/prettier-config-custom': latest
   '@intlify/unplugin-vue-i18n': ^0.7.3
   '@mdi/font': ^7.0.96
   '@microsoft/tsdoc': ^0.14.2
@@ -26,6 +25,7 @@ specifiers:
   jsdom: ^20.0.3
   lodash: ^4.17.21
   pinia: ^2.0.27
+  prettier: ^2.8.1
   roboto-fontface: ^0.10.0
   serve: ^14.1.2
   syncpack: ^8.4.11
@@ -53,7 +53,6 @@ dependencies:
 
 devDependencies:
   '@charlesbt/eslint-config-custom': 1.0.9_2gbcgqmzq2pxiocqw2qs7hdeqe
-  '@charlesbt/prettier-config-custom': 1.0.3
   '@intlify/unplugin-vue-i18n': 0.7.3_gyris37oy5m52vctkpdaxphzre
   '@mdi/font': 7.1.96
   '@microsoft/tsdoc': 0.14.2
@@ -71,6 +70,7 @@ devDependencies:
   jsdom: 20.0.3
   lodash: 4.17.21
   pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
+  prettier: 2.8.1
   roboto-fontface: 0.10.0
   serve: 14.1.2
   syncpack: 8.4.11
@@ -165,12 +165,6 @@ packages:
       - prettier
       - supports-color
       - typescript
-    dev: true
-
-  /@charlesbt/prettier-config-custom/1.0.3:
-    resolution: {integrity: sha512-RArdtsuVugZ4nNhrDcFkpRVvRnJ+RKXxc1NMZz4OKKzIXdhsv6ku3AkClQOK8MlAXNmMNQTsyTOfLcdavZdahA==}
-    dependencies:
-      prettier: 2.8.1
     dev: true
 
   /@cspotcode/source-map-support/0.8.1:
@@ -1519,7 +1513,6 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    requiresBuild: true
     dev: true
 
   /binary-extensions/2.2.0:
@@ -6014,7 +6007,6 @@ packages:
   /xmlbuilder/15.1.1:
     resolution: {integrity: sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==}
     engines: {node: '>=8.0'}
-    requiresBuild: true
     dev: true
 
   /xmlchars/2.2.0:

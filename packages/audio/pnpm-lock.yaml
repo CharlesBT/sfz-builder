@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@charlesbt/eslint-config-custom': latest
-  '@charlesbt/prettier-config-custom': latest
   '@microsoft/tsdoc': ^0.14.2
   '@types/adm-zip': ^0.5.0
   '@types/debug': ^4.1.7
@@ -19,6 +18,7 @@ specifiers:
   fs-extra: ^10.1.0
   lodash: ^4.17.21
   pkg-dir: 7.0.0
+  prettier: ^2.8.1
   serve: ^14.1.2
   ts-node: ^10.9.1
   typedoc: ^0.23.21
@@ -41,7 +41,6 @@ dependencies:
 
 devDependencies:
   '@charlesbt/eslint-config-custom': 1.0.9_2gbcgqmzq2pxiocqw2qs7hdeqe
-  '@charlesbt/prettier-config-custom': 1.0.3
   '@microsoft/tsdoc': 0.14.2
   '@types/adm-zip': 0.5.0
   '@types/debug': 4.1.7
@@ -50,6 +49,7 @@ devDependencies:
   '@types/node': 18.11.15
   '@types/uuid': 8.3.4
   '@vitest/coverage-c8': 0.24.5
+  prettier: 2.8.1
   serve: 14.1.2
   ts-node: 10.9.1_ewfw2lwfc3dwdvz7r6yz2ssqyi
   typedoc: 0.23.22_typescript@4.9.4
@@ -86,12 +86,6 @@ packages:
       - prettier
       - supports-color
       - typescript
-    dev: true
-
-  /@charlesbt/prettier-config-custom/1.0.3:
-    resolution: {integrity: sha512-RArdtsuVugZ4nNhrDcFkpRVvRnJ+RKXxc1NMZz4OKKzIXdhsv6ku3AkClQOK8MlAXNmMNQTsyTOfLcdavZdahA==}
-    dependencies:
-      prettier: 2.8.1
     dev: true
 
   /@cspotcode/source-map-support/0.8.1:

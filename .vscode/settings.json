@@ -57,13 +57,6 @@
   // NPM Script explorer
   "npm.exclude": ["**/vscode-chrome-debug-userdatadir/**"],
 
-  // Prettier extension
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.tabWidth": 2,
-  "prettier.printWidth": 100,
-  "prettier.endOfLine": "lf",
-
   // Code Spell Checker
   "cSpell.enabledLanguageIds": ["markdown", "plaintext", "text", "yml"],
 
