@@ -1,11 +1,11 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
 import './ipcApi'
-import loader from './loaders/chase'
+import { audioEncoder } from 'bms-audio'
 import config from '../config.json'
+import loader from './loaders/chase'
 
 // TODO: for testing import
-import { audioEncoder } from 'bms-audio'
 
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise((resolve) => {
@@ -76,7 +76,7 @@ function useLoading() {
 // ----------------------------------------------------------------------
 
 const { appendLoading, removeLoading } = useLoading()
-domReady().then(appendLoading)
+domReady().then(appendLoading).catch(console.error)
 
 window.onmessage = (ev) => {
   ev.data.payload === 'removeLoading' && removeLoading()

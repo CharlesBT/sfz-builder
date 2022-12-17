@@ -45,6 +45,7 @@ export default defineConfig({
               // Will start Electron via VSCode Debug
               customStart(
                 debounce(() =>
+                  // eslint-disable-next-line no-console
                   console.log(/* For `.vscode/.debug.script.mjs` */ '[startup] Electron App'),
                 ),
               ),

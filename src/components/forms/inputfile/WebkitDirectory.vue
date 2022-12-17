@@ -1,6 +1,6 @@
 <template>
   <h3 class="title text-h6 mb-5">WebkitDirectory</h3>
-  <input type="file" id="filepicker" name="fileList" webkitdirectory multiple />
+  <input id="filepicker" type="file" name="fileList" webkitdirectory multiple />
   <ul id="listing"></ul>
   MDN HTMLInputElement.webkitdirectory
   <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitdirectory"

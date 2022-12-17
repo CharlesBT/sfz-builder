@@ -36,8 +36,8 @@ const rules = ref({
         background-color="transparent"
       ></v-text-field>
       <v-text-field
-        type="email"
         v-model="emailtext"
+        type="email"
         label="Email e.g. 'example@gmail.com"
         filled
         background-color="transparent"

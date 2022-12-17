@@ -15,7 +15,7 @@ const i18n = createI18n({
   legacy: false,
   locale: navigator.language.slice(0, 2) || 'en',
   fallbackLocale: 'en',
-  messages: messages,
+  messages,
 })
 
 export { i18n }

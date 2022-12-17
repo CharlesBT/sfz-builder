@@ -3,8 +3,8 @@ import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useTheme } from 'vuetify'
-import { useNavigation } from '@/composables/useNavigation'
 import pkg from '../package.json'
+import { useNavigation } from '@/composables/useNavigation'
 
 import LocaleChanger from '@/components/LocaleChanger.vue'
 
@@ -48,10 +48,10 @@ onMounted(() => {
     <v-app-bar app class="">
       <v-app-bar-title></v-app-bar-title>
       <v-switch
-        @click="toggleTheme"
         class="d-flex"
         append-icon="mdi-weather-sunny"
         prepend-icon="mdi-weather-night"
+        @click="toggleTheme"
       ></v-switch>
       <div style="margin-right: 20px">
         <LocaleChanger />

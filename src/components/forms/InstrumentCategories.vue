@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { getAssetUrl } from '@/composables/getAssetUrl'
 import _ from 'lodash'
+import { getAssetUrl } from '@/composables/getAssetUrl'
 import categories from '@/data/cat_categories.json'
 
 const { t } = useI18n()
