@@ -1,13 +1,16 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
+import 'dotenv/config'
+import fs from 'node:fs'
 import path from 'node:path'
 import AdmZip from 'adm-zip'
 import filenamify from 'filenamify'
 import fsExtra from 'fs-extra'
+import unzipper from 'unzipper'
 
 const errorMessage = {
   FileNotFound: 'File not found',
   MissingFileExtensionInArgs: 'file extension missing in args',
+  UnzipFailed: 'Unzip failed',
 }
 
 export class filer {
@@ -25,19 +28,19 @@ export class filer {
   }
 
   static readJsonSync(file: string) {
-    if (!filer.existsSync(file)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(file)) throw new Error(errorMessage.FileNotFound)
     const r = fsExtra.readJsonSync(file)
     return r
   }
 
   static async readJson(file: string) {
-    if (!filer.existsSync(file)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(file)) throw new Error(errorMessage.FileNotFound)
     const r = await fsExtra.readJson(file)
     return r
   }
 
   static moveSync(path: string, newpath: string, options?: fsExtra.MoveOptions | undefined) {
-    if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     if (options) {
       fsExtra.moveSync(path, newpath, options)
     } else {
@@ -46,7 +49,7 @@ export class filer {
   }
 
   static async move(path: string, newpath: string, options?: fsExtra.MoveOptions | undefined) {
-    if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     if (options) {
       await fsExtra.move(path, newpath, options)
     } else {
@@ -55,22 +58,22 @@ export class filer {
   }
 
   static copySync(src: string, dest: string) {
-    if (!filer.existsSync(src)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(src)) throw new Error(errorMessage.FileNotFound)
     fsExtra.copySync(src, dest, { overwrite: true })
   }
 
   static async copy(src: string, dest: string) {
-    if (!filer.existsSync(src)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(src)) throw new Error(errorMessage.FileNotFound)
     await fsExtra.copy(src, dest, { overwrite: true })
   }
 
   static deleteSync(path: string) {
-    if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     fsExtra.removeSync(path)
   }
 
   static async delete(path: string) {
-    if (!filer.existsSync(path)) throw new Error(errorMessage.FileNotFound)
+    if (!this.existsSync(path)) throw new Error(errorMessage.FileNotFound)
     await fsExtra.remove(path)
   }
 
@@ -103,7 +106,7 @@ export class filer {
     const fileNames = directoryContent.filter((elt) => elt.isFile()).map((elt) => elt.name)
     for (const value of fileNames.values()) {
       const file = path.join(dir, value)
-      if (filer.isExt(file, fileExtension)) {
+      if (this.isExt(file, fileExtension)) {
         files.push(file)
       }
     }
@@ -121,11 +124,12 @@ export class filer {
     const directoryNames = directoryContent
       .filter((elt) => elt.isDirectory())
       .map((elt) => elt.name)
-    const results = await filer.getFilesInFolder(folderPath, fileExtension)
+    const results = await this.getFilesInFolder(folderPath, fileExtension)
     files = files.concat(results)
     for (const value of directoryNames.values()) {
       const folder = path.join(dir, value)
-      const results = await filer.getFilesInSubFolders(folder, fileExtension)
+      // eslint-disable-next-line no-await-in-loop
+      const results = await this.getFilesInSubFolders(folder, fileExtension)
       files = files.concat(results)
     }
     return files
@@ -141,7 +145,7 @@ export class filer {
       path.parse(file).name + path.parse(file).ext.toLowerCase(),
     )
     if (file !== newFile) {
-      await filer.move(file, newFile)
+      await this.move(file, newFile)
     }
   }
 
@@ -184,17 +188,55 @@ export class filer {
     return filename
   }
 
-  static unZipFile(file: string, dest: string) {
-    return new Promise((resolve, reject) => {
+  /**
+   * unzip a zip file synchronously (using adm-zip)
+   * @param file - zip file
+   * @param dest - unzip path
+   */
+  static unZipSync(file: string, dest: string) {
+    try {
+      fsExtra.ensureDirSync(dest)
+      const zip = new AdmZip(file)
+      zip.extractAllTo(/*target path*/ dest, /*overwrite*/ true)
+    } catch (err) {
+      console.error((<Error>err).message, import.meta.url)
+      throw new Error(errorMessage.UnzipFailed)
+    }
+  }
+
+  /**
+   * unzip a zip file asynchronously (using unzipper)
+   * @param file - zip file
+   * @param dest - unzio path
+   */
+  static async unZipAsync(file: string, dest: string) {
+    async function folderExists(path: string) {
       try {
-        fsExtra.ensureDirSync(dest)
-        const zip = new AdmZip(file)
-        zip.extractAllTo(/*target path*/ dest, /*overwrite*/ true)
-        resolve('FILE_UNZIPPED')
+        const result = await fs.promises.stat(path)
+        return !result ? result : result.isDirectory()
       } catch (err) {
-        console.error(err, import.meta.url)
-        reject('UNZIP_FILE_FAILURE')
+        if ((<NodeJS.ErrnoException>err).code === 'ENOENT') {
+          // not found
+          return false
+        }
+        throw err
       }
-    })
+    }
+
+    try {
+      const zip = fs.createReadStream(file).pipe(unzipper.Parse({ forceStream: true }))
+      for await (const entry of zip) {
+        const fileName = entry.path
+        const dir = path.dirname(fileName)
+        const targetPath = path.join(dest, dir)
+        const _folderExists = await folderExists(targetPath)
+        if (!_folderExists) {
+          await fs.promises.mkdir(targetPath, { recursive: true })
+        }
+        entry.pipe(fs.createWriteStream(path.join(dest, fileName)))
+      }
+    } catch (err) {
+      throw new Error((<Error>err).message)
+    }
   }
 }

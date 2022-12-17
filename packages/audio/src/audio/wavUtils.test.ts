@@ -1,11 +1,11 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
 import { join } from 'node:path'
-import { config } from '../config/configProvider.js'
 import { packageDirectorySync } from 'pkg-dir'
 import { v4 as uuid } from 'uuid'
 import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
+import { config } from '../config/configProvider.js'
 import { wavUtils } from './wavUtils.js'
 
 const __pkgRoot = <string>packageDirectorySync()

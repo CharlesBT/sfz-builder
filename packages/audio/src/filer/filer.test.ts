@@ -1,12 +1,12 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
 import path from 'node:path'
-import { describe, expect, it } from 'vitest'
-import { packageDirectorySync } from 'pkg-dir'
 import fsExtra from 'fs-extra'
+import { packageDirectorySync } from 'pkg-dir'
 import { v4 as uuid } from 'uuid'
-import { filer } from './filer.js'
+import { describe, expect, it } from 'vitest'
 import { config } from '../config/configProvider.js'
+import { filer } from './filer.js'
 
 const __pkgRoot = <string>packageDirectorySync()
 
@@ -310,12 +310,31 @@ describe.concurrent('Additional functions', () => {
     expect(actual).toEqual('space__filename.wav')
   })
 
-  it('unZipFile(file, dest): should unzip file', async () => {
+  it('unZipSync(file, dest): should unzip file', async () => {
     const tmpdir = path.join(testtmp, uuid())
     await fsExtra.ensureDir(tmpdir)
     const zip = path.join(testdir, 'instrument.zip')
     const zippedFiles = ['instrument.sfz', 'sample-1.wav', 'sample-2.wav']
-    await filer.unZipFile(zip, tmpdir)
+    filer.unZipSync(zip, tmpdir)
+    for (const file of zippedFiles) {
+      expect(fsExtra.existsSync(path.join(tmpdir, file))).toBe(true)
+    }
+    await fsExtra.remove(tmpdir)
+  })
+
+  it('unZipAsync(file, dest): should unzip file', async () => {
+    const tmpdir = path.join(testtmp, uuid())
+    await fsExtra.ensureDir(tmpdir)
+    const zip = path.join(testdir, 'subfolder.zip')
+    const zippedFiles = [
+      'instrument.sfz',
+      'sample-1.wav',
+      'sample-2.wav',
+      'subfolder/instrument.sfz',
+      'subfolder/sample-1.wav',
+      'subfolder/sample-2.wav',
+    ]
+    await filer.unZipAsync(zip, tmpdir)
     for (const file of zippedFiles) {
       expect(fsExtra.existsSync(path.join(tmpdir, file))).toBe(true)
     }

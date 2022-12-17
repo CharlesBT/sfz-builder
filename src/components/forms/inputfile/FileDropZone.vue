@@ -26,13 +26,12 @@ const options: Partial<FileUploadOptions> = {
   maxSize: 500000000, // 500 Mb
   minSize: 1,
   accept: '.wav',
-  onDrop: onDrop,
+  onDrop,
 }
 
 const { getRootProps, getInputProps, isDragActive } = useDropzone(options)
 
 function onDrop(acceptedFiles: File[], rejectedReason: FileRejectReason[]) {
-  console.log('onDrop:')
   reset()
   if (hasSubfolder(acceptedFiles)) {
     displayError('dropzone.errors.subfolders-not-allowed')
@@ -124,13 +123,13 @@ function isWavFormat(files: File[]) {
   >
     <v-alert
       v-if="vstate.isErrorMsgDisplayed"
-      @click.stop="reset"
       type="error"
       prominent
       variant="text"
       closable
       elevation="4"
       class="alert-box"
+      @click.stop="reset"
     >
       {{ vstate.errorMsg }}
     </v-alert>
@@ -141,12 +140,12 @@ function isWavFormat(files: File[]) {
       <span class="file-info">{{ t('dialog.file(s)') }}: {{ vstate.files.length }}</span>
       <span
         ><v-icon
-          @click.stop="reset"
           icon="mdi-close-circle"
           :title="t('dropzone.remove')"
           size="24"
           color="red"
           class="ml-1"
+          @click.stop="reset"
       /></span>
     </p>
   </div>

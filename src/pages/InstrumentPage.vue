@@ -11,7 +11,7 @@
           <label class="font-weight-medium text-subtitle-1">{{ t('dialog.import-from') }}</label>
         </v-col>
         <v-col cols="12" sm="10">
-          <v-radio-group inline hide-details v-model="vstate.source">
+          <v-radio-group v-model="vstate.source" inline hide-details>
             <v-radio label="FLStudio" value="flstudio"></v-radio>
             <v-radio label="Logic" value="logic"></v-radio>
             <v-radio label="AudioLayer" value="audiolayer"></v-radio>
@@ -66,7 +66,7 @@
               :key="e._id.$oid"
               v-slot="{ selectedClass, toggle }"
             >
-              <v-chip :class="selectedClass" @click="toggle" size="small">
+              <v-chip :class="selectedClass" size="small" @click="toggle">
                 {{ e.name }}
               </v-chip>
             </v-item>
@@ -75,10 +75,10 @@
       </v-row>
 
       <v-btn
-        @click="createSfz"
         prepend-icon="mdi-content-save-cog-outline"
         color="primary"
         class="mt-5 mr-2"
+        @click="createSfz"
       >
         {{ t('dialog.build') }} SFZ
       </v-btn>
@@ -126,10 +126,10 @@ const vstate: VState = reactive({
 
 function addFiles(files: File[]) {
   vstate.files = files
-  console.log('addFiles:', [...vstate.files])
+  console.info('addFiles:', [...vstate.files])
 }
 
 function createSfz(e: Event) {
-  console.log('createSfz:', [...vstate.files])
+  console.info('createSfz:', [...vstate.files])
 }
 </script>

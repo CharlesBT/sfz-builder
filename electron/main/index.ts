@@ -2,11 +2,11 @@
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
+import config from '../config.json'
 import { initLogger } from './logger'
 import autoUpdater from './autoUpdater'
 import './ipcApi'
-import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
-import config from '../config.json'
 
 process.env.DIST_ELECTRON = join(__dirname, '..')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../dist')
@@ -96,13 +96,13 @@ async function createWindow(): Promise<void> {
     await createWindow()
     setTimeout(autoUpdater, 3000) // check for app updates after 3 seconds
     installExtension(VUEJS3_DEVTOOLS)
-      .then((name) => console.log(`Added Extension:  ${name}`))
-      .catch((err) => console.log('An error occurred: ', err))
+      .then((name) => console.info(`Added Extension:  ${name}`))
+      .catch((err) => console.info('An error occurred: ', err))
 
     // TODO: for testing ipc only, send event to the renderer process, comment for production
     testIpcOnStart()
   } catch (err) {
-    console.log('An error occurred: ', err)
+    console.error('An error occurred: ', err)
   }
 })()
 
@@ -151,6 +151,6 @@ function testIpcOnStart() {
     mainWindow?.webContents.send('welcome', 'Welcome from mainWindow !')
   }, 5000)
   ipcMain.on('welcome', (event, value) => {
-    console.log(value)
+    console.info(value)
   })
 }

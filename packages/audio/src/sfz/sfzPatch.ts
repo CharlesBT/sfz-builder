@@ -2,14 +2,14 @@
 
 import _ from 'lodash'
 import { config } from '../config/configProvider.js'
-import { sfzHeader } from './sfzHeader.js'
-import type { sfzGroup } from './sfzGroup.js'
 import type {
   sfzPatchOptions,
   sfzPatchProps,
   sfzDefaultPatchSettings,
   sfzPatchTemplateSettings,
 } from '../types/sfz.js'
+import { sfzHeader } from './sfzHeader.js'
+import type { sfzGroup } from './sfzGroup.js'
 
 const sfzDefault = <sfzDefaultPatchSettings>config.sfz.default.patch
 const sfzTemplates = <sfzPatchTemplateSettings>config.sfz.global_templates
@@ -87,6 +87,7 @@ export class sfzPatch {
         value = self.getObjectValue(<sfzPatchOptions>object[k], key)
         return value !== undefined
       }
+      return undefined
     })
     return value
   }
@@ -101,6 +102,7 @@ export class sfzPatch {
       if (object[k] && typeof object[k] === 'object') {
         self.setObjectValue(<sfzPatchOptions>object[k], key, value)
       }
+      return undefined
     })
   }
 
@@ -143,7 +145,7 @@ export class sfzPatch {
     // pre process data if needed
     let path = this.sfzProps.control?.default_path
     if (typeof path !== 'undefined') {
-      path.lastIndexOf('/') !== path.length - 1 ? (path += '/') : null
+      if (path.lastIndexOf('/') !== path.length - 1) path += '/'
     }
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     this.sfzProps.global!.global_label = this.name

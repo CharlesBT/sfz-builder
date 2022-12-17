@@ -1,7 +1,7 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
-import { sfzRegion } from './sfzRegion.js'
 import type { sfzGroupProps } from '../types/sfz.js'
+import { sfzRegion } from './sfzRegion.js'
 
 export class sfzGroup {
   sfzProps: sfzGroupProps = {
@@ -27,7 +27,7 @@ export class sfzGroup {
   build() {
     let r = `\r\r<group>`
     for (const key of Object.keys(this.sfzProps)) {
-      key !== 'regions' ? (r += this.writeSfzAttribute(this.sfzProps, key)) : null
+      if (key !== 'regions') r += this.writeSfzAttribute(this.sfzProps, key)
     }
 
     // regions

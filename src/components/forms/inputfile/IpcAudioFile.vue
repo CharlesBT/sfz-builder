@@ -15,12 +15,12 @@ onMounted(() => {
   })
 
   // debugger // breakpoint in chrome
-  console.log(window.ipc.versions.chrome())
-  console.log(window.ipc.config.electron)
+  console.info(window.ipc.versions.chrome())
+  console.info(window.ipc.config.electron)
 
   const func = async () => {
     const response = await window.ipc.test()
-    console.log(response)
+    console.info(response)
   }
 
   func()

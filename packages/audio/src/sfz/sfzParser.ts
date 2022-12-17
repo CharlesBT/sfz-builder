@@ -41,7 +41,7 @@ export function parseSfzSection(sfzText: string): sfzParsedSection[] {
 
     if (prop.sample) prop.sample = (<string>prop.sample).replace(/\\/g, '/')
     return <sfzParsedSection>{
-      section: section,
+      section,
       props: prop,
     }
   })

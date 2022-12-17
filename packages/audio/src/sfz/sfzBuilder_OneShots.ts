@@ -1,9 +1,9 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
 import _ from 'lodash'
+import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 import { midiKeyMap } from './midiKeyMap.js'
 import { sfzBuilder } from './sfzBuilder.js'
-import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 
 export class sfzBuilder_OneShots {
   static async process(

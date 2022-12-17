@@ -23,11 +23,11 @@ const rules = ref({
     </v-card-text>
     <v-divider></v-divider>
     <v-card-text class="pa-5">
-      <v-text-field label="User Name" v-model="uname" placeholder="Enter username"></v-text-field>
+      <v-text-field v-model="uname" label="User Name" placeholder="Enter username"></v-text-field>
       <v-text-field
+        v-model="email"
         label="Email"
         type="email"
-        v-model="email"
         placeholder="Email address"
       ></v-text-field>
       <v-text-field

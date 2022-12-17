@@ -24,18 +24,6 @@ export interface sfzPatchProps {
   }
 }
 
-export interface sfzSettings {
-  default: sfzDefaultPatchSettings
-  global_templates: sfzPatchTemplateSettings[]
-  processing: string
-  wav_regexp: {
-    samplerobot: string
-    flstudio: string
-    audiolayer: string
-  }
-  header: string[]
-}
-
 export interface sfzDefaultPatchSettings {
   type: string
   multi_velocity_layer: boolean
@@ -74,6 +62,18 @@ export interface sfzPatchTemplateSettings {
   }
 }
 
+export interface sfzSettings {
+  default: sfzDefaultPatchSettings
+  global_templates: sfzPatchTemplateSettings[]
+  processing: string
+  wav_regexp: {
+    samplerobot: string
+    flstudio: string
+    audiolayer: string
+  }
+  header: string[]
+}
+
 export interface sfzRegionProps {
   [key: string]: number | string | boolean | undefined
   pitch_keycenter?: number
@@ -92,19 +92,16 @@ export interface sfzGroupProps {
   hivel?: number
 }
 
+export interface sfzParsedProps {
+  [key: string]: number | string | boolean
+}
+
 export interface sfzParsedSection {
   section: string
   props: sfzParsedProps
 }
 
-export interface sfzParsedProps {
-  [key: string]: number | string | boolean
-}
-
-export interface sfzOptions {
-  process?: sfzProcessOptions
-  patch?: sfzPatchOptions
-}
+export type VelocityTransformer = (value: number) => number
 
 export interface sfzProcessOptions {
   [key: string]: number | string | boolean | Map<string, number> | VelocityTransformer | undefined
@@ -126,6 +123,9 @@ export interface sfzProcessOptions {
   fadeout: boolean
 }
 
-export type VelocityTransformer = (value: number) => number
+export interface sfzOptions {
+  process?: sfzProcessOptions
+  patch?: sfzPatchOptions
+}
 
 export type PatchProcessingFunction = (patchFileName: string, options: sfzOptions) => Promise<void>
