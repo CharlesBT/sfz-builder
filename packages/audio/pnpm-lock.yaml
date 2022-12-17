@@ -43,7 +43,7 @@ dependencies:
   wavefile: 11.0.0
 
 devDependencies:
-  '@charlesbt/eslint-config-custom': 1.2.5_2gbcgqmzq2pxiocqw2qs7hdeqe
+  '@charlesbt/eslint-config-custom': 1.2.6_2gbcgqmzq2pxiocqw2qs7hdeqe
   '@microsoft/tsdoc': 0.14.2
   '@types/adm-zip': 0.5.0
   '@types/debug': 4.1.7
@@ -66,8 +66,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@charlesbt/eslint-config-custom/1.2.5_2gbcgqmzq2pxiocqw2qs7hdeqe:
-    resolution: {integrity: sha512-iGIY1LWwwtTaeTBCKiY3mwDCbQ139N1KTBRHthIqNGTLRO+knJcukjg5YIhIaqyWH97PV7zbQn4OS+buou0mRA==}
+  /@charlesbt/eslint-config-custom/1.2.6_2gbcgqmzq2pxiocqw2qs7hdeqe:
+    resolution: {integrity: sha512-fk5sDxQa1GjGWJfONk7qy+DxTom8G0aIF3FoYkZvjz+ezWazGXzmsbzIG43x8WpQ97kQMhnPOmxN2gP/m52UVQ==}
     dependencies:
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/eslint-plugin': 5.46.1_mqzxmroayievgzgel6yrqgih5i
