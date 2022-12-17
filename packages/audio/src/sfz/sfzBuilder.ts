@@ -2,24 +2,24 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { config } from '../config/configProvider.js'
-import { filer } from '../filer/filer.js'
 import { v4 as uuid } from 'uuid'
 import fsExtra from 'fs-extra'
 import _ from 'lodash'
+import { config } from '../config/configProvider.js'
+import { filer } from '../filer/filer.js'
 import { wavUtils } from '../audio/wavUtils.js'
-import { errorMessages } from './errorMessages.js'
-import { midiKeyMap } from './midiKeyMap.js'
-import { sfzGroup } from './sfzGroup.js'
-import { sfzPatch } from './sfzPatch.js'
-import { sfzRegion } from './sfzRegion.js'
-import { sfzUtils } from './sfzUtils.js'
 import type {
   sfzPatchOptions,
   sfzOptions,
   sfzProcessOptions,
   PatchProcessingFunction,
 } from '../types/sfz.js'
+import { errorMessages } from './errorMessages.js'
+import { midiKeyMap } from './midiKeyMap.js'
+import { sfzGroup } from './sfzGroup.js'
+import { sfzPatch } from './sfzPatch.js'
+import { sfzRegion } from './sfzRegion.js'
+import { sfzUtils } from './sfzUtils.js'
 
 const HEADROOM = Math.abs(config.encoder.headroom)
 
@@ -53,9 +53,8 @@ export class sfzBuilder {
     console.info(`Processing folder: ${inputPath} | STARTED`)
 
     // auto rename wav file from folder name
-    ;(options.process?.autorename_wavfile as boolean)
-      ? await sfzBuilder.autoRenameFolder(inputPath, options)
-      : null
+    if (options.process?.autorename_wavfile as boolean)
+      await sfzBuilder.autoRenameFolder(inputPath, options)
 
     let patchFileNames: string[] | undefined = undefined
     let patchProcessingFunction: PatchProcessingFunction | undefined = undefined
@@ -78,6 +77,7 @@ export class sfzBuilder {
       // process patches sequentially
       if (config.sfz.processing === undefined || config.sfz.processing === 'sequential') {
         for (const patchFileName of patchFileNames) {
+          // eslint-disable-next-line no-await-in-loop
           await patchProcessingFunction(patchFileName, options)
         }
       }
@@ -196,12 +196,13 @@ export class sfzBuilder {
               const region = new sfzRegion(wav)
 
               // get loop points from wav.json file if available
+              // eslint-disable-next-line no-await-in-loop
               const info = await wavUtils.getJsonInfo(path.join(inputPath, default_path, wav))
               sfzUtils.setSfzLoopPoints(patch, region, info)
 
               // get region data from initial sfz file
               for (const [key, value] of Object.entries(elt.props)) {
-                key !== 'sample' ? region.set(key, <string | number>value) : null
+                if (key !== 'sample') region.set(key, <string | number>value)
               }
               patch.groups[patch.groups.length - 1].regions.push(region)
             }
@@ -279,6 +280,7 @@ export class sfzBuilder {
       }
 
       // get loop points from wav.json file if available
+      // eslint-disable-next-line no-await-in-loop
       const info = await wavUtils.getJsonInfo(wav)
       sfzUtils.setSfzLoopPoints(patch, region, info)
 
@@ -344,6 +346,7 @@ export class sfzBuilder {
         region.set('hikey', <number>region.get('pitch_keycenter'))
 
         // get loop points from wav.json file if available
+        // eslint-disable-next-line no-await-in-loop
         const info = await wavUtils.getJsonInfo(wav)
         sfzUtils.setSfzLoopPoints(patch, region, info)
 
@@ -351,16 +354,18 @@ export class sfzBuilder {
       }
 
       // move samples to default_path folder
+      // eslint-disable-next-line no-await-in-loop
       await sfzBuilder.movePatchSamplesToDefaultPath(slice, patchFileName, patch)
 
       // save patch
+      // eslint-disable-next-line no-await-in-loop
       await sfzUtils.saveSfzFile(patchFileName, patch)
     }
 
     // rename folder
     const source = path.join(inputPath, patchName)
     const dest = path.join(inputPath, filer.sanitizeName(patchName))
-    source !== dest ? await filer.move(source, dest) : null
+    if (source !== dest) await filer.move(source, dest)
   }
 
   // move samples to default_path folder
@@ -377,7 +382,9 @@ export class sfzBuilder {
         const source = sample
         const dest = path.join(samplePath, path.parse(sample).base)
         if (source !== dest) {
+          // eslint-disable-next-line no-await-in-loop
           await filer.move(source, dest)
+          // eslint-disable-next-line no-await-in-loop
           await filer.move(source + '.json', dest + '.json')
         }
       }
@@ -401,9 +408,8 @@ export class sfzBuilder {
     // import wav and json files to local temp folder
     tasks = inputFiles.map(async (wav) => {
       // rename extension to lowercase
-      options.process?.lowercase_extension ? await filer.lowerCaseFileExt(wav, 'wav') : null
+      if (options.process?.lowercase_extension) await filer.lowerCaseFileExt(wav, 'wav')
       const lowerwav = path.parse(wav).name + path.parse(wav).ext.toLocaleLowerCase()
-
       wav = path.join(path.parse(wav).dir, lowerwav)
       const tmpwav = path.join(tmpFolder, path.parse(wav).base)
       await filer.copy(wav, tmpwav)
@@ -433,7 +439,7 @@ export class sfzBuilder {
     // extract sample properties and write json files
     console.info(`Analyzing samples files | extracting metadata (building JSON files) ...`)
     tasks = files.map(async (file) => {
-      options.process?.jsoninfo ? await wavUtils.writeJsonInfo(file) : null
+      if (options.process?.jsoninfo) await wavUtils.writeJsonInfo(file)
     })
     await Promise.all(tasks)
 
@@ -442,17 +448,15 @@ export class sfzBuilder {
 
     // convert to 48kHz samplerate if above
     tasks = files.map(async (file) => {
-      options.process?.convert_samplerate
-        ? await wavUtils.processConvertToMaxSampleRate(file, await wavUtils.getJsonInfo(file))
-        : null
+      if (options.process?.convert_samplerate)
+        await wavUtils.processConvertToMaxSampleRate(file, await wavUtils.getJsonInfo(file))
     })
     await Promise.all(tasks)
 
     // convert to 24bits depth if above
     tasks = files.map(async (file) => {
-      options.process?.convert_bitdepth
-        ? await wavUtils.processConvertToMaxBitDepth(file, await wavUtils.getJsonInfo(file))
-        : null
+      if (options.process?.convert_bitdepth)
+        await wavUtils.processConvertToMaxBitDepth(file, await wavUtils.getJsonInfo(file))
     })
     await Promise.all(tasks)
 
@@ -462,7 +466,7 @@ export class sfzBuilder {
 
     // trim
     tasks = files.map(async (file) => {
-      options.process?.trim ? await wavUtils.processRemoveSilence(file) : null
+      if (options.process?.trim) await wavUtils.processRemoveSilence(file)
     })
     await Promise.all(tasks)
 
@@ -477,7 +481,7 @@ export class sfzBuilder {
           {
             const max_files_volume = await sfzBuilder.getMaxVolume(files)
             const peak = max_files_volume + volume
-            peak > -HEADROOM ? (volume = Math.abs(max_files_volume) - Math.abs(HEADROOM)) : null
+            if (peak > -HEADROOM) volume = Math.abs(max_files_volume) - Math.abs(HEADROOM)
             tasks = files.map(async (file) => {
               await wavUtils.processVolume(file, <number>volume)
             })
@@ -485,23 +489,22 @@ export class sfzBuilder {
           }
           break
         case 'sample':
-          {
-            tasks = files.map(async (file) => {
-              const info = await wavUtils.getJsonInfo(file)
-              const max_file_volume = info.streams[0].max_volume
-              const peak = max_file_volume + volume
-              peak > -HEADROOM ? (volume = Math.abs(max_file_volume) - Math.abs(HEADROOM)) : null
-              await wavUtils.processVolume(file, <number>volume)
-            })
-            await Promise.all(tasks)
-          }
+          tasks = files.map(async (file) => {
+            const info = await wavUtils.getJsonInfo(file)
+            const max_file_volume = info.streams[0].max_volume
+            const peak = max_file_volume + volume
+            if (peak > -HEADROOM) volume = Math.abs(max_file_volume) - Math.abs(HEADROOM)
+            await wavUtils.processVolume(file, <number>volume)
+          })
+          await Promise.all(tasks)
+
           break
       }
     }
 
     // fadeout
     tasks = files.map(async (file) => {
-      options.process?.fadeout ? await wavUtils.processFadeOut(file) : null
+      if (options.process?.fadeout) await wavUtils.processFadeOut(file)
     })
     await Promise.all(tasks)
 
@@ -537,6 +540,7 @@ export class sfzBuilder {
         const r = filer.isExt(elt, 'wav') && regex.test(elt)
         return r
       }
+      return undefined
     })
     return files.map((elt) => path.join(dir, elt))
   }
@@ -545,9 +549,10 @@ export class sfzBuilder {
   static async getMaxVolume(files: string[]) {
     let max_volume = undefined
     for (const file of files) {
+      // eslint-disable-next-line no-await-in-loop
       const info = await wavUtils.getJsonInfo(file)
       const volume = info.streams[0].max_volume
-      max_volume === undefined || volume > max_volume ? (max_volume = volume) : null
+      if (max_volume === undefined || volume > max_volume) max_volume = volume
     }
     return max_volume
   }
@@ -608,7 +613,7 @@ export class sfzBuilder {
       const filesToDelete: string[] = []
       let tasks = files.map(async (file) => {
         const info = await wavUtils.getJsonInfo(file)
-        info.streams[0].nb_samples === 0 ? filesToDelete.push(file) : null
+        if (info.streams[0].nb_samples === 0) filesToDelete.push(file)
       })
       await Promise.all(tasks)
 
@@ -636,8 +641,11 @@ export class sfzBuilder {
       for (const value of directoryNames.values()) {
         const source = path.join(inputPath, value)
         const dest = path.join(inputPath, filer.sanitizeName(value))
-        source !== dest ? await filer.move(source, dest) : null
+        // eslint-disable-next-line no-await-in-loop
+        if (source !== dest) await filer.move(source, dest)
+        // eslint-disable-next-line no-await-in-loop
         await sfzBuilder.autoRenameWavFiles(dest, options)
+        // eslint-disable-next-line no-await-in-loop
         await sfzBuilder.autoRenameFolder(dest, options)
       }
     }
@@ -655,16 +663,17 @@ export class sfzBuilder {
         const source = path.join(inputPath, value)
         const filename = `${path.basename(inputPath)}_${sfzBuilder.format4Digits(++i)}`
         const dest = path.join(inputPath, filer.sanitizeName(filename) + '.wav')
-        source !== dest ? await filer.move(source, dest) : null
+        // eslint-disable-next-line no-await-in-loop
+        if (source !== dest) await filer.move(source, dest)
       }
     }
   }
 
   static format4Digits(value: number) {
     let r = value.toString()
-    value < 1000 ? (r = `0${value}`) : null
-    value < 100 ? (r = `00${value}`) : null
-    value < 10 ? (r = `000${value}`) : null
+    if (value < 1000) r = `0${value}`
+    if (value < 100) r = `00${value}`
+    if (value < 10) r = `000${value}`
     return `${r}`
   }
 }

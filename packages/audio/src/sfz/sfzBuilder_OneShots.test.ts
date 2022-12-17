@@ -1,15 +1,15 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
 import path from 'node:path'
-import { config } from '../config/configProvider.js'
-import { filer } from '../filer/filer.js'
 import { packageDirectorySync } from 'pkg-dir'
 import { v4 as uuid } from 'uuid'
 import fsExtra from 'fs-extra'
 import { describe, expect, it } from 'vitest'
+import { filer } from '../filer/filer.js'
+import { config } from '../config/configProvider.js'
+import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 import { sfzBuilder_OneShots } from './sfzBuilder_OneShots.js'
 import { sfzUtils } from './sfzUtils.js'
-import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 
 const __pkgRoot = <string>packageDirectorySync()
 

@@ -2,14 +2,14 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { config } from '../config/configProvider.js'
-import { filer } from '../filer/filer.js'
 import { WaveFile } from 'wavefile'
 import _ from 'lodash'
+import { config } from '../config/configProvider.js'
+import { filer } from '../filer/filer.js'
+import type { IWavInfo, IWavInfoLoopPoint, smpl } from '../types/audio.js'
 import { audioEncoder } from './audioEncoder.js'
 import { errorMessages } from './errorMessages.js'
 import { ffmpeg } from './ffmpeg.js'
-import type { IWavInfo, IWavInfoLoopPoint, smpl } from '../types/audio.js'
 
 const MAX_SAMPLERATE = config.encoder.maxsamplerate
 const MAX_BITDEPTH = config.encoder.maxbitdepth

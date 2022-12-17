@@ -1,11 +1,11 @@
 /* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 
-import { config } from '../config/configProvider.js'
 import _ from 'lodash'
+import { config } from '../config/configProvider.js'
 
 // import { midiKeyMap } from './midiKeyMap_SampleRobot.js' // not needed since we parse sfz file, no need to rebuild from wav filename
-import { sfzBuilder } from './sfzBuilder.js'
 import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
+import { sfzBuilder } from './sfzBuilder.js'
 
 export class sfzBuilder_SampleRobot {
   static async process(

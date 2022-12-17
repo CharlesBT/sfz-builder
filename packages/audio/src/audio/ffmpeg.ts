@@ -3,16 +3,16 @@ import childProcess from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import util from 'node:util'
-import { config } from '../config/configProvider.js'
 import { packageDirectorySync } from 'pkg-dir'
 import _ from 'lodash'
-import { shellEscape } from '../utils/shellEscape.js'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ffmpegBin from 'ffmpeg-static-electron'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ffprobeBin from 'ffprobe-static-electron'
+import { shellEscape } from '../utils/shellEscape.js'
+import { config } from '../config/configProvider.js'
 
 const __pkgRoot = <string>packageDirectorySync()
 

@@ -2,8 +2,8 @@
 
 import { config } from '../config/configProvider.js'
 import { filer } from '../filer/filer.js'
-import { ffmpeg } from './ffmpeg.js'
 import type { IAudioEncoderOptions, IBulkEncodeResult, EncoderFunction } from '../types/audio.js'
+import { ffmpeg } from './ffmpeg.js'
 
 const encoderOptions = <IAudioEncoderOptions>config.encoder
 const errorMessage = {
@@ -45,12 +45,13 @@ export class audioEncoder {
     if (Array.isArray(files)) {
       for (const file of files) {
         try {
+          // eslint-disable-next-line no-await-in-loop
           await fileEncodeFunction(file)
-          results.push({ file: file, result: true })
+          results.push({ file, result: true })
         } catch (error) {
           if (error instanceof Error) {
             results.push({
-              file: file,
+              file,
               result: false,
               errormsg: error.message,
             })
@@ -72,7 +73,7 @@ export class audioEncoder {
       count: files.length,
       success: results.filter((elt) => elt.result === true).length,
       fail: results.filter((elt) => elt.result === false).length,
-      time: time, // execution time in seconds
+      time, // execution time in seconds
       result: results.every((elt) => elt.result === true) ? true : false,
     }
   }

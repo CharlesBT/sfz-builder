@@ -3,11 +3,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { filer } from '../filer/filer.js'
+import type { IWavInfo } from '../types/audio.js'
 import { errorMessages } from './errorMessages.js'
 import { parseSfzSection } from './sfzParser.js'
 import { sfzPatch } from './sfzPatch.js'
 import { sfzRegion } from './sfzRegion.js'
-import type { IWavInfo } from '../types/audio.js'
 
 export class sfzUtils {
   // returns JSON formated document from sfz file
@@ -23,9 +23,7 @@ export class sfzUtils {
   // save sfz file
   static async saveSfzFile(folderPath: string, patch: sfzPatch) {
     // check if patch has at least 1 group and 1 region
-    try {
-      patch.groups[0].regions[0]
-    } catch {
+    if (typeof patch.groups[0].regions[0] === 'undefined') {
       console.info(`WARNING : no sample in patch`)
       return
     }
@@ -52,12 +50,14 @@ export class sfzUtils {
       const ext = path.parse(value).ext.toLowerCase()
       if (ext === '.sfz') {
         const file = path.join(dir, value)
+        // eslint-disable-next-line no-await-in-loop
         await filer.delete(file)
         console.info(`Deleted: ${file}`)
       }
     }
     for (const value of directoryNames.values()) {
       const folder = path.join(dir, value)
+      // eslint-disable-next-line no-await-in-loop
       await sfzUtils.deleteAllSfzFiles(folder)
     }
   }
@@ -76,16 +76,19 @@ export class sfzUtils {
       if (ext === '.sfz') {
         const sfzSource = path.join(dir, value)
         const sfzDest = path.join(parentPath, value)
+        // eslint-disable-next-line no-await-in-loop
         await filer.move(sfzSource, sfzDest, { overwrite: false })
       }
       if (ext === '.wav') {
         const wavSource = path.join(dir, value)
         const wavDest = path.normalize(path.join(parentPath, '../samples', value))
+        // eslint-disable-next-line no-await-in-loop
         await filer.move(wavSource, wavDest, { overwrite: false })
       }
     }
     for (const value of directoryNames.values()) {
       const folder = path.join(dir, value)
+      // eslint-disable-next-line no-await-in-loop
       await sfzUtils.moveSfzPatchToParentFolder(folder)
     }
   }
@@ -105,12 +108,14 @@ export class sfzUtils {
         const source = path.join(dir, value)
         const dest = path.join(dir, `${path.basename(dir)}.sfz`)
         if (source !== dest) {
+          // eslint-disable-next-line no-await-in-loop
           await filer.move(source, dest)
         }
       }
     }
     for (const value of directoryNames.values()) {
       const folder = path.join(dir, value)
+      // eslint-disable-next-line no-await-in-loop
       await sfzUtils.renameSFzFileWithParentFolderName(folder)
     }
   }
@@ -149,12 +154,14 @@ export class sfzUtils {
         const source = path.join(dir, value)
         const dest = path.join(dir, 'export', `${new_name}.wav`)
         if (source !== dest) {
+          // eslint-disable-next-line no-await-in-loop
           await filer.move(source, dest)
         }
       }
     }
     for (const value of directoryNames.values()) {
       const folder = path.join(dir, value)
+      // eslint-disable-next-line no-await-in-loop
       await sfzUtils.transposeWavFilesOf2OctavesUp(folder)
     }
   }
@@ -170,16 +177,15 @@ export class sfzUtils {
     for (const elt of sfz) {
       switch (elt.section) {
         case 'region':
-          {
-            for (const [key, value] of Object.entries(elt.props)) {
-              if (key.toLowerCase() === 'sample') {
-                const file = path.join(dir, default_path, <string>value)
-                try {
-                  await fs.promises.access(file)
-                  results.push({ file: file, result: true })
-                } catch {
-                  results.push({ file: file, result: false })
-                }
+          for (const [key, value] of Object.entries(elt.props)) {
+            if (key.toLowerCase() === 'sample') {
+              const file = path.join(dir, default_path, <string>value)
+              try {
+                // eslint-disable-next-line no-await-in-loop
+                await fs.promises.access(file)
+                results.push({ file, result: true })
+              } catch {
+                results.push({ file, result: false })
               }
             }
           }

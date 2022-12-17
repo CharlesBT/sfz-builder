@@ -2,14 +2,14 @@
 
 import path from 'node:path'
 import fsExtra from 'fs-extra'
-import { config } from '../config/configProvider.js'
-import { filer } from '../filer/filer.js'
 import { packageDirectorySync } from 'pkg-dir'
 import { v4 as uuid } from 'uuid'
 import { describe, expect, it } from 'vitest'
+import { config } from '../config/configProvider.js'
+import { filer } from '../filer/filer.js'
+import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 import { sfzBuilder_FLStudio } from './sfzBuilder_FLStudio.js'
 import { sfzUtils } from './sfzUtils.js'
-import type { sfzPatchOptions, sfzOptions, sfzProcessOptions } from '../types/sfz.js'
 
 const __pkgRoot = <string>packageDirectorySync()
 
