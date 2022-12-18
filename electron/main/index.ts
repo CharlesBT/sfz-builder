@@ -1,4 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { app, BrowserWindow, shell, ipcMain } from 'electron'

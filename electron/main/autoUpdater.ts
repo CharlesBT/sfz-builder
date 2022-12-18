@@ -1,4 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 import { dialog } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import { is } from 'electron-util'

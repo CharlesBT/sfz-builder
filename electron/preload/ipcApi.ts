@@ -1,4 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 import { contextBridge, ipcRenderer } from 'electron'
 import config from '../config.json'
 

@@ -1,5 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
 import { join } from 'node:path'
 import { packageDirectorySync } from 'pkg-dir'
 import { v4 as uuid } from 'uuid'

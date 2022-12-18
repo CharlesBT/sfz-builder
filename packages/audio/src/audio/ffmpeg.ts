@@ -1,4 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
 import childProcess from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'

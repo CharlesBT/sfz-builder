@@ -1,5 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
 const midiKeyMap = new Map<string, number>()
 
 midiKeyMap.set('C-2', 0)
