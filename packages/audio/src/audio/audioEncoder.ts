@@ -1,5 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
 import { config } from '../config/configProvider.js'
 import { filer } from '../filer/filer.js'
 import type { IAudioEncoderOptions, IBulkEncodeResult, EncoderFunction } from '../types/audio.js'

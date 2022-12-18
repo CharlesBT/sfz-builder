@@ -1,5 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
 // taken from https://github.com/boazy/any-shell-escape/blob/master/shell-escape.js
 
 type escapeFunction = (path: string) => string

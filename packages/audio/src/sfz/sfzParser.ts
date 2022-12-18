@@ -1,5 +1,3 @@
-/* Copyright (c) BMS Corp. All rights reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
-
 import type { sfzParsedSection, sfzParsedProps } from '../types/sfz.js'
 
 export function parseSfzSection(sfzText: string): sfzParsedSection[] {
