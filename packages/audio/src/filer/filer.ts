@@ -223,19 +223,23 @@ export class filer {
     }
 
     try {
-      const zip = fs.createReadStream(file).pipe(unzipper.Parse({ forceStream: true }))
-      for await (const entry of zip) {
-        const fileName = entry.path
-        const dir = path.dirname(fileName)
-        const targetPath = path.join(dest, dir)
-        const _folderExists = await folderExists(targetPath)
-        if (!_folderExists) {
-          await fs.promises.mkdir(targetPath, { recursive: true })
-        }
-        entry.pipe(fs.createWriteStream(path.join(dest, fileName)))
-      }
+      await fs
+        .createReadStream(file)
+        .pipe(unzipper.Parse())
+        .on('entry', async function (entry) {
+          const fileName = entry.path
+          const dir = path.dirname(fileName)
+          const targetPath = path.join(dest, dir)
+          const _folderExists = await folderExists(targetPath)
+          if (!_folderExists) {
+            await fs.promises.mkdir(targetPath, { recursive: true })
+          }
+          entry.pipe(fs.createWriteStream(path.join(dest, fileName)))
+        })
+        .promise()
     } catch (err) {
-      throw new Error((<Error>err).message)
+      console.error((<Error>err).message, import.meta.url)
+      throw new Error(errorMessage.UnzipFailed)
     }
   }
 }
