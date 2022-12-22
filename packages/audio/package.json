@@ -33,6 +33,7 @@
   "scripts": {
     "build": "rimraf ./dist *.tsbuildinfo && tsc",
     "dev": "rimraf ./dist && tsc --watch",
+    "tc": "tsc --noEmit",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest run",

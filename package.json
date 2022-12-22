@@ -31,6 +31,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "publish": "electron-builder --publish=always",
+    "tc": "tsc --noEmit",
     "test": "cross-env DOTENV_CONFIG_PATH=.env.test vitest && pnpm -r run test",
     "test:coverage": "cross-env DOTENV_CONFIG_PATH=.env.test vitest run --coverage && pnpm -r run test",
     "test:ci": "cross-env DOTENV_CONFIG_PATH=.env.test vitest run && pnpm -r run test:ci",
