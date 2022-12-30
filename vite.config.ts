@@ -20,7 +20,7 @@ export default defineConfig({
     vuetify({ autoImport: true }),
     VueI18nPlugin({
       defaultSFCLang: 'yml',
-      compositionOnly: true,
+      compositionOnly: true, // default: true
       runtimeOnly: true, // Whether or not to automatically use Vue I18n runtime-only in production build
       include: resolve(dirname(fileURLToPath(import.meta.url)), './src/locales/**'), // locale messages resource pre-compile option
     }),
