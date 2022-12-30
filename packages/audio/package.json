@@ -46,7 +46,7 @@
     "postinstall": "pnpm build && pnpm doc:build"
   },
   "dependencies": {
-    "adm-zip": "0.5.9",
+    "adm-zip": "0.5.10",
     "debug": "4.3.4",
     "ffmpeg-static-electron": "2.0.3",
     "ffprobe-static-electron": "2.0.2",
@@ -65,16 +65,16 @@
     "@types/debug": "4.1.7",
     "@types/fs-extra": "9.0.13",
     "@types/lodash": "4.14.191",
-    "@types/node": "18.11.17",
+    "@types/node": "18.11.18",
     "@types/unzipper": "0.10.5",
     "@types/uuid": "9.0.0",
-    "@vitest/coverage-c8": "0.26.0",
+    "@vitest/coverage-c8": "0.26.2",
     "cross-env": "7.0.3",
     "prettier": "2.8.1",
     "serve": "14.1.2",
     "ts-node": "10.9.1",
     "typedoc": "0.23.23",
     "typescript": "4.9.4",
-    "vitest": "0.26.0"
+    "vitest": "0.26.2"
   }
 }
