@@ -28,7 +28,6 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install
-          pnpm postinstall
 
       - name: Test
         run: pnpm test:ci
